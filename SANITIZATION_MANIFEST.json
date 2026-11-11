@@ -1,5 +1,5 @@
 {
-  "private_commit": "75108f4b6929dc4e50958dceee0e967a66d7757c",
+  "private_commit": "770f0ea5afb1e68b073fe01e7a8681312cfd33f8",
   "rules": [
     "windows-user-path",
     "machine-hostname"

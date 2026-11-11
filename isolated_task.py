@@ -87,6 +87,10 @@ def run_isolated_task(skill: str, task: dict, *, contracts: dict, grants: list, 
     os.makedirs(out_dir, exist_ok=True)
     written = {}
     for name, data in sorted(res.get("outputs", {}).items()):
+        # Plain file names only, on every OS: no separators of either flavor, no dot names.
+        if not isinstance(name, str) or not name or "/" in name or "\\" in name or name.startswith(".") \
+                or ":" in name or len(name) > 128:
+            raise PortError("Unsafe output name from runner: %r" % (name,))
         dest = os.path.join(out_dir, name)
         if not SB._within(dest, g["fs"]["write"], None):
             raise PortError("Output path escaped fs.write scope")
