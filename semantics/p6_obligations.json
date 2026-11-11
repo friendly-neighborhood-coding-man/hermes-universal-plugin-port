@@ -1,0 +1,70 @@
+{
+  "schema": "universal-port.p6-obligations/1",
+  "source": {
+    "repo": "anthropics/knowledge-work-plugins",
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "files": {
+      "skills/synthesize-research/SKILL.md": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+      "skills/write-spec/SKILL.md": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "skills/roadmap-update/SKILL.md": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e"
+    }
+  },
+  "obligations": [
+    {
+      "id": "OB-SR-ATTRIB",
+      "skill": "synthesize-research",
+      "cite": {"file": "skills/synthesize-research/SKILL.md", "line": 71, "quote": "- **Evidence**: Supporting quotes, data points, or observations (with source attribution)"},
+      "obligation": "Each finding cites supporting quotes with source attribution.",
+      "check": {"kind": "quotes_verbatim_with_ids", "artifact": "research-synthesis.md"}
+    },
+    {
+      "id": "OB-SR-OPPORTUNITY",
+      "skill": "synthesize-research",
+      "cite": {"file": "skills/synthesize-research/SKILL.md", "line": 85, "quote": "#### Opportunity Areas"},
+      "obligation": "The synthesis contains an Opportunity Areas section.",
+      "check": {"kind": "heading_present", "artifact": "research-synthesis.md", "heading": "Opportunity Areas"}
+    },
+    {
+      "id": "OB-SR-ASK",
+      "skill": "synthesize-research",
+      "cite": {"file": "skills/synthesize-research/SKILL.md", "line": 31, "quote": "Ask the user what they have:"},
+      "obligation": "Before synthesizing, ask the user what research they have.",
+      "check": {"kind": "interactive_turn_absent"}
+    },
+    {
+      "id": "OB-WS-ASK",
+      "skill": "write-spec",
+      "cite": {"file": "skills/write-spec/SKILL.md", "line": 23, "quote": "Ask the user what they want to spec. Accept any of:"},
+      "obligation": "Before writing, ask the user what they want to spec.",
+      "check": {"kind": "interactive_turn_absent"}
+    },
+    {
+      "id": "OB-WS-ARGS",
+      "skill": "write-spec",
+      "cite": {"file": "skills/write-spec/SKILL.md", "line": 16, "quote": "/write-spec $ARGUMENTS"},
+      "obligation": "The user's text is substituted where $ARGUMENTS appears.",
+      "check": {"kind": "literal_placeholder_delivery", "skill": "write-spec"}
+    },
+    {
+      "id": "OB-WS-TRACKER",
+      "skill": "write-spec",
+      "cite": {"file": "skills/write-spec/SKILL.md", "line": 41, "quote": "If **~~project tracker** is connected:"},
+      "obligation": "If a project tracker is connected, pull related tickets.",
+      "check": {"kind": "capability_unsupported", "capability": "~~project tracker"}
+    },
+    {
+      "id": "OB-WS-NO-TOOLS",
+      "skill": "write-spec",
+      "cite": {"file": "skills/write-spec/SKILL.md", "line": 55, "quote": "If these tools are not connected, work entirely from what the user provides. Do not ask the user to connect tools — just proceed with available information."},
+      "obligation": "Without connected tools, proceed from provided information only.",
+      "check": {"kind": "no_connector_tools_used", "allowed_tools": ["skill_view", "read_file", "write_file"]}
+    },
+    {
+      "id": "OB-RU-NOW",
+      "skill": "roadmap-update",
+      "cite": {"file": "skills/roadmap-update/SKILL.md", "line": 101, "quote": "- **Now** (current sprint/month): Committed work. High confidence in scope and timeline. These are the things the team is actively building."},
+      "obligation": "Items placed in Now are committed and have high confidence in scope.",
+      "check": {"kind": "now_items_blocked", "artifact": "onboarding-roadmap.md"}
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "universal-port.p6-recipe/1",
+  "status": "PROMPT_READY_NOT_EXECUTED",
+  "required_skills": [
+    "ported-product-management:synthesize-research",
+    "ported-product-management:write-spec",
+    "ported-product-management:roadmap-update"
+  ],
+  "task_prompt_to_submit_as_user": "Execute this three-step research-to-roadmap task IN THIS HERMES SESSION. Use the supplied fictional interview fixture at \"D:\\\\Hermes-Lab\\\\p6-e2e-run-001\\\\inputs\\\\p6-onboarding-interviews.md\" as the only evidence. Do not call Slack, Notion, Linear, other remote MCP servers or external network services. Do not invent additional customer interviews, measurements or results.\n\n1) Load and FOLLOW skill_view(\"ported-product-management:synthesize-research\"). Read the eight fictional interview notes and produce research-synthesis.md with individual interview IDs and clearly separated observations and recommendations.\n2) Load and FOLLOW skill_view(\"ported-product-management:write-spec\"). Using the synthesis, produce onboarding-prd.md with scope, non-goals, user stories and verifiable acceptance tests.\n3) Load and FOLLOW skill_view(\"ported-product-management:roadmap-update\"). Using the PRD, produce onboarding-roadmap.md with Now/Next/Later, dependencies and explicitly proposed priorities.\n\nFor every step, show the exact imported Skill name that was actually loaded and the tool result. Use Hermes's normal file write approval flow. If a tool, file or Skill is unavailable, STOP and report HOLD rather than fabricate success. At the end report actual output paths and file hashes for independent review.",
+  "execution_performed": false,
+  "automatic_skill_dispatch": false,
+  "note": "User must submit this as a new turn; inspect skill_view and artifact traces."
+}

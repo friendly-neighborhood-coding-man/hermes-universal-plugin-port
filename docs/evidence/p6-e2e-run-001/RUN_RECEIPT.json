@@ -1,0 +1,110 @@
+{
+  "schema": "universal-port.p6-e2e-receipt/1",
+  "written_by": "operator harness after the run (not by the model)",
+  "session_id": "local-41e6e4558efcfc3ec6d6f3d5d5e4dda0d9d4c736a8caad6f44558cbcd966923b",
+  "exit_code": 0,
+  "tokens": {
+    "input": 150691,
+    "output": 14405,
+    "total": 165096,
+    "cache_read": 110507,
+    "cache_write": 40170
+  },
+  "duration_ms": 182448,
+  "model_runs": 1,
+  "rejected_preflight_attempts": [
+    {
+      "file": "attempt0-rejected-stream.jsonl",
+      "reason": "--run-budget unsupported by gateway CLI; rejected before any model call",
+      "tokens_total": 0
+    }
+  ],
+  "hermes": "Hermes Agent v0.22.7 local b200f5bc60e3",
+  "home": "D:\\Hermes-Lab\\uvp-p6-hermes-test",
+  "toolsets": [
+    "skills",
+    "file"
+  ],
+  "max_turns": 40,
+  "prompt_sha256": "42dd66c2714c153d06faf66d1f0bc5b71245bdb27d8eca26231a924fa2ab1a86",
+  "fixture_sha256": "f2558654c9c8cf54dbdeb77cf157a07c7c6103e714156e36df708bddc7178675",
+  "source_plugin": {
+    "declared_upstream_commit_unverified": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "stage_fingerprint_sha256": "56a2cac583cba7a28962d7cc02d5a9bc2e4e6dbb59781fe57e05bbb91fe3d83b"
+  },
+  "skill_view_calls": [
+    {
+      "name": "ported-product-management:synthesize-research",
+      "success": true,
+      "stream_output_truncated": true
+    },
+    {
+      "name": "ported-product-management:write-spec",
+      "success": true,
+      "stream_output_truncated": true
+    },
+    {
+      "name": "ported-product-management:roadmap-update",
+      "success": true,
+      "stream_output_truncated": true
+    }
+  ],
+  "tool_call_order": [
+    {
+      "tool": "skill_view",
+      "input": {
+        "name": "ported-product-management:synthesize-research"
+      }
+    },
+    {
+      "tool": "read_file",
+      "input": {
+        "path": "D:\\Hermes-Lab\\p6-e2e-run-001\\inputs\\p6-onboarding-interviews.md"
+      }
+    },
+    {
+      "tool": "write_file",
+      "input": {
+        "path": "D:\\Hermes-Lab\\p6-e2e-run-001\\research-synthesis.md"
+      }
+    },
+    {
+      "tool": "skill_view",
+      "input": {
+        "name": "ported-product-management:write-spec"
+      }
+    },
+    {
+      "tool": "write_file",
+      "input": {
+        "path": "D:\\Hermes-Lab\\p6-e2e-run-001\\onboarding-prd.md"
+      }
+    },
+    {
+      "tool": "skill_view",
+      "input": {
+        "name": "ported-product-management:roadmap-update"
+      }
+    },
+    {
+      "tool": "write_file",
+      "input": {
+        "path": "D:\\Hermes-Lab\\p6-e2e-run-001\\onboarding-roadmap.md"
+      }
+    }
+  ],
+  "approvals": "Operator approved this single run in thread before launch. No interactive approval prompt occurred for write_file inside the run directory (observed).",
+  "outputs": {
+    "onboarding-prd.md": "dd8c7e4a8b9e3c2d808c115a756e312926837310b97f973c6559774ded639959",
+    "onboarding-roadmap.md": "a7892715e129a0e94b41ddace9a799309de5f7f7347e9cc8dfc20dce7c858eb8",
+    "research-synthesis.md": "33f87623c7d3cfd5d5bfa5daca16859989ff6d8f2dae9b58ca6129f33f4bfe9e"
+  },
+  "stream_sha256": "55831d00d2b96526f71223054d1cc3a48691fb3d67453149e1d4ee672fc32551",
+  "drift_check": "plugins/, skills/ and config.yaml unchanged except skills/.usage.json (Hermes usage counter); skill_manage never called",
+  "gates": {
+    "STRUCTURAL": "PASS (verify-001)",
+    "RESOLUTION": "PASS (verify-001 + three successful runtime skill_view calls)",
+    "EXECUTION": "OBSERVED: three distinct imported Skills loaded and three artifacts written in one session",
+    "SEMANTIC": "NOT_ESTABLISHED (operator judgment pending)"
+  }
+}

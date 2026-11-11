@@ -1,0 +1,14 @@
+{
+  "schema": "universal-port.p6-candidate-ledger/1",
+  "note": "Operator-recorded decisions on AI review candidates. A rejected candidate digest can never be applied or promoted. Candidate files themselves stay preserved, unmodified, in the stage.",
+  "rejected": [
+    {
+      "skill": "write-spec",
+      "original_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "candidate_sha256": "676ead16cc3574dffdcf3b7aa6913fbe97b171d168c14467310507187d3851a8",
+      "model_calls": 1,
+      "decided": "2026-11-10",
+      "reason": "Replaced $ARGUMENTS with prose but kept the Claude-only '/write-spec' slash command, which does not resolve in Hermes (plugin skills resolve as '/ported-product-management:write-spec'). Conflates a Markdown usage example with host invocation and user-input passing."
+    }
+  ]
+}

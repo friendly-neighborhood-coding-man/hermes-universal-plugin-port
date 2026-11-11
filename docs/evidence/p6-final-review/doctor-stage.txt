@@ -1,0 +1,4 @@
+Plugin Doctor: D:\Hermes-Lab\p6-staged\ported-product-management
+  manifest: ported-product-management 0.6.0 (standalone)
+  OK: runtime discovery, manifest parsing, import, and registration passed
+  registrations: 0 tool(s), 0 hook(s)

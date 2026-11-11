@@ -1,0 +1,20 @@
+{
+  "foreign_plugin_dir_present": false,
+  "foreign_plugin_enabled": false,
+  "identity": {
+    "executable": "D:\\Hermes-Lab\\uvp-p6-hermes-test\\installs\\544a4d40e77d70ca\\environments\\fa614ea5f2034b70993a5b719fdf251a\\venv\\Scripts\\python.exe",
+    "hermes_commit": "b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+    "hermes_src_dirty": false,
+    "matches_registry_target": true,
+    "python": "3.14.9"
+  },
+  "mode": "preflight",
+  "model_calls": 0,
+  "ok": true,
+  "plugins_config": {
+    "disabled": [],
+    "enabled": [
+      "universal-plugin-port"
+    ]
+  }
+}

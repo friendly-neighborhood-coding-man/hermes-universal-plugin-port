@@ -1,0 +1,176 @@
+{
+  "checks": [
+    {
+      "gate": "STRUCTURAL",
+      "id": "S1-installed-bytes-equal-validated-stage",
+      "observed": {
+        "differences": [],
+        "files": 27
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R1-namespaced-registration",
+      "observed": {
+        "qualified": [
+          "ported-product-management:competitive-brief",
+          "ported-product-management:metrics-review",
+          "ported-product-management:product-brainstorming",
+          "ported-product-management:roadmap-update",
+          "ported-product-management:sprint-planning",
+          "ported-product-management:stakeholder-update",
+          "ported-product-management:synthesize-research",
+          "ported-product-management:write-spec"
+        ]
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R2-no-bare-name-shadowing",
+      "observed": {
+        "roadmap-update": null,
+        "synthesize-research": null,
+        "write-spec": null
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R3-skill_view:synthesize-research",
+      "observed": {
+        "body_is_suffix": true,
+        "content_sha256": "35ec2cd951f00234d45ae43bca1fa82852b8da5b035efe0a5a7976404c929fbc",
+        "name": "ported-product-management:synthesize-research",
+        "prefix_banner": "[Bundle context: This skill is part of the 'ported-product-management' plugin.\nSibling skills: competitive-brief, metrics-review, product-brainstorming, roadmap-update, sprint-planning, stakeholder-update, write-spec.\nUse qualified form to invoke siblings (e.g. ported-product-management:competitive-",
+        "skill_dir": "D:\\Hermes-Lab\\uvp-p6-hermes-test\\plugins\\ported-product-management\\skills\\synthesize-research",
+        "success": true
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R4-relative-resource-refused:synthesize-research",
+      "observed": {
+        "on_disk_target_exists": false,
+        "response": {
+          "error": "Path traversal ('..') is not allowed.",
+          "success": false
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R5-slash-argument-delivery:synthesize-research",
+      "observed": {
+        "body_verbatim_inside": true,
+        "ends_with_instruction": true,
+        "key_present": true,
+        "literal_ARGUMENTS_still_in_body": true,
+        "message_sha256": "82ab81adf430cc2875928b60e5ec5395848904d4d8740763168a53299f512dfe"
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R3-skill_view:write-spec",
+      "observed": {
+        "body_is_suffix": true,
+        "content_sha256": "b13567d62ef6a5231e20c46355338718740b8a99c600db2289c9b47fe86b72a5",
+        "name": "ported-product-management:write-spec",
+        "prefix_banner": "[Bundle context: This skill is part of the 'ported-product-management' plugin.\nSibling skills: competitive-brief, metrics-review, product-brainstorming, roadmap-update, sprint-planning, stakeholder-update, synthesize-research.\nUse qualified form to invoke siblings (e.g. ported-product-management:com",
+        "skill_dir": "D:\\Hermes-Lab\\uvp-p6-hermes-test\\plugins\\ported-product-management\\skills\\write-spec",
+        "success": true
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R4-relative-resource-refused:write-spec",
+      "observed": {
+        "on_disk_target_exists": false,
+        "response": {
+          "error": "Path traversal ('..') is not allowed.",
+          "success": false
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R5-slash-argument-delivery:write-spec",
+      "observed": {
+        "body_verbatim_inside": true,
+        "ends_with_instruction": true,
+        "key_present": true,
+        "literal_ARGUMENTS_still_in_body": true,
+        "message_sha256": "55085786f58cd8cad26d093b6a33aaad0c2ad67b52868430a79e9ab26f9ba7ae"
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R3-skill_view:roadmap-update",
+      "observed": {
+        "body_is_suffix": true,
+        "content_sha256": "6180bc3507649348336b55d5f61c9be291a0114359b15a85d8bbe5d804012202",
+        "name": "ported-product-management:roadmap-update",
+        "prefix_banner": "[Bundle context: This skill is part of the 'ported-product-management' plugin.\nSibling skills: competitive-brief, metrics-review, product-brainstorming, sprint-planning, stakeholder-update, synthesize-research, write-spec.\nUse qualified form to invoke siblings (e.g. ported-product-management:competi",
+        "skill_dir": "D:\\Hermes-Lab\\uvp-p6-hermes-test\\plugins\\ported-product-management\\skills\\roadmap-update",
+        "success": true
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R4-relative-resource-refused:roadmap-update",
+      "observed": {
+        "on_disk_target_exists": false,
+        "response": {
+          "error": "Path traversal ('..') is not allowed.",
+          "success": false
+        }
+      },
+      "result": "PASS"
+    },
+    {
+      "gate": "RESOLUTION",
+      "id": "R5-slash-argument-delivery:roadmap-update",
+      "observed": {
+        "body_verbatim_inside": true,
+        "ends_with_instruction": true,
+        "key_present": true,
+        "literal_ARGUMENTS_still_in_body": true,
+        "message_sha256": "691e1d38e9a55ffb23cca008db49011370e30409a2577686326b851eaa22f471"
+      },
+      "result": "PASS"
+    }
+  ],
+  "gates": {
+    "RESOLUTION": "PASS",
+    "SEMANTIC": "NOT_TESTED",
+    "STRUCTURAL": "PASS"
+  },
+  "identity": {
+    "executable": "D:\\Hermes-Lab\\uvp-p6-hermes-test\\installs\\544a4d40e77d70ca\\environments\\fa614ea5f2034b70993a5b719fdf251a\\venv\\Scripts\\python.exe",
+    "hermes_commit": "b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+    "hermes_src_dirty": false,
+    "matches_registry_target": true,
+    "python": "3.14.9"
+  },
+  "mode": "verify",
+  "model_calls": 0,
+  "notes": [
+    "build_skill_invocation_message bumps Hermes skill-usage counters in the disposable home.",
+    "No agent turn, model call or tool execution was started."
+  ],
+  "plugins_config": {
+    "disabled": [],
+    "enabled": [
+      "ported-product-management",
+      "universal-plugin-port"
+    ]
+  }
+}

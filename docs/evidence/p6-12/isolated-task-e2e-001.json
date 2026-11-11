@@ -1,0 +1,124 @@
+{
+  "model_calls": 0,
+  "cases": {
+    "activate": true,
+    "evidence_index": {
+      "ok": true,
+      "classification": "LIMITED_WORKLOAD_ISOLATION",
+      "skill": "ported-product-management:write-spec",
+      "contract_id": "bcff5d9ed0b7d7b8e16880ad",
+      "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "grant_sha256": "acea2ca1f15421ea064a2aee162d3ff3210ba6724f6eb7f9d12a3b1abeadcda3",
+      "workload": "evidence_index",
+      "workload_sha256": "4326b621f0cf16fea222a493f50aa593c1842448921ebdd9713bfdd274fe0d2f",
+      "inputs": {
+        "notes.txt": "a6ad9ad3e08040b8aee55664eb8985250300d4acab4f3d87a3879ceee5810d54"
+      },
+      "outputs": {
+        "evidence_index.json": "cc83d2496a92448c44d22e8294e7b67e430acd006a55386c1c50f6d7153ab01c"
+      },
+      "runner": {
+        "mode": "isolated",
+        "distro": "ae2e-t01",
+        "returncode": 0,
+        "result": {
+          "indexed": 1
+        }
+      },
+      "isolated": [
+        "workload process"
+      ],
+      "not_isolated": [
+        "LLM",
+        "Hermes process",
+        "Skill instruction delivery"
+      ]
+    },
+    "boundary_probe": {
+      "ok": true,
+      "classification": "LIMITED_WORKLOAD_ISOLATION",
+      "skill": "ported-product-management:write-spec",
+      "contract_id": "bcff5d9ed0b7d7b8e16880ad",
+      "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "grant_sha256": "acea2ca1f15421ea064a2aee162d3ff3210ba6724f6eb7f9d12a3b1abeadcda3",
+      "workload": "boundary_probe",
+      "workload_sha256": "7219ae9408e23f0b7ff99202946f2eaa21b8f781c6cfd020fce09ff59f20b5df",
+      "inputs": {
+        "notes.txt": "a6ad9ad3e08040b8aee55664eb8985250300d4acab4f3d87a3879ceee5810d54"
+      },
+      "outputs": {
+        "out.txt": "2689367b205c16ce32ed4200942b8b8b1e262dfc70d9bc9fbc77c49699a4f1df"
+      },
+      "runner": {
+        "mode": "isolated",
+        "distro": "ae2e-t01",
+        "returncode": 0,
+        "result": {
+          "connect_host_loopback_listener": {
+            "error": "OSError: [Errno 101] Network is unreachable",
+            "ok": false
+          },
+          "fork_process": {
+            "error": "BlockingIOError: [Errno 11] Resource temporarily unavailable",
+            "ok": false
+          },
+          "list_root_home": {
+            "error": "FileNotFoundError: [Errno 2] No such file or directory: '/root'",
+            "ok": false
+          },
+          "list_windows_drive": {
+            "error": "FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c'",
+            "ok": false
+          },
+          "read_etc_hostname": {
+            "error": "FileNotFoundError: [Errno 2] No such file or directory: '/etc/hostname'",
+            "ok": false
+          },
+          "read_input_fixture": {
+            "error": "FileNotFoundError: [Errno 2] No such file or directory: '/input/fixture.txt'",
+            "ok": false
+          },
+          "shell_binary_present": {
+            "error": "FileNotFoundError: [Errno 2] No such file or directory: '/bin/sh'",
+            "ok": false
+          },
+          "uid": {
+            "detail": "65534",
+            "ok": true
+          },
+          "write_input_readonly": {
+            "error": "OSError: [Errno 30] Read-only file system: '/input/tamper.txt'",
+            "ok": false
+          },
+          "write_work_output": {
+            "detail": "2",
+            "ok": true
+          }
+        }
+      },
+      "isolated": [
+        "workload process"
+      ],
+      "not_isolated": [
+        "LLM",
+        "Hermes process",
+        "Skill instruction delivery"
+      ]
+    },
+    "input_outside_grant": {
+      "ok": false,
+      "status": "REFUSED",
+      "error": "PortError: Input outside fs.read scope or missing: D:\\Hermes-Lab\\uvp-p612-fixtures\\work\\input.txt"
+    },
+    "non_allowlisted_workload": {
+      "ok": false,
+      "status": "REFUSED",
+      "error": "PortError: Workload not allow-listed"
+    },
+    "stale_grant": {
+      "ok": false,
+      "status": "REFUSED",
+      "error": "PortError: Grant is not bound to the current contract for ported-product-management:write-spec"
+    }
+  }
+}

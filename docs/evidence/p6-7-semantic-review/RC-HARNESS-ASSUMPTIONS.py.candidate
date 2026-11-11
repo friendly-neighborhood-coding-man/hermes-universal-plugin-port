@@ -1,0 +1,65 @@
+"""P6.4 deterministic non-executing multi-Skill demo handoff.
+
+Produces a user-reviewable prompt only. Actual agent/tool execution must
+be observed in a subsequent Hermes turn, never inferred from this plan.
+"""
+from __future__ import annotations
+
+import json
+from pathlib import Path
+
+from .uvp_discovery import parse_skills_list
+from .uvp_p6_defaults import PLUGIN, DOMAINS
+
+MAX_FIXTURE_CHARS = 1024
+
+
+def recipe(ctx, fixture: str) -> dict:
+    if (not isinstance(fixture, str) or not fixture.strip()
+            or len(fixture) > MAX_FIXTURE_CHARS
+            or any(x in fixture for x in ("\n", "\r", "\0"))):
+        return {"status": "INVALID_FIXTURE_PATH", "execution_performed": False}
+    try:
+        catalog = parse_skills_list(ctx.dispatch_tool("skills_list", {}))
+    except Exception:
+        return {"status": "HOST_CATALOG_UNAVAILABLE", "execution_performed": False}
+    skills = [f"{PLUGIN}:{name}" for _, name in DOMAINS]
+    missing = [n for n in skills if n not in set(catalog["names"])]
+    if missing:
+        return {"status": "PORTED_SKILLS_NOT_INSTALLED", "missing": missing,
+                "execution_performed": False}
+    task = (
+        "Execute this three-step research-to-roadmap task IN THIS HERMES SESSION. "
+        "Use the supplied fictional interview fixture at " + json.dumps(fixture) +
+        " as the only evidence. Do not call Slack, Notion, Linear, other "
+        "remote MCP servers or external network services. Do not invent "
+        "additional customer interviews, measurements or results.\n\n"
+        "1) Load and FOLLOW skill_view(" + json.dumps(skills[0]) + "). "
+        "Read the eight fictional interview notes and produce "
+        "research-synthesis.md with individual interview IDs and clearly "
+        "separated observations and recommendations.\n"
+        "2) Load and FOLLOW skill_view(" + json.dumps(skills[1]) + "). "
+        "Using the synthesis, produce onboarding-prd.md with scope, "
+        "non-goals, user stories and verifiable acceptance tests.\n"
+        "3) Load and FOLLOW skill_view(" + json.dumps(skills[2]) + "). "
+        "Using the PRD, produce onboarding-roadmap.md with Now/Next/Later, "
+        "dependencies and explicitly proposed priorities.\n\n"
+        "For every step, show the exact imported Skill name that was "
+        "actually loaded and the tool result. Use Hermes's normal file "
+        "write approval flow. If a tool, file or Skill is unavailable, "
+        "STOP and report HOLD rather than fabricate success. This is a "
+        "non-interactive run: where a Skill says to ask the user, do not "
+        "invent an answer; list each question you would have asked and "
+        "the assumption you used under an Assumptions heading in that "
+        "artifact. At the end "
+        "report actual output paths and file hashes for independent review."
+    )
+    return {
+        "schema": "universal-port.p6-recipe/1",
+        "status": "PROMPT_READY_NOT_EXECUTED",
+        "required_skills": skills,
+        "task_prompt_to_submit_as_user": task,
+        "execution_performed": False,
+        "automatic_skill_dispatch": False,
+        "note": "User must submit this as a new turn; inspect skill_view and artifact traces.",
+    }

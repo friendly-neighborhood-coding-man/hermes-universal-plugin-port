@@ -1,0 +1,8 @@
+---
+description: Migrate a component between frameworks
+argument-hint: "<component> <from> <to>"
+disable-model-invocation: true
+---
+
+Migrate the $0 component from $1 to $2.
+Preserve all existing behavior and tests. Prices like \$1.00 stay literal.

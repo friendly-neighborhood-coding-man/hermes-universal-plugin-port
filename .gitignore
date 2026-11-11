@@ -1,0 +1,52 @@
+# Python/cache
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+*.egg-info/
+dist/
+build/
+
+# Secrets and production data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*credentials*.json
+*secrets*.json
+data/
+hermes-data/
+HERMES_HOME/
+universal-port-approvals/
+**/universal-port-approvals/
+
+# Local runtime and generated test evidence
+SMOKE_STATUS.json
+doctor.log
+validate.log
+RUNTIME_EVIDENCE/
+**/RUNTIME_EVIDENCE/
+**/SMOKE_STATUS.json
+**/doctor.log
+**/validate.log
+reports-v*/
+disposable-*/
+*-smoke-v*/
+*-winfix/
+*.zip
+*.zip.sha256
+
+# Editor/OS
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/

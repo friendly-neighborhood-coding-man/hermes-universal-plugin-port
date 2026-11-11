@@ -1,0 +1,65 @@
+{
+  "defaults_written": false,
+  "model_calls": 0,
+  "results": {
+    "five_step_revisit": {
+      "cost_claim": "NONE (no billed-token measurement)",
+      "distinct_skills": 3,
+      "eager_stacked": {
+        "approx_tokens": 10843,
+        "chars": 43372,
+        "messages": 1
+      },
+      "lazy_once": {
+        "approx_tokens": 10494,
+        "chars": 41976,
+        "messages": 5,
+        "reinjections": 0,
+        "reuses": 2,
+        "skill_loads": 3,
+        "validated_reloads": 0
+      },
+      "per_step_reinjection": {
+        "approx_tokens": 18472,
+        "chars": 73889,
+        "messages": 5
+      },
+      "routing_sources": [
+        "EXPLICIT_CALLER_MAPPING"
+      ],
+      "steps": 5,
+      "token_note": "approx_tokens = chars/4; an approximation, not billed tokens",
+      "tokenizer": "NOT_AVAILABLE_OFFLINE (no local Claude tokenizer; chars/4 is an approximation only)"
+    },
+    "three_step": {
+      "cost_claim": "NONE (no billed-token measurement)",
+      "distinct_skills": 3,
+      "eager_stacked": {
+        "approx_tokens": 10843,
+        "chars": 43372,
+        "messages": 1
+      },
+      "lazy_once": {
+        "approx_tokens": 10429,
+        "chars": 41719,
+        "messages": 3,
+        "reinjections": 0,
+        "reuses": 0,
+        "skill_loads": 3,
+        "validated_reloads": 0
+      },
+      "per_step_reinjection": {
+        "approx_tokens": 10898,
+        "chars": 43593,
+        "messages": 3
+      },
+      "routing_sources": [
+        "EXPLICIT_CALLER_MAPPING"
+      ],
+      "steps": 3,
+      "token_note": "approx_tokens = chars/4; an approximation, not billed tokens",
+      "tokenizer": "NOT_AVAILABLE_OFFLINE (no local Claude tokenizer; chars/4 is an approximation only)"
+    }
+  },
+  "stored_defaults": {}
+}

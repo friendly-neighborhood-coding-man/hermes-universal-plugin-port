@@ -1,0 +1,33 @@
+{
+  "private_commit": "75108f4b6929dc4e50958dceee0e967a66d7757c",
+  "rules": [
+    "windows-user-path",
+    "machine-hostname"
+  ],
+  "changed_files": [
+    {
+      "path": "docs/evidence/p6-10-isolation/probe-run-001.json",
+      "private_sha256": "03e9859a06affbf0748cc72d2cf795b9fcd6b629ed45a61fb3641f50a2d9d1c9",
+      "public_sha256": "3c8dd2dcf24c466f2b2c72be5525963a44af288839e21ce55c3b03ad340893b6",
+      "rules": [
+        "machine-hostname"
+      ]
+    },
+    {
+      "path": "docs/evidence/p6-final-review/permtest/result-safe-root-inside.json",
+      "private_sha256": "cbe984312ad60804f5ee53e09b2d3c651eba272a39652f254eca71afdc417822",
+      "public_sha256": "fb89b0795745b497f15b917f9e77703a4164cbc1a39f52132ea2396cefec6b3f",
+      "rules": [
+        "windows-user-path"
+      ]
+    },
+    {
+      "path": "docs/evidence/p6-final-review/permtest/result-safe-root-unset.json",
+      "private_sha256": "41528e0d126e8554643a3bcfa8532085eebfa17496747bc59e17c4ab28d02ccb",
+      "public_sha256": "a0a60df8f8e6abe61a39f4fae7f398e2f1e4442cd5a1e20797210bd78aa88e90",
+      "rules": [
+        "windows-user-path"
+      ]
+    }
+  ]
+}

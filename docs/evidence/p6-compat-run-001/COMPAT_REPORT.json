@@ -1,0 +1,1912 @@
+{
+  "catalog": {
+    "namespace": "ported-product-management",
+    "qualified": [
+      "ported-product-management:competitive-brief",
+      "ported-product-management:metrics-review",
+      "ported-product-management:product-brainstorming",
+      "ported-product-management:roadmap-update",
+      "ported-product-management:sprint-planning",
+      "ported-product-management:stakeholder-update",
+      "ported-product-management:synthesize-research",
+      "ported-product-management:write-spec"
+    ],
+    "skills": [
+      "competitive-brief",
+      "metrics-review",
+      "product-brainstorming",
+      "roadmap-update",
+      "sprint-planning",
+      "stakeholder-update",
+      "synthesize-research",
+      "write-spec"
+    ],
+    "slash_keys": [
+      "/ported-product-management:competitive-brief",
+      "/ported-product-management:metrics-review",
+      "/ported-product-management:product-brainstorming",
+      "/ported-product-management:roadmap-update",
+      "/ported-product-management:sprint-planning",
+      "/ported-product-management:stakeholder-update",
+      "/ported-product-management:synthesize-research",
+      "/ported-product-management:write-spec"
+    ],
+    "source": "STATIC_INIT_PY"
+  },
+  "counts": {
+    "ai_eligible_residuals": 0,
+    "composed_already_mapped": 0,
+    "composed_mappings_applied": 7,
+    "direct_exact_regions": 35,
+    "files_changed": 7,
+    "holds": 0,
+    "provisional_verifications": 8,
+    "skills": 8,
+    "unresolved_residuals": 7,
+    "unsupported_items": 16
+  },
+  "declared_source_commit_unverified": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+  "engine_version": "uvp-compat-engine/2026-11-11.1",
+  "execution_performed": false,
+  "existing_review_candidates": [
+    {
+      "blocking": [
+        "candidate is recorded as REJECTED in the ledger",
+        "slash command does not resolve in the Hermes catalog: /write-spec"
+      ],
+      "candidate_sha256": "676ead16cc3574dffdcf3b7aa6913fbe97b171d168c14467310507187d3851a8",
+      "checks": {
+        "capability_resolution": {
+          "catalog_source": "STATIC_INIT_PY",
+          "expected_key": "/ported-product-management:write-spec",
+          "unresolved_slash_commands": [
+            "/write-spec"
+          ]
+        },
+        "host_syntax": {
+          "claude_vars": [],
+          "remaining_placeholders": 0,
+          "shell": 0
+        },
+        "permission_expansion": {
+          "new_sensitive_tokens": []
+        },
+        "referenced_resources": {
+          "unresolved": [
+            "../../CONNECTORS.md"
+          ]
+        },
+        "unsupported_dependencies": {
+          "connector_categories": [
+            "design",
+            "knowledge base",
+            "project tracker"
+          ],
+          "tool_lines": 0
+        }
+      },
+      "independent_verdict": "NOT_PROMOTABLE",
+      "ledger_entry": {
+        "candidate_sha256": "676ead16cc3574dffdcf3b7aa6913fbe97b171d168c14467310507187d3851a8",
+        "decided": "2026-11-10",
+        "model_calls": 1,
+        "original_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "reason": "Replaced $ARGUMENTS with prose but kept the Claude-only '/write-spec' slash command, which does not resolve in Hermes (plugin skills resolve as '/ported-product-management:write-spec'). Conflates a Markdown usage example with host invocation and user-input passing.",
+        "skill": "write-spec"
+      },
+      "meaning": "PROMOTABLE_TO_REVIEW is not runtime or semantic verification",
+      "model_calls": 0,
+      "notes": [
+        "pre-existing unresolved resources reported, not introduced: ../../CONNECTORS.md",
+        "pre-existing unsupported connector placeholders remain (SKILLS_ONLY_PARTIAL)"
+      ],
+      "preserved_unmodified": true,
+      "recorded_candidate_sha256": "676ead16cc3574dffdcf3b7aa6913fbe97b171d168c14467310507187d3851a8",
+      "skill": "write-spec",
+      "verdict": "NOT_PROMOTABLE"
+    }
+  ],
+  "identity": {
+    "source": "claude-code-command-args/2026-11-07",
+    "target": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa"
+  },
+  "installation_performed": false,
+  "limitations": [
+    "Runtime compatibility is NOT verified: no Hermes session loaded these Skills.",
+    "Semantic equivalence is NOT established for any rule; R-D001 guarantees identical input text only.",
+    "Target identity is the probed Hermes source checkout; the installed Hermes binary was not compared.",
+    "Catalog resolution is static (generated __init__.py), not the live Hermes catalog.",
+    "Mapped files are review candidates outside the stage; nothing was applied to the stage."
+  ],
+  "model_calls": 0,
+  "registry": {
+    "sha256": "5128904bb27843827817c5ef071504f66b92101dfe104ea25f1e1be10bac6ce8",
+    "target_probe_sha256": "cad380f2a3147e5e6d932caecda3f9f62860df6530642c95d439460b8c764022",
+    "version": "2026-11-11.1"
+  },
+  "rules_applied": [
+    [
+      "R-C001",
+      1
+    ],
+    [
+      "R-D001",
+      1
+    ]
+  ],
+  "schema": "universal-port.compat-report/1",
+  "skills": [
+    {
+      "active_equals_original": true,
+      "active_path": "skills/competitive-brief/SKILL.md",
+      "active_sha256": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:competitive-brief",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/competitive-brief <user_text>",
+          "hermes_slash_form": "/ported-product-management:competitive-brief <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "competitive-brief",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/competitive-brief $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:competitive-brief\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<competitor or feature area>",
+          "declared_name": "competitive-brief",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:competitive-brief <competitor or feature area>",
+          "old": "/competitive-brief $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "36117a7dacbdba5700148d326dbf8291dee84aa6ef562364b8e01dd1d2813f5b",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            38
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            40,
+            43
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            45,
+            302
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Competitive Brief",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Create a competitive analysis brief for one or more competitors or a feature area."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "competitive-brief",
+      "source_path": "original/skills/competitive-brief/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "knowledge base",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 39,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "chat",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 44,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/metrics-review/SKILL.md",
+      "active_sha256": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:metrics-review",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/metrics-review <user_text>",
+          "hermes_slash_form": "/ported-product-management:metrics-review <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "metrics-review",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/metrics-review $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:metrics-review\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<time period or metric focus>",
+          "declared_name": "metrics-review",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:metrics-review <time period or metric focus>",
+          "old": "/metrics-review $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "3cccab079062c2a454a9c54d894f529f886c3fbfb9d45696191c70817227fdbd",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            22
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            24,
+            388
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Metrics Review",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Review and analyze product metrics, identify trends, and surface actionable insights."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "metrics-review",
+      "source_path": "original/skills/metrics-review/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "product analytics",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 23,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/product-brainstorming/SKILL.md",
+      "active_sha256": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+      "changed": false,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:product-brainstorming",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/product-brainstorming <user_text>",
+          "hermes_slash_form": "/ported-product-management:product-brainstorming <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": null,
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:product-brainstorming\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": null,
+          "declared_name": "product-brainstorming",
+          "description_present": true,
+          "file_lines": [
+            1,
+            4
+          ],
+          "frontmatter_keys": [
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [],
+      "holds": [],
+      "mapped_sha256": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+      "matches": [
+        {
+          "kind": "direct",
+          "lines": [
+            5,
+            273
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [],
+      "resources": [],
+      "skill": "product-brainstorming",
+      "source_path": "original/skills/product-brainstorming/SKILL.md",
+      "status": "DETERMINISTIC_COMPLETE",
+      "unsupported": [],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "VERIFIED",
+        "structural_gaps": []
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/roadmap-update/SKILL.md",
+      "active_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:roadmap-update",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/roadmap-update <user_text>",
+          "hermes_slash_form": "/ported-product-management:roadmap-update <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "roadmap-update",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/roadmap-update $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:roadmap-update\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<update description>",
+          "declared_name": "roadmap-update",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:roadmap-update <update description>",
+          "old": "/roadmap-update $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "0c9ebb2db61688fcf36908f406092432cb24212198619649491dc34a20696681",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            22
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            24,
+            266
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Roadmap Update",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Update, create, or reprioritize a product roadmap."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "roadmap-update",
+      "source_path": "original/skills/roadmap-update/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "project tracker",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 23,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/sprint-planning/SKILL.md",
+      "active_sha256": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:sprint-planning",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/sprint-planning <user_text>",
+          "hermes_slash_form": "/ported-product-management:sprint-planning <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "sprint-planning",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/sprint-planning $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:sprint-planning\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "[sprint name or date range]",
+          "declared_name": "sprint-planning",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:sprint-planning [sprint name or date range]",
+          "old": "/sprint-planning $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "20e5b8c27f2917425a5e0a4bfb463cb7438f5c7cbf7f5488f58424c7156232be",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            94
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# /sprint-planning",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Plan a sprint by scoping work, estimating capacity, and setting clear goals."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "sprint-planning",
+      "source_path": "original/skills/sprint-planning/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/stakeholder-update/SKILL.md",
+      "active_sha256": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:stakeholder-update",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/stakeholder-update <user_text>",
+          "hermes_slash_form": "/ported-product-management:stakeholder-update <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "stakeholder-update",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/stakeholder-update $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:stakeholder-update\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<update type and audience>",
+          "declared_name": "stakeholder-update",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:stakeholder-update <update type and audience>",
+          "old": "/stakeholder-update $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "fbe4bbe49aad878b0437b7e1526954d5fd88b3396dab2e82f399fa2f8e7c272c",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            39
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            41,
+            45
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            47,
+            50
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            52,
+            54
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            56,
+            83
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            85,
+            352
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Stakeholder Update",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Generate a stakeholder update tailored to the audience and cadence."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "stakeholder-update",
+      "source_path": "original/skills/stakeholder-update/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "project tracker",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 40,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "chat",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 46,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "meeting transcription",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 51,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "knowledge base",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 55,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "chat",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 84,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/synthesize-research/SKILL.md",
+      "active_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:synthesize-research",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/synthesize-research <user_text>",
+          "hermes_slash_form": "/ported-product-management:synthesize-research <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "synthesize-research",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/synthesize-research $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:synthesize-research\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<research topic or question>",
+          "declared_name": "synthesize-research",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:synthesize-research <research topic or question>",
+          "old": "/synthesize-research $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "7373192c07d228414e9fdccbb50246dba073842d15b6aa1b040413c6d6d9c2c9",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            25
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            30,
+            312
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Synthesize Research",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Synthesize user research from multiple sources into structured insights and recommendations."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "synthesize-research",
+      "source_path": "original/skills/synthesize-research/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "knowledge base",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 26,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "user feedback",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 27,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "product analytics",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 28,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "meeting transcription",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 29,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    },
+    {
+      "active_equals_original": true,
+      "active_path": "skills/write-spec/SKILL.md",
+      "active_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "changed": true,
+      "constructs": {
+        "hermes_namespaced_registration": {
+          "evidence_source": "STATIC_INIT_PY",
+          "note": "ctx.register_skill(name, path) in generated __init__.py; separate from the SKILL.md definition.",
+          "qualified_name": "ported-product-management:write-spec",
+          "registered_statically": true,
+          "runtime_catalog_checked": false
+        },
+        "host_command_invocation": {
+          "claude_form": "/write-spec <user_text>",
+          "hermes_slash_form": "/ported-product-management:write-spec <user_text>",
+          "hermes_slash_key_in_static_catalog": true,
+          "note": "A runtime user action. The Usage line only depicts it; neither host executes the Usage block.",
+          "runtime_resolved": false
+        },
+        "markdown_usage_example": [
+          {
+            "argument_text": "$ARGUMENTS",
+            "command_token": "write-spec",
+            "executed_by_either_host": false,
+            "in_fence": true,
+            "line": 16,
+            "section": "Usage",
+            "text": "/write-spec $ARGUMENTS"
+          }
+        ],
+        "runtime_skill_view_resolution": {
+          "call": "skill_view(\"ported-product-management:write-spec\")",
+          "executed": false,
+          "relative_file_loads": "skill_view(file_path=...) only inside the skill dir, no '..'",
+          "user_input_channel": "NONE: skill_view returns the body only; the user's task is in conversation context"
+        },
+        "skill_definition": {
+          "argument_hint": "<feature or problem statement>",
+          "declared_name": "write-spec",
+          "description_present": true,
+          "file_lines": [
+            1,
+            5
+          ],
+          "frontmatter_keys": [
+            "argument-hint",
+            "description",
+            "name"
+          ],
+          "note": "Claude Skill definition. Not a Hermes registration by itself."
+        },
+        "user_input_passing": {
+          "claude_slash": "user_text substituted at $ARGUMENTS (no ARGUMENTS: append because a placeholder received it)",
+          "hermes_skill_view": "not passed by the call",
+          "hermes_slash": "user_text appended after the body: 'The user has provided the following instruction alongside the skill invocation: <user_text>' (probe H-INSTRUCTION-APPEND-1)",
+          "hermes_substitutes_ARGUMENTS": false,
+          "mapping_rule": "R-C001"
+        }
+      },
+      "deltas": [
+        {
+          "line": 16,
+          "new": "/ported-product-management:write-spec <feature or problem statement>",
+          "old": "/write-spec $ARGUMENTS",
+          "rule_id": "R-C001",
+          "rule_version": 1
+        }
+      ],
+      "holds": [],
+      "mapped_sha256": "8caffa0c0041d6045a140fdcd64f5227003d2e5a1a6d611ab33bac9e281fd36e",
+      "matches": [
+        {
+          "axes": {
+            "runtime": "TARGET_FUNCTIONS_PROBED",
+            "semantic": "NOT_ESTABLISHED",
+            "structural": "VERIFIED"
+          },
+          "graph_order": [
+            "s1",
+            "s2",
+            "t1",
+            "t2"
+          ],
+          "kind": "composition",
+          "line": 16,
+          "outcome": "APPLIED",
+          "rule_id": "R-C001",
+          "rule_version": 1,
+          "source_capabilities": [
+            "claude.slash_command_invocation",
+            "claude.arguments_all_substitution"
+          ],
+          "status": "COMPOSED_VERIFIED",
+          "target_capabilities": [
+            "hermes.plugin_skill_slash_invocation",
+            "hermes.user_instruction_append"
+          ]
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            6,
+            8
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            10,
+            15
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            17,
+            40
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            42,
+            45
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            47,
+            50
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        },
+        {
+          "kind": "direct",
+          "lines": [
+            52,
+            250
+          ],
+          "outcome": "IDENTITY",
+          "rule_id": "R-D001",
+          "rule_version": 1,
+          "status": "DIRECT_EXACT"
+        }
+      ],
+      "model_calls": 0,
+      "original_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "provisional": [
+        {
+          "construct": "skill_definition",
+          "effect": "verification only; no bytes changed",
+          "preconditions_met": true,
+          "rule_id": "R-D003",
+          "rule_version": 1,
+          "status": "PROVISIONAL"
+        }
+      ],
+      "residuals": [
+        {
+          "ai_eligible": false,
+          "attempted_rule_ids": [],
+          "kind": "unresolved_resource",
+          "reason": "Relative resource '../../CONNECTORS.md' does not resolve in the active target tree",
+          "resource": {
+            "hermes_skill_view_file_path_loadable": false,
+            "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+            "line": 9,
+            "link": "../../CONNECTORS.md",
+            "resolves_in_source_tree": true,
+            "resolves_in_target_tree": false
+          },
+          "span": {
+            "context": [
+              "# Write Spec",
+              "",
+              "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+              "",
+              "Write a feature specification or product requirements document (PRD)."
+            ],
+            "context_start_line": 7,
+            "end_col": 123,
+            "end_line": 9,
+            "start_col": 1,
+            "start_line": 9,
+            "text": "> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md)."
+          }
+        }
+      ],
+      "resources": [
+        {
+          "hermes_skill_view_file_path_loadable": false,
+          "hermes_skill_view_rule": "skill_view(file_path=...) rejects any '..' component (probe H-SKILL-VIEW-TRAVERSAL-1)",
+          "line": 9,
+          "link": "../../CONNECTORS.md",
+          "resolves_in_source_tree": true,
+          "resolves_in_target_tree": false
+        }
+      ],
+      "skill": "write-spec",
+      "source_path": "original/skills/write-spec/SKILL.md",
+      "status": "DETERMINISTIC_PARTIAL",
+      "unsupported": [
+        {
+          "category": "project tracker",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 41,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "knowledge base",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 46,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        },
+        {
+          "category": "design",
+          "classification": "SKILLS_ONLY_PARTIAL",
+          "kind": "connector_placeholder",
+          "line": 51,
+          "note": "Claude MCP/OAuth connector category; not connected, not emulated"
+        }
+      ],
+      "verification": {
+        "runtime": "NOT_VERIFIED (no Hermes session; target functions probed offline only)",
+        "semantic": "NOT_ESTABLISHED",
+        "structural": "NOT_VERIFIED",
+        "structural_gaps": [
+          "unresolved_resource"
+        ]
+      }
+    }
+  ],
+  "stage_path": "D:\\Hermes-Lab\\p6-staged\\ported-product-management",
+  "stage_source_fingerprint_sha256": "56a2cac583cba7a28962d7cc02d5a9bc2e4e6dbb59781fe57e05bbb91fe3d83b",
+  "unsupported_capabilities": {
+    "classification": "SKILLS_ONLY_PARTIAL",
+    "components": [
+      "Claude MCP/OAuth connectors are not ported",
+      "Foreign host component not ported: commands"
+    ],
+    "connectors": [
+      "amplitude",
+      "amplitude-eu",
+      "asana",
+      "atlassian",
+      "clickup",
+      "figma",
+      "fireflies",
+      "gmail",
+      "google calendar",
+      "intercom",
+      "linear",
+      "monday",
+      "notion",
+      "pendo",
+      "similarweb",
+      "slack"
+    ]
+  },
+  "writes_inside_stage": false
+}

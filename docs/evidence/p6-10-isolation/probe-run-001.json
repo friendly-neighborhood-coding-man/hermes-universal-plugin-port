@@ -1,0 +1,106 @@
+{
+  "distro": "ae2e-t01",
+  "runs": [
+    {
+      "distro": "ae2e-t01",
+      "mode": "control",
+      "result": {
+        "connect_host_loopback_listener": {
+          "detail": "None",
+          "ok": true
+        },
+        "fork_process": {
+          "detail": "(144, 0)",
+          "ok": true
+        },
+        "list_root_home": {
+          "detail": "70",
+          "ok": true
+        },
+        "list_windows_drive": {
+          "detail": "0",
+          "ok": true
+        },
+        "read_etc_hostname": {
+          "detail": "<host>\n",
+          "ok": true
+        },
+        "read_input_fixture": {
+          "detail": "harmless fixture\n",
+          "ok": true
+        },
+        "shell_binary_present": {
+          "detail": "os.stat_result(st_mode=33261, st_ino=1538, st_dev=2096, st_nlink=1, st_uid=0, st_gid=0, st_size=129784, st_atime=1794286",
+          "ok": true
+        },
+        "uid": {
+          "detail": "0",
+          "ok": true
+        },
+        "write_input_readonly": {
+          "detail": "1",
+          "ok": true
+        },
+        "write_work_output": {
+          "detail": "2",
+          "ok": true
+        }
+      },
+      "returncode": 0,
+      "schema": "universal-port.isolation-run/1",
+      "stderr_tail": "",
+      "work_listing": "total 12\ndrwxrwxrwx 2 root root 4096 Nov 11 07:04 .\ndrwxr-xr-x 4 root root 4096 Nov 11 07:04 ..\n-rw-r--r-- 1 root root    2 Nov 11 07:04 out.txt"
+    },
+    {
+      "distro": "ae2e-t01",
+      "mode": "isolated",
+      "result": {
+        "connect_host_loopback_listener": {
+          "error": "OSError: [Errno 101] Network is unreachable",
+          "ok": false
+        },
+        "fork_process": {
+          "error": "BlockingIOError: [Errno 11] Resource temporarily unavailable",
+          "ok": false
+        },
+        "list_root_home": {
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: '/root'",
+          "ok": false
+        },
+        "list_windows_drive": {
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: '/mnt/c'",
+          "ok": false
+        },
+        "read_etc_hostname": {
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: '/etc/hostname'",
+          "ok": false
+        },
+        "read_input_fixture": {
+          "detail": "harmless fixture\n",
+          "ok": true
+        },
+        "shell_binary_present": {
+          "error": "FileNotFoundError: [Errno 2] No such file or directory: '/bin/sh'",
+          "ok": false
+        },
+        "uid": {
+          "detail": "65534",
+          "ok": true
+        },
+        "write_input_readonly": {
+          "error": "OSError: [Errno 30] Read-only file system: '/input/tamper.txt'",
+          "ok": false
+        },
+        "write_work_output": {
+          "detail": "2",
+          "ok": true
+        }
+      },
+      "returncode": 0,
+      "schema": "universal-port.isolation-run/1",
+      "stderr_tail": "",
+      "work_listing": "total 12\ndrwxrwxrwx 2 root   root    4096 Nov 11 07:04 .\ndrwxr-xr-x 5 root   root    4096 Nov 11 07:04 ..\n-rw-r--r-- 1 nobody nogroup    2 Nov 11 07:04 out.txt"
+    }
+  ],
+  "workload_sha256": "7219ae9408e23f0b7ff99202946f2eaa21b8f781c6cfd020fce09ff59f20b5df"
+}

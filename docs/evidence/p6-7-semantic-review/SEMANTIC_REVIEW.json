@@ -1,0 +1,347 @@
+{
+  "applied": false,
+  "candidates": [
+    {
+      "addresses": [
+        "OB-SR-ASK",
+        "OB-WS-ASK"
+      ],
+      "applied": false,
+      "candidate_sha256": "b96561e41c605ba91e67cdf7b3a009fa0bf5d73f7e4ab9fca9e29fb3985296ec",
+      "checks": {
+        "execution": false,
+        "network": false,
+        "no_new_sensitive_tokens": true,
+        "permissions_added": [],
+        "string_literal_only": true,
+        "unique_anchors": true
+      },
+      "edits": [
+        {
+          "new": "\"STOP and report HOLD rather than fabricate success. This is a \"\n        \"non-interactive run: where a Skill says to ask the user, do not \"\n        \"invent an answer; list each question you would have asked and \"\n        \"the assumption you used under an Assumptions heading in that \"\n        \"artifact. At the end \"",
+          "old": "\"STOP and report HOLD rather than fabricate success. At the end \""
+        }
+      ],
+      "id": "RC-HARNESS-ASSUMPTIONS",
+      "kind": "harness_prompt_text",
+      "note": "Makes the non-interactive deviation explicit in the artifacts instead of silent. It does not restore interactivity.",
+      "root_cause": "EXECUTION_HARNESS",
+      "status": "REVIEW_REQUIRED",
+      "target": "uvp_p6_recipe.py",
+      "target_sha256": "88eb39449a1c56dfc469617a5311ba69f206cf8f58d47136d5a8297577a12969",
+      "temp_copy_tests": {
+        "result": "PASS",
+        "returncode": 0,
+        "tail": [
+          "Ran 3 tests in 0.000s",
+          "",
+          "OK"
+        ],
+        "test_pattern": "test_uvp_p6_recipe.py"
+      }
+    },
+    {
+      "addresses": [
+        "OB-RU-NOW"
+      ],
+      "applied": false,
+      "candidate_sha256": "aefaa5148cc5ab313a88d3ec3810d49bb79c32b4a15412f7bf000ff4a019168a",
+      "checks": {
+        "execution": false,
+        "network": false,
+        "no_new_sensitive_tokens": true,
+        "original_artifact_untouched": true,
+        "permissions_added": [],
+        "unique_anchors": true
+      },
+      "edits": [
+        {
+          "new": "| B. Submit progress state (REQ-1) | Disable + in-progress indicator + timeout message on account form, Create Project, Send Invitations | Not Started | Next (blocked: OQ-2 must be answered before this is committed) | TBD (Frontend + Design) | OQ-2 timeout threshold (blocking) |",
+          "old": "| B. Submit progress state (REQ-1) | Disable + in-progress indicator + timeout message on account form, Create Project, Send Invitations | Not Started | Now | TBD (Frontend + Design) | OQ-2 timeout threshold (blocking) |"
+        },
+        {
+          "new": "| C. Idempotent submission (REQ-2) | Retried submits don't create duplicate projects/accounts/invites; signup retry continues instead of \"email already exists\" | Not Started | Next (blocked: OQ-3 must be answered before this is committed) | TBD (Backend) | OQ-3 idempotency strategy (blocking); must preserve existing-account check (AT-2.3) |",
+          "old": "| C. Idempotent submission (REQ-2) | Retried submits don't create duplicate projects/accounts/invites; signup retry continues instead of \"email already exists\" | Not Started | Now -> may spill into Next | TBD (Backend) | OQ-3 idempotency strategy (blocking); must preserve existing-account check (AT-2.3) |"
+        },
+        {
+          "new": "# Onboarding Roadmap (Now / Next / Later) — PROPOSAL\n\n> EDITORIAL REVIEW CANDIDATE (P6.7). This is NOT the executed run-001 artifact. Items whose open questions are marked blocking were moved from Now to Next. Original SHA-256 a7892715e129a0e94b41ddace9a799309de5f7f7347e9cc8dfc20dce7c858eb8.",
+          "old": "# Onboarding Roadmap (Now / Next / Later) — PROPOSAL"
+        }
+      ],
+      "id": "RC-ROADMAP-NOW",
+      "kind": "editorial_reference_copy",
+      "note": "Output-quality correction, not a porting fix. The executed artifact stays as produced. Minimal diff: the rows keep their place in the NOW table; a reviewer should move them under NEXT if accepted.",
+      "root_cause": "MODEL_OUTPUT_QUALITY",
+      "status": "REVIEW_REQUIRED",
+      "target": "onboarding-roadmap.md (copy)",
+      "target_sha256": "a7892715e129a0e94b41ddace9a799309de5f7f7347e9cc8dfc20dce7c858eb8"
+    }
+  ],
+  "evaluator": {
+    "evaluator": "deterministic",
+    "model": null,
+    "usage": null
+  },
+  "evidence_hashes": {
+    "RUN_RECEIPT.json": "f4ee7306b0e090d6ec3f95a848f3fead8899dc156925ba2be393e57300d6b84e",
+    "inputs/p6-onboarding-interviews.md": "f2558654c9c8cf54dbdeb77cf157a07c7c6103e714156e36df708bddc7178675",
+    "onboarding-prd.md": "dd8c7e4a8b9e3c2d808c115a756e312926837310b97f973c6559774ded639959",
+    "onboarding-roadmap.md": "a7892715e129a0e94b41ddace9a799309de5f7f7347e9cc8dfc20dce7c858eb8",
+    "research-synthesis.md": "33f87623c7d3cfd5d5bfa5daca16859989ff6d8f2dae9b58ca6129f33f4bfe9e",
+    "stream.jsonl": "000f5d823dea20975de9c30589f936b0a2c018beb461d3bff013a3ee647b7d6b",
+    "verify-001.json": "8afb78ca4654681912cc7e0ebae4572d63594dcd53c870dd96a37addf46e8b5d"
+  },
+  "findings": [
+    {
+      "disposition": "NO_ACTION",
+      "evidence_citations": [
+        {
+          "file": "research-synthesis.md",
+          "line": 44,
+          "note": "8 quotes, 0 missing; IDs I01,I02,I03,I04,I05,I06,I07,I08"
+        }
+      ],
+      "obligation": "Each finding cites supporting quotes with source attribution.",
+      "obligation_id": "OB-SR-ATTRIB",
+      "rationale": "All quotes are verbatim fixture text and all 8 interview IDs are cited",
+      "root_cause": null,
+      "skill": "synthesize-research",
+      "source_citation": {
+        "file": "skills/synthesize-research/SKILL.md",
+        "line": 71,
+        "quote": "- **Evidence**: Supporting quotes, data points, or observations (with source attribution)",
+        "source_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+        "verified": true
+      },
+      "verdict": "ENTAILED"
+    },
+    {
+      "disposition": "HOLD_NOT_A_PORTING_DEFECT",
+      "evidence_citations": [
+        {
+          "file": "research-synthesis.md",
+          "note": "no heading matching 'Opportunity Areas'"
+        },
+        {
+          "body_is_suffix": true,
+          "check": "R3-skill_view:synthesize-research",
+          "file": "verify-001.json"
+        }
+      ],
+      "obligation": "The synthesis contains an Opportunity Areas section.",
+      "obligation_id": "OB-SR-OPPORTUNITY",
+      "rationale": "Required section absent from the executed artifact",
+      "root_cause": "MODEL_OUTPUT_QUALITY",
+      "skill": "synthesize-research",
+      "source_citation": {
+        "file": "skills/synthesize-research/SKILL.md",
+        "line": 85,
+        "quote": "#### Opportunity Areas",
+        "source_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+        "verified": true
+      },
+      "verdict": "CONTRADICTED"
+    },
+    {
+      "disposition": "REPAIR_CANDIDATE_PROPOSED",
+      "evidence_citations": [
+        {
+          "event_types": [
+            "result",
+            "system",
+            "text",
+            "tool_result",
+            "tool_use"
+          ],
+          "file": "stream.jsonl",
+          "result_events": 1,
+          "user_turns": 0
+        }
+      ],
+      "obligation": "Before synthesizing, ask the user what research they have.",
+      "obligation_id": "OB-SR-ASK",
+      "rationale": "Single one-shot session: no user turn existed in which to ask. The clarification was skipped by the harness design, not lost in porting.",
+      "root_cause": "EXECUTION_HARNESS",
+      "skill": "synthesize-research",
+      "source_citation": {
+        "file": "skills/synthesize-research/SKILL.md",
+        "line": 31,
+        "quote": "Ask the user what they have:",
+        "source_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+        "verified": true
+      },
+      "verdict": "CONTRADICTED"
+    },
+    {
+      "disposition": "REPAIR_CANDIDATE_PROPOSED",
+      "evidence_citations": [
+        {
+          "event_types": [
+            "result",
+            "system",
+            "text",
+            "tool_result",
+            "tool_use"
+          ],
+          "file": "stream.jsonl",
+          "result_events": 1,
+          "user_turns": 0
+        }
+      ],
+      "obligation": "Before writing, ask the user what they want to spec.",
+      "obligation_id": "OB-WS-ASK",
+      "rationale": "Single one-shot session: no user turn existed in which to ask. The clarification was skipped by the harness design, not lost in porting.",
+      "root_cause": "EXECUTION_HARNESS",
+      "skill": "write-spec",
+      "source_citation": {
+        "file": "skills/write-spec/SKILL.md",
+        "line": 23,
+        "quote": "Ask the user what they want to spec. Accept any of:",
+        "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "verified": true
+      },
+      "verdict": "CONTRADICTED"
+    },
+    {
+      "disposition": "DETERMINISTIC_REPAIR_EXISTS",
+      "evidence_citations": [
+        {
+          "check": "R5-slash-argument-delivery:write-spec",
+          "ends_with_instruction": true,
+          "file": "verify-001.json",
+          "literal_ARGUMENTS_still_in_body": true
+        }
+      ],
+      "existing_repair": "R-C001 v1 (deterministic, docs/evidence/p6-compat-run-001)",
+      "obligation": "The user's text is substituted where $ARGUMENTS appears.",
+      "obligation_id": "OB-WS-ARGS",
+      "rationale": "Hermes never substitutes $ARGUMENTS; the user text is delivered after the body instead. The literal sits in a Usage example, so the task input is not lost.",
+      "root_cause": "HOST_SEMANTICS",
+      "skill": "write-spec",
+      "source_citation": {
+        "file": "skills/write-spec/SKILL.md",
+        "line": 16,
+        "quote": "/write-spec $ARGUMENTS",
+        "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "verified": true
+      },
+      "verdict": "CONTRADICTED"
+    },
+    {
+      "disposition": "HOLD_UNSUPPORTED",
+      "evidence_citations": [
+        {
+          "file": "PORTING_REPORT.json",
+          "status": "SKILLS_ONLY_PARTIAL",
+          "unported_connectors": 16
+        },
+        {
+          "file": "stream.jsonl",
+          "tools_used": [
+            "read_file",
+            "skill_view",
+            "write_file"
+          ]
+        }
+      ],
+      "obligation": "If a project tracker is connected, pull related tickets.",
+      "obligation_id": "OB-WS-TRACKER",
+      "rationale": "The condition ('is connected') is false: connectors are unported (SKILLS_ONLY_PARTIAL). HOLD; compatibility is not emulated.",
+      "root_cause": "UNSUPPORTED_CAPABILITY",
+      "skill": "write-spec",
+      "source_citation": {
+        "file": "skills/write-spec/SKILL.md",
+        "line": 41,
+        "quote": "If **~~project tracker** is connected:",
+        "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "verified": true
+      },
+      "verdict": "NOT_APPLICABLE"
+    },
+    {
+      "disposition": "NO_ACTION",
+      "evidence_citations": [
+        {
+          "file": "stream.jsonl",
+          "tools_used": [
+            "read_file",
+            "skill_view",
+            "write_file"
+          ]
+        }
+      ],
+      "obligation": "Without connected tools, proceed from provided information only.",
+      "obligation_id": "OB-WS-NO-TOOLS",
+      "rationale": "Only Skill/file tools used; proceeded from provided evidence",
+      "root_cause": null,
+      "skill": "write-spec",
+      "source_citation": {
+        "file": "skills/write-spec/SKILL.md",
+        "line": 55,
+        "quote": "If these tools are not connected, work entirely from what the user provides. Do not ask the user to connect tools — just proceed with available information.",
+        "source_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "verified": true
+      },
+      "verdict": "ENTAILED"
+    },
+    {
+      "blocked_rows": [
+        42,
+        43
+      ],
+      "disposition": "REPAIR_CANDIDATE_PROPOSED",
+      "evidence_citations": [
+        {
+          "file": "onboarding-roadmap.md",
+          "line": 42,
+          "text": "| B. Submit progress state (REQ-1) | Disable + in-progress indicator + timeout message on account form, Create Project, Send Invitations | Not Started | Now | T"
+        },
+        {
+          "file": "onboarding-roadmap.md",
+          "line": 43,
+          "text": "| C. Idempotent submission (REQ-2) | Retried submits don't create duplicate projects/accounts/invites; signup retry continues instead of \"email already exists\" "
+        },
+        {
+          "file": "onboarding-prd.md",
+          "line": 139,
+          "text": "- OQ-2 (Engineering + Design, blocking for REQ-1): What timeout threshold turns the in-progress state into a retryable failure message?"
+        },
+        {
+          "file": "onboarding-prd.md",
+          "line": 140,
+          "text": "- OQ-3 (Engineering, blocking for REQ-2): Idempotency key strategy for account creation across a slow/dropped mobile connection without weakening the existing-a"
+        }
+      ],
+      "obligation": "Items placed in Now are committed and have high confidence in scope.",
+      "obligation_id": "OB-RU-NOW",
+      "rationale": "Items in Now depend on open questions the PRD itself marks blocking; Now is defined upstream as committed, high-confidence work.",
+      "root_cause": "MODEL_OUTPUT_QUALITY",
+      "skill": "roadmap-update",
+      "source_citation": {
+        "file": "skills/roadmap-update/SKILL.md",
+        "line": 101,
+        "quote": "- **Now** (current sprint/month): Committed work. High confidence in scope and timeline. These are the things the team is actively building.",
+        "source_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+        "verified": true
+      },
+      "verdict": "CONTRADICTED"
+    }
+  ],
+  "limitations": [
+    "The deterministic evaluator checks specific, declared evidence shapes; it is not general NLI.",
+    "The LLM NLI evaluator is implemented but was not run (no paid call approved).",
+    "Candidates are proposals; none was applied to code, Skills or artifacts."
+  ],
+  "model_calls": 0,
+  "schema": "universal-port.p6-semantic-review/1",
+  "semantic_equivalence": "NOT_ESTABLISHED",
+  "source": {
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "files": {
+      "skills/roadmap-update/SKILL.md": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+      "skills/synthesize-research/SKILL.md": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+      "skills/write-spec/SKILL.md": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc"
+    },
+    "repo": "anthropics/knowledge-work-plugins"
+  }
+}

@@ -1,0 +1,26 @@
+{
+  "contracts": [
+    "ported-product-management:roadmap-update",
+    "ported-product-management:synthesize-research",
+    "ported-product-management:write-spec"
+  ],
+  "model_calls": 0,
+  "cases": [
+    {
+      "skill": "ported-product-management:roadmap-update",
+      "handoff_attached_after_real_reload": true,
+      "fail_closed_on_sha_mismatch": true
+    },
+    {
+      "skill": "ported-product-management:synthesize-research",
+      "handoff_attached_after_real_reload": true,
+      "fail_closed_on_sha_mismatch": true
+    },
+    {
+      "skill": "ported-product-management:write-spec",
+      "handoff_attached_after_real_reload": true,
+      "fail_closed_on_sha_mismatch": true
+    }
+  ],
+  "result": "PASS"
+}

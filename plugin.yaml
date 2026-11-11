@@ -1,0 +1,9 @@
+name: universal-plugin-port
+version: 0.6.0
+requires_hermes: ">=0.22.7"
+description: Experimental UVP v0.6.0. Preserves v0.5 bounded arXiv and preview tools, and adds P6 inert foreign-skill staging CLI, exact-delta AI candidate review, local per-domain default preferences, installed-Skill preflight and a no-execution three-skill recipe. No automatic foreign execution or installation.
+provides_tools:
+  - port_probe
+  - port_fetch
+  - port_stage
+  - uvp_route

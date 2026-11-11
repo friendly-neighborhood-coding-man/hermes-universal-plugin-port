@@ -1,0 +1,14 @@
+product-management/.claude-plugin/plugin.json 808444af1405562ae3fbbe985d5ea85a29c9fc4b
+product-management/.mcp.json 40bb6b070b3787172eb3fc1d6002e886fa8a5d4c
+product-management/CONNECTORS.md aa15b5ccfb4cd0a5d8ea668632634c25061bb40b
+product-management/LICENSE d645695673349e3947e8e5ae42332d0ac3164cd7
+product-management/README.md 794694ab4d522a3eb08320472b63f771047bb0a9
+product-management/commands/brainstorm.md 1769136eab349ef912c34c9f53637e3630ac14b4
+product-management/skills/competitive-brief/SKILL.md 05ca7ec4314ec1a73a882562a364726870944cff
+product-management/skills/metrics-review/SKILL.md 42416640d925635863da3738107973996d43b6a1
+product-management/skills/product-brainstorming/SKILL.md d37e2c2433179bb6b65c169b1a5261bc8ce1c955
+product-management/skills/roadmap-update/SKILL.md b879e5b38b2c57a7bb8d45f97261d1e5c81f4b0d
+product-management/skills/sprint-planning/SKILL.md 827a1ab89932c811198ff25eb7f99cf674687acd
+product-management/skills/stakeholder-update/SKILL.md 0fd657418c27c0c3082e73a5c34bd45364800c50
+product-management/skills/synthesize-research/SKILL.md 37920edef38ed91481547e426dbd1505bbd0a105
+product-management/skills/write-spec/SKILL.md 183cf053df391e761c21431bc0dfb791b6d52b80

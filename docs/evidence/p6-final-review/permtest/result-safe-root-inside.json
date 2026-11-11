@@ -1,0 +1,28 @@
+{
+ "HERMES_WRITE_SAFE_ROOT": "D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\inside",
+ "inside": null,
+ "outside": "Write denied: 'D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\outside\\b.md' is outside HERMES_WRITE_SAFE_ROOT (D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\inside). Unset the variable or add this path's directory prefix.",
+ "hermes_state_db": "Write denied: 'D:\\Hermes-Lab\\uvp-p6-hermes-test\\state.db' is a protected system/credential file.",
+ "ssh_key": "Write denied: 'C:\\Users\\<user>\\.ssh\\id_ed25519' is a protected system/credential file.",
+ "tool_inside": {
+  "bytes_written": 6,
+  "dirs_created": true,
+  "verified": true,
+  "lint": {
+   "status": "skipped",
+   "message": "No linter for .md files"
+  },
+  "resolved_path": "D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\inside\\a.md",
+  "files_modified": [
+   "D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\inside\\a.md"
+  ]
+ },
+ "tool_inside_exists": true,
+ "tool_outside": {
+  "bytes_written": 0,
+  "dirs_created": false,
+  "error": "Write denied: 'D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\outside\\b.md' is outside HERMES_WRITE_SAFE_ROOT (D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\inside). Unset the variable or add this path's directory prefix.",
+  "resolved_path": "D:\\Temp\\claude\\e76210c2bd5515e6\\38af4e07-2e25-47f8-b170-de349f30130b\\scratchpad\\permtest\\outside\\b.md"
+ },
+ "tool_outside_exists": false
+}

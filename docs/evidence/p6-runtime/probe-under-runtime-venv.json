@@ -1,0 +1,103 @@
+{
+  "cases": [
+    {
+      "id": "H-PASSTHROUGH-1",
+      "kind": "behavioral",
+      "observed": {
+        "fixtures": 5,
+        "note": "preprocess_skill_content with template_vars on, inline_shell off",
+        "unchanged": 5
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-TEMPLATE-VARS-1",
+      "kind": "behavioral",
+      "observed": {
+        "note": "Hermes DOES rewrite ${HERMES_*} tokens; literal ones in foreign text collide",
+        "output": "A SKILLDIR B"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-NO-ARGUMENTS-SUBST-1",
+      "kind": "behavioral",
+      "observed": {
+        "note": "Hermes has no $ARGUMENTS substitution",
+        "output": "x $ARGUMENTS y"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-INSTRUCTION-APPEND-1",
+      "kind": "behavioral",
+      "observed": {
+        "marker": "The user has provided the following instruction alongside the skill invocation: ",
+        "message": "NOTE\n\nBODY\nThe user has provided the following instruction alongside the skill invocation: SSO support"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-QUALIFIED-NAME-1",
+      "kind": "behavioral",
+      "observed": {
+        "input": "ported-product-management:write-spec"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-SKILL-VIEW-TRAVERSAL-1",
+      "kind": "behavioral",
+      "observed": {
+        "input": "../../CONNECTORS.md",
+        "note": "skill_view(file_path=...) refuses any '..' component"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-PLUGIN-SLASH-KEY-1",
+      "kind": "source_assertion",
+      "observed": {
+        "file": "agent/skill_commands.py",
+        "needle": "key = f\"/{qualified.lower()}\""
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-INLINE-SHELL-DEFAULT-OFF-1",
+      "kind": "source_assertion",
+      "observed": {
+        "file": "agent/skill_preprocessing.py",
+        "needle": "cfg.get(\"inline_shell\", False)"
+      },
+      "result": "PASS"
+    },
+    {
+      "id": "H-PLUGIN-SKILL-FILE-TRAVERSAL-1",
+      "kind": "source_assertion",
+      "observed": {
+        "file": "tools/skills_tool_plugin.py",
+        "needle": "if has_traversal_component(file_path):"
+      },
+      "result": "PASS"
+    }
+  ],
+  "hermes_commit": "b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+  "limitations": [
+    "Probes Hermes source functions at one commit; not a Hermes session.",
+    "No plugin was loaded; plugin registration and skill_view were not executed.",
+    "Installed Hermes binary version was not compared to this checkout."
+  ],
+  "model_calls": 0,
+  "network_access": false,
+  "probed_files": {
+    "agent/skill_commands.py": "680a3c53f995a3ee2ddcce1b1f2d523e0e17b08ec4ce0dd20be91fd771ca5736",
+    "agent/skill_preprocessing.py": "679cac4702ae6e8f40284411216db0c0626a8e2bd951a269e46e5c2b38df763a",
+    "agent/skill_utils.py": "9b643866caf9b0db3b568045e2b49bf2903f89197497c815a492afec89b33722",
+    "tools/path_security.py": "13439f63f555e7f441e1d8b7e1091906ac67f125fd97cdd227c5ff0c5e4a7de1",
+    "tools/skills_tool_plugin.py": "b536d0798530f27997b7a33879f9d907993c3f15048781155037b8d6d49f6196"
+  },
+  "probed_files_dirty": false,
+  "schema": "universal-port.hermes-target-probe/1",
+  "target_identity": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa"
+}

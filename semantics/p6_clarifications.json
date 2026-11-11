@@ -1,0 +1,23 @@
+{
+  "schema": "universal-port.p6-clarifications/1",
+  "note": "Upstream clarification questions, each with where (if anywhere) the run-001 inputs already answer it. Every answer quote must be an exact substring of the named hash-pinned evidence file. 'mandatory' marks questions without which the step cannot proceed faithfully; it is a UVP review judgment, not an upstream annotation.",
+  "questions": [
+    {"skill": "synthesize-research", "line": 32, "question": "What type of research?", "mandatory": true,
+     "answer": {"file": "inputs/p6-onboarding-interviews.md", "quote": "# P6 synthetic onboarding interviews"}},
+    {"skill": "synthesize-research", "line": 33, "question": "How many sources / participants?", "mandatory": true,
+     "answer": {"file": "prompt.txt", "quote": "Read the eight fictional interview notes"}},
+    {"skill": "synthesize-research", "line": 34, "question": "Is there a specific question or hypothesis?", "mandatory": false,
+     "answer": {"file": "inputs/p6-onboarding-interviews.md", "quote": "One or more themes from invitation and workflow-status uncertainty"}},
+    {"skill": "synthesize-research", "line": 35, "question": "What decisions will this research inform?", "mandatory": false,
+     "answer": {"file": "prompt.txt", "quote": "produce onboarding-prd.md"}},
+    {"skill": "write-spec", "line": 23, "question": "What do they want to spec?", "mandatory": true,
+     "answer": {"file": "prompt.txt", "quote": "Using the synthesis, produce onboarding-prd.md"}},
+    {"skill": "write-spec", "line": 33, "question": "User problem", "mandatory": true,
+     "answer": {"file": "research-synthesis.md", "quote": "Research question: Where do new and returning users experience friction"}},
+    {"skill": "write-spec", "line": 34, "question": "Target users", "mandatory": false,
+     "answer": {"file": "research-synthesis.md", "quote": "### 2.4 Segments observed"}},
+    {"skill": "write-spec", "line": 35, "question": "Success metrics", "mandatory": false, "answer": null},
+    {"skill": "write-spec", "line": 36, "question": "Constraints (technical, timeline, regulatory, dependencies)", "mandatory": false, "answer": null},
+    {"skill": "write-spec", "line": 37, "question": "Prior art", "mandatory": false, "answer": null}
+  ]
+}

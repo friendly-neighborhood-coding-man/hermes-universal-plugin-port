@@ -1,0 +1,46 @@
+# DRAFT official Hermes Plugin Catalog entry. NOT SUBMITTED.
+# Target path in NousResearch/hermes-agent: plugin-catalog/universal-plugin-port.yaml
+# Schema: plugin-catalog/README.md "Entry schema" (blob b0169a34…, identical on main 95fc3e66… and local b200f5b).
+#
+# Blockers before this can be filed (see docs/final-review/FINAL_REVIEW_LEDGER.md):
+#   L11 / D1  The repo must be PUBLIC; it is currently private.
+#   L08 / D2  RESOLVED in 3bd461d: validate PASS (scan: caution).
+#   L10       RESOLVED in 3bd461d: plugin.yaml declares requires_hermes ">=0.22.7".
+# Pin `sha` ONLY to the commit that satisfies all three, and re-run `hermes plugins validate --install-deps`
+# against a fresh public clone at that commit.
+name: universal-plugin-port
+repo: https://github.com/friendly-neighborhood-coding-man/hermes-universal-port
+sha: 0000000000000000000000000000000000000000   # PLACEHOLDER; replace with the validated 40-hex commit
+description: >-
+  Inspect plugins from other agent ecosystems (Claude Code/Cowork, Codex, OpenClaw), report
+  what cannot be ported, and stage a Hermes-native package without installing it. Original
+  files stay byte-preserved. A versioned rule registry applies only verified mappings
+  deterministically; whatever is left goes to an approval-gated single-edit model fallback.
+  Its output is always an unapplied review candidate. Unsupported connectors, hooks and
+  commands are listed, never silently converted. Disclosure: fetches a user-named public
+  GitHub repo at a pinned commit only on explicit request; writes staging output to a
+  user-chosen directory; runs `hermes plugins doctor/validate` as child processes on a
+  staged package; for OpenClaw sources it can run the foreign JS through a local node
+  sidecar only after a separate explicit consent (NOT sandboxed); optional
+  operator-initiated Hermes model calls; an opt-in, default-off bounded arXiv GET (P5).
+  No credentials stored, no telemetry, no self-update.
+maintainer: friendly-neighborhood-coding-man
+tier: community
+category: tools
+requires_hermes: ">=0.22.7"
+docs_url: https://github.com/friendly-neighborhood-coding-man/hermes-universal-port#readme
+version: "0.6.0"
+readme: true
+platforms: []
+known_issues:
+  - "Semantic equivalence with the source host is not established; ported Skills are SKILLS_ONLY_PARTIAL."
+  - "Only one foreign package (Anthropic product-management) has been converted and run end to end."
+capabilities:
+  provides_tools:
+    - port_probe
+    - port_fetch
+    - port_stage
+    - uvp_route
+  provides_hooks: []
+  provides_middleware: []
+  requires_env: []

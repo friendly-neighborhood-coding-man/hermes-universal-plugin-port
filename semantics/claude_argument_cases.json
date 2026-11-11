@@ -1,0 +1,170 @@
+{
+  "schema": "universal-port.claude-argument-cases/1",
+  "source": "https://code.claude.com/docs/en/slash-commands",
+  "source_sha256": "977bb9f8d6a004c37e6731afd94bc3ad7bba1e64a2b2d7e7f22df910d4b06287",
+  "fetched": "2026-11-07",
+  "note": "Golden expectations transcribed from documented examples/rules. They are an oracle for the documented contract, not output captured from a running Claude Code.",
+  "cases": [
+    {
+      "id": "all_args_basic",
+      "body": "Fix GitHub issue $ARGUMENTS following our coding standards.",
+      "args": "123",
+      "expect": "Fix GitHub issue 123 following our coding standards.",
+      "doc": "Pass arguments to skills: fix-issue example"
+    },
+    {
+      "id": "arguments_index",
+      "body": "Migrate the $ARGUMENTS[0] component from $ARGUMENTS[1] to $ARGUMENTS[2].",
+      "args": "SearchBar JavaScript TypeScript",
+      "expect": "Migrate the SearchBar component from JavaScript to TypeScript.",
+      "doc": "$ARGUMENTS[N] example"
+    },
+    {
+      "id": "dollar_n_shorthand",
+      "body": "Migrate the $0 component from $1 to $2.",
+      "args": "SearchBar JavaScript TypeScript",
+      "expect": "Migrate the SearchBar component from JavaScript to TypeScript.",
+      "doc": "$N shorthand example"
+    },
+    {
+      "id": "shell_style_quoting",
+      "body": "[$0][$1]",
+      "args": "\"hello world\" second",
+      "expect": "[hello world][second]",
+      "doc": "Indexed arguments use shell-style quoting"
+    },
+    {
+      "id": "full_string_as_typed",
+      "body": "<$ARGUMENTS>",
+      "args": "\"hello world\" second",
+      "expect": "<\"hello world\" second>",
+      "doc": "$ARGUMENTS always expands to the full argument string as typed"
+    },
+    {
+      "id": "missing_index_literal",
+      "body": "a $0 b $2",
+      "args": "x",
+      "expect": "a x b $2",
+      "doc": "indexed placeholder with no argument stays unchanged"
+    },
+    {
+      "id": "value_not_rescanned",
+      "body": "Summarize $0",
+      "args": "\"$ARGUMENTS from yesterday\"",
+      "expect": "Summarize $ARGUMENTS from yesterday",
+      "doc": "argument value containing $ARGUMENTS inserted literally"
+    },
+    {
+      "id": "single_backslash_escape",
+      "body": "Costs \\$1.00 for $0",
+      "args": "apple",
+      "expect": "Costs $1.00 for apple",
+      "doc": "escape a literal $ before a digit with a backslash",
+      "assumption": "backslash removed when it escapes (inferred, not stated explicitly)"
+    },
+    {
+      "id": "double_backslash_expands",
+      "body": "\\\\$0",
+      "args": "v",
+      "expect": "\\\\v",
+      "doc": "doubled backslash leaves both backslashes and $1 still expands"
+    },
+    {
+      "id": "backslash_other_dollar_unchanged",
+      "body": "\\$HOME $0",
+      "args": "v",
+      "expect": "\\$HOME v",
+      "doc": "a backslash before any other $ is left unchanged"
+    },
+    {
+      "id": "no_placeholder_appends",
+      "body": "Do the thing.",
+      "args": "abc",
+      "expect": "Do the thing.\n\nARGUMENTS: abc",
+      "doc": "appends ARGUMENTS: <value> when no placeholder receives",
+      "assumption": "two-newline separator before ARGUMENTS: is undocumented"
+    },
+    {
+      "id": "unreceived_index_appends",
+      "body": "Use $1",
+      "args": "only",
+      "expect": "Use $1\n\nARGUMENTS: only",
+      "doc": "indexed placeholder with no argument does not count as receiving",
+      "assumption": "two-newline separator before ARGUMENTS: is undocumented"
+    },
+    {
+      "id": "named_arguments",
+      "body": "Fix $issue on $branch",
+      "args": "12 main",
+      "names": [
+        "issue",
+        "branch"
+      ],
+      "expect": "Fix 12 on main",
+      "doc": "named arguments map to positions in order"
+    },
+    {
+      "id": "named_missing_empty",
+      "body": "Fix $issue on $branch",
+      "args": "12",
+      "names": [
+        "issue",
+        "branch"
+      ],
+      "expect": "Fix 12 on ",
+      "doc": "named placeholder with no matching argument expands to empty string"
+    },
+    {
+      "id": "empty_args",
+      "body": "Fix $ARGUMENTS.",
+      "args": "",
+      "expect": "Fix .",
+      "doc": "$ARGUMENTS = all arguments (none)"
+    },
+    {
+      "id": "no_args_no_append",
+      "body": "Do the thing.",
+      "args": "",
+      "expect": "Do the thing.",
+      "doc": "nothing to append without arguments"
+    }
+  ],
+  "refusals": [
+    {
+      "id": "unquoted_dollar_indexed",
+      "body": "Use $0",
+      "args": "$HOME",
+      "reason": "unquoted expansion semantics undocumented"
+    },
+    {
+      "id": "unbalanced_quote",
+      "body": "Use $0",
+      "args": "\"open",
+      "reason": "unbalanced quote"
+    },
+    {
+      "id": "backslash_in_indexed",
+      "body": "Use $0",
+      "args": "a\\b",
+      "reason": "escape semantics undocumented"
+    },
+    {
+      "id": "operator_in_indexed",
+      "body": "Use $0",
+      "args": "a;b",
+      "reason": "shell operator semantics undocumented"
+    },
+    {
+      "id": "control_char",
+      "body": "Use $ARGUMENTS",
+      "args": "a\u0007b",
+      "reason": "control characters"
+    },
+    {
+      "id": "ambiguous_multidigit_template",
+      "body": "Use $12",
+      "args": "a",
+      "reason": "multi-digit index undocumented"
+    }
+  ]
+}

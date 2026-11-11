@@ -1,0 +1,190 @@
+{
+  "schema": "universal-port.compat-rules/1",
+  "registry_version": "2026-11-11.1",
+  "evidence": {
+    "hermes_target_probe": {
+      "path": "semantics/hermes_target_probe.json",
+      "sha256": "cad380f2a3147e5e6d932caecda3f9f62860df6530642c95d439460b8c764022"
+    },
+    "claude_semantics": {
+      "semantics_version": "claude-code-command-args/2026-11-07",
+      "source_doc_sha256": "977bb9f8d6a004c37e6731afd94bc3ad7bba1e64a2b2d7e7f22df910d4b06287",
+      "cases_path": "semantics/claude_argument_cases.json",
+      "cases_sha256": "77a4542ab4b2b659034b27a85bb6d84673d36f3b77e6b26b4437611d531406db"
+    }
+  },
+  "rules": [
+    {
+      "id": "R-C001",
+      "version": 1,
+      "kind": "composition",
+      "status": "COMPOSED_VERIFIED",
+      "priority": 10,
+      "source": {
+        "host": "claude-code",
+        "version": "claude-code-command-args/2026-11-07",
+        "capabilities": ["claude.slash_command_invocation", "claude.arguments_all_substitution"]
+      },
+      "target": {
+        "host": "hermes",
+        "version": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+        "capabilities": ["hermes.plugin_skill_slash_invocation", "hermes.user_instruction_append"]
+      },
+      "match": {
+        "kind": "usage_example_slash_all_arguments",
+        "already_mapped_kind": "usage_example_hermes_plugin_slash"
+      },
+      "contracts": {
+        "input": "user_text: the raw text the user types after the command name (may be empty)",
+        "output": "the model receives the skill body plus user_text; Claude inlines it at $ARGUMENTS, Hermes appends it after the body"
+      },
+      "preconditions": [
+        "single_all_arguments_placeholder_in_file",
+        "no_indexed_or_named_placeholders",
+        "no_arguments_frontmatter",
+        "placeholder_inside_usage_fence",
+        "usage_line_names_this_skill",
+        "argument_hint_single_line",
+        "static_namespaced_registration_present"
+      ],
+      "permissions": {"adds": [], "network": false, "execution": false, "authorization": []},
+      "side_effects": [],
+      "graph": {
+        "inputs": ["user_text"],
+        "nodes": [
+          {"id": "s1", "side": "source", "capability": "claude.slash_command_invocation", "inputs": ["user_text"], "outputs": ["raw_args"]},
+          {"id": "s2", "side": "source", "capability": "claude.arguments_all_substitution", "inputs": ["raw_args"], "outputs": ["model_input"]},
+          {"id": "t1", "side": "target", "capability": "hermes.plugin_skill_slash_invocation", "inputs": ["user_text"], "outputs": ["instruction"]},
+          {"id": "t2", "side": "target", "capability": "hermes.user_instruction_append", "inputs": ["instruction"], "outputs": ["model_input"]}
+        ],
+        "bindings": [
+          {"to": "s1.user_text", "from": "$input.user_text"},
+          {"to": "s2.raw_args", "from": "s1.raw_args"},
+          {"to": "t1.user_text", "from": "$input.user_text"},
+          {"to": "t2.instruction", "from": "t1.instruction"}
+        ],
+        "outputs": {"source": "s2.model_input", "target": "t2.model_input"}
+      },
+      "delta": {"kind": "rewrite_usage_line_to_hermes_plugin_slash"},
+      "validation": {
+        "source_cases": ["all_args_basic", "empty_args", "no_args_no_append"],
+        "target_cases": ["H-NO-ARGUMENTS-SUBST-1", "H-INSTRUCTION-APPEND-1", "H-QUALIFIED-NAME-1", "H-PLUGIN-SLASH-KEY-1"]
+      },
+      "axes": {"structural": "VERIFIED", "runtime": "TARGET_FUNCTIONS_PROBED", "semantic": "NOT_ESTABLISHED"},
+      "provenance": {
+        "author": "uvp-p6 harness",
+        "created": "2026-11-11",
+        "basis": "Claude documented $ARGUMENTS semantics (claude_command.py oracle) + Hermes b200f5b source probe",
+        "limitation": "Placement differs: Claude inlines user_text in the usage block, Hermes appends it after the body. Only delivery of user_text is verified, not identical model behavior. The rewrite touches a Markdown usage example only; it changes no executable surface."
+      }
+    },
+    {
+      "id": "R-D001",
+      "version": 1,
+      "kind": "direct",
+      "status": "DIRECT_EXACT",
+      "priority": 90,
+      "source": {
+        "host": "claude-code",
+        "version": "claude-code-command-args/2026-11-07",
+        "capabilities": ["claude.skill_body.literal_markdown"]
+      },
+      "target": {
+        "host": "hermes",
+        "version": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+        "capabilities": ["hermes.plugin_skill_body.literal_markdown"]
+      },
+      "match": {"kind": "markdown_literal_region", "already_mapped_kind": null},
+      "contracts": {
+        "input": "Markdown lines containing no Claude or Hermes host tokens",
+        "output": "the same bytes reach the model unchanged on both hosts"
+      },
+      "preconditions": ["no_host_tokens_in_region", "hermes_inline_shell_disabled"],
+      "permissions": {"adds": [], "network": false, "execution": false, "authorization": []},
+      "side_effects": [],
+      "graph": null,
+      "delta": {"kind": "identity"},
+      "validation": {
+        "source_cases": ["no_args_no_append"],
+        "target_cases": ["H-PASSTHROUGH-1", "H-INLINE-SHELL-DEFAULT-OFF-1"]
+      },
+      "axes": {"structural": "VERIFIED", "runtime": "TARGET_FUNCTIONS_PROBED", "semantic": "INPUT_TEXT_IDENTICAL"},
+      "provenance": {
+        "author": "uvp-p6 harness",
+        "created": "2026-11-11",
+        "basis": "Hermes preprocess_skill_content leaves token-free text unchanged (probe); Claude substitutes only documented placeholders",
+        "limitation": "Identity mapping. Text identity is not model-behavior identity; the surrounding host scaffold differs."
+      }
+    },
+    {
+      "id": "R-D002",
+      "version": 1,
+      "kind": "direct",
+      "status": "PROVISIONAL",
+      "priority": 50,
+      "source": {
+        "host": "claude-code",
+        "version": "claude-code-command-args/2026-11-07",
+        "capabilities": ["claude.skill_dir_variable"]
+      },
+      "target": {
+        "host": "hermes",
+        "version": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+        "capabilities": ["hermes.skill_dir_variable"]
+      },
+      "match": {"kind": "claude_skill_dir_variable", "already_mapped_kind": null},
+      "contracts": {
+        "input": "${CLAUDE_SKILL_DIR} token in a Skill body",
+        "output": "absolute directory of the Skill on the target"
+      },
+      "preconditions": ["source_semantics_pinned"],
+      "permissions": {"adds": [], "network": false, "execution": false, "authorization": []},
+      "side_effects": [],
+      "graph": null,
+      "delta": {"kind": "none_provisional"},
+      "validation": {"source_cases": [], "target_cases": ["H-TEMPLATE-VARS-1"]},
+      "axes": {"structural": "NOT_VERIFIED", "runtime": "NOT_VERIFIED", "semantic": "NOT_ESTABLISHED"},
+      "provenance": {
+        "author": "uvp-p6 harness",
+        "created": "2026-11-11",
+        "basis": "Hermes ${HERMES_SKILL_DIR} probed; the Claude-side ${CLAUDE_SKILL_DIR} meaning is not in the pinned Claude evidence",
+        "limitation": "PROVISIONAL: never applied. A match produces HOLD."
+      }
+    },
+    {
+      "id": "R-D003",
+      "version": 1,
+      "kind": "direct",
+      "status": "PROVISIONAL",
+      "priority": 20,
+      "source": {
+        "host": "claude-code",
+        "version": "claude-code-command-args/2026-11-07",
+        "capabilities": ["claude.skill_definition"]
+      },
+      "target": {
+        "host": "hermes",
+        "version": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa",
+        "capabilities": ["hermes.plugin_register_skill_namespaced"]
+      },
+      "match": {"kind": "claude_skill_definition", "already_mapped_kind": null},
+      "contracts": {
+        "input": "skills/<name>/SKILL.md with frontmatter name/description",
+        "output": "ctx.register_skill(<name>, path) under plugin namespace; qualified <plugin>:<name>"
+      },
+      "preconditions": ["static_namespaced_registration_present"],
+      "permissions": {"adds": [], "network": false, "execution": false, "authorization": []},
+      "side_effects": [],
+      "graph": null,
+      "delta": {"kind": "none_verify_only"},
+      "validation": {"source_cases": [], "target_cases": ["H-QUALIFIED-NAME-1", "H-PLUGIN-SLASH-KEY-1"]},
+      "axes": {"structural": "VERIFIED", "runtime": "NOT_VERIFIED", "semantic": "NOT_ESTABLISHED"},
+      "provenance": {
+        "author": "uvp-p6 harness",
+        "created": "2026-11-11",
+        "basis": "Static registration generated by uvp_p6_stage; Hermes qualified-name parsing probed",
+        "limitation": "PROVISIONAL: Claude auto-activation differs from Hermes opt-in namespaced loading, and no Hermes skill_view of these Skills has been executed. Verification only; no delta."
+      }
+    }
+  ]
+}

@@ -1,0 +1,7 @@
+Execute this three-step research-to-roadmap task IN THIS HERMES SESSION. Use the supplied fictional interview fixture at "D:\\Hermes-Lab\\p6-e2e-run-001\\inputs\\p6-onboarding-interviews.md" as the only evidence. Do not call Slack, Notion, Linear, other remote MCP servers or external network services. Do not invent additional customer interviews, measurements or results.
+
+1) Load and FOLLOW skill_view("ported-product-management:synthesize-research"). Read the eight fictional interview notes and produce research-synthesis.md with individual interview IDs and clearly separated observations and recommendations.
+2) Load and FOLLOW skill_view("ported-product-management:write-spec"). Using the synthesis, produce onboarding-prd.md with scope, non-goals, user stories and verifiable acceptance tests.
+3) Load and FOLLOW skill_view("ported-product-management:roadmap-update"). Using the PRD, produce onboarding-roadmap.md with Now/Next/Later, dependencies and explicitly proposed priorities.
+
+For every step, show the exact imported Skill name that was actually loaded and the tool result. Use Hermes's normal file write approval flow. If a tool, file or Skill is unavailable, STOP and report HOLD rather than fabricate success. At the end report actual output paths and file hashes for independent review.

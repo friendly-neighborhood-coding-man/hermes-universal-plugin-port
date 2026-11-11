@@ -1,0 +1,4 @@
+Error: Unsupported gateway CLI options: --run-budget. No local fallback or policy changes were made.
+  --run-budget: use `agent.run_budget_seconds` in config.yaml
+
+session_id: 

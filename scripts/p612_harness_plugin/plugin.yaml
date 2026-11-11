@@ -1,0 +1,8 @@
+name: uvp-safebox-harness
+version: 0.0.1
+description: TEST-ONLY harness for the P6.12 adversarial matrix. Registers the experimental UVP Safebox and Skill-continuity callbacks as pre_tool_call/post_tool_call hooks. Install only into a disposable Hermes home.
+provides_tools:
+  - uvp_isolated_task
+provides_hooks:
+  - pre_tool_call
+  - post_tool_call

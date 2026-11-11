@@ -1,0 +1,30 @@
+{
+  "schema": "universal-port.routing-policy/1",
+  "domains": {
+    "research": {
+      "preferred": "research.default",
+      "fallbacks": [],
+      "allow_vanilla": true
+    },
+    "coding": {
+      "preferred": "coding.default",
+      "fallbacks": [],
+      "allow_vanilla": true
+    },
+    "data": {
+      "preferred": "data.default",
+      "fallbacks": [],
+      "allow_vanilla": true
+    },
+    "browser": {
+      "preferred": "browser.default",
+      "fallbacks": [],
+      "allow_vanilla": true
+    },
+    "documents": {
+      "preferred": "documents.default",
+      "fallbacks": [],
+      "allow_vanilla": true
+    }
+  }
+}

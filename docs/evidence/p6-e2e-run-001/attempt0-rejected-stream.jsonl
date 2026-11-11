@@ -1,0 +1,2 @@
+{"type": "system", "subtype": "init", "model": "", "session_id": "", "timestamp": 1794338952062}
+{"type": "result", "session_id": "", "exit_code": 2, "text": "", "tokens": {"input": 0, "output": 0, "total": 0, "cache_read": 0, "cache_write": 0}, "duration_ms": 0, "error": "Unsupported gateway CLI options: --run-budget. No local fallback or policy changes were made.\n  --run-budget: use `agent.run_budget_seconds` in config.yaml", "timestamp": 1794338952062}

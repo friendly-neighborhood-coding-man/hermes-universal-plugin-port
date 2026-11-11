@@ -1,0 +1,40 @@
+
+✓ manifest — plugin.yaml parses
+✓ manifest fields — name, version, description present
+✓ requires_hermes — not declared
+✓ config schema — not declared
+✓ requires_env — all entries UPPER_SNAKE
+✓ oauth — not declared
+✓ loadable — entry: __init__.py
+✓ python dependencies — none declared
+✓ capability probe — register() ran in isolation
+✓ declared tools — matches registrations
+✓ declared hooks — matches registrations
+✓ declared middleware — matches registrations
+✓ built-in tool collisions — no collisions
+✗ security scan — dangerous: inline_shell_exec (claude_command.py:229), 
+inline_shell_exec (claude_command.py:232), inline_shell_exec 
+(hermes_target.py:45), inline_shell_exec (hermes_target.py:46), 
+inline_shell_exec (semantic_verification.py:259), other_agent_config_mod_shell 
+(importer_comparison.py:33)
+✓ no core override — no runtime rebinds of Hermes core
+⚠ private core imports (catalog rule 9: public surfaces only; these can break 
+on any release): scripts/p6_runtime_verify.py:65 
+hermes_cli.plugins_discovery._get_disabled_plugins; 
+scripts/p6_runtime_verify.py:80 hermes_cli.plugins.discover_plugins; 
+scripts/p6_runtime_verify.py:81 tools.skills_tool.skill_view; 
+scripts/p6_runtime_verify.py:82 
+agent.skill_commands.build_skill_invocation_message; 
+scripts/probe_hermes_target.py:66 
+agent.skill_preprocessing.preprocess_skill_content; 
+scripts/probe_hermes_target.py:68 agent.skill_utils.parse_qualified_name; 
+scripts/probe_hermes_target.py:69 tools.path_security.has_traversal_component; 
+uvp_arxiv_p5.py:63 gateway.session.SessionSource; 
+scripts/p6_runtime_verify.py:65 
+hermes_cli.plugins_discovery._get_enabled_plugins; 
+scripts/p6_runtime_verify.py:80 hermes_cli.plugins.get_plugin_manager; and 3 
+more. Use ctx.* / documented plugin APIs, or open an issue for the seam you 
+need.
+◆ Isolation — runs in the plugin host (plugins.isolation: host)
+
+Validation failed.

@@ -1,0 +1,141 @@
+{
+  "model_calls": 0,
+  "home": "D:\\Hermes-Lab\\uvp-p612-rollback-home",
+  "steps": [
+    {
+      "step": "1-3 clean install + discovery + namespaced resolution",
+      "ok": true,
+      "result": "APPLIED",
+      "resolution": {
+        "skills": [
+          "ported-product-management:competitive-brief",
+          "ported-product-management:metrics-review",
+          "ported-product-management:product-brainstorming",
+          "ported-product-management:roadmap-update",
+          "ported-product-management:sprint-planning",
+          "ported-product-management:stakeholder-update",
+          "ported-product-management:synthesize-research",
+          "ported-product-management:write-spec"
+        ],
+        "write_spec_resolves": true
+      }
+    },
+    {
+      "step": "4 corrupted update (tampered SKILL.md)",
+      "result": "REFUSED_BEFORE_SWAP",
+      "why": "skills/write-spec/SKILL.md",
+      "state_unchanged": true
+    },
+    {
+      "step": "5 failed update recovery (registers a missing Skill)",
+      "result": "REFUSED_BEFORE_SWAP",
+      "why": "es_env \u2014 all entries UPPER_SNAKE\n\u2713 oauth \u2014 not declared\n\u2713 loadable \u2014 entry: __init__.py\n\u2713 python dependencies \u2014 none declared\n\u2717 capability probe \u2014 register() raised: Staged skill unavailable\n\u2713 built-i",
+      "restored_to_installed_state": true,
+      "restored_ignoring_hermes_config_backups": true,
+      "resolution_after": {
+        "skills": [
+          "ported-product-management:competitive-brief",
+          "ported-product-management:metrics-review",
+          "ported-product-management:product-brainstorming",
+          "ported-product-management:roadmap-update",
+          "ported-product-management:sprint-planning",
+          "ported-product-management:stakeholder-update",
+          "ported-product-management:synthesize-research",
+          "ported-product-management:write-spec"
+        ],
+        "write_spec_resolves": true
+      }
+    },
+    {
+      "step": "5b update passing validate but failing post-swap resolution",
+      "result": "ROLLED_BACK",
+      "why": "post-install check failed: {\"skills\": [], \"write_spec_resolves\": false}",
+      "restored_to_installed_state": false,
+      "restored_ignoring_hermes_config_backups": true,
+      "resolution_after": {
+        "skills": [
+          "ported-product-management:competitive-brief",
+          "ported-product-management:metrics-review",
+          "ported-product-management:product-brainstorming",
+          "ported-product-management:roadmap-update",
+          "ported-product-management:sprint-planning",
+          "ported-product-management:stakeholder-update",
+          "ported-product-management:synthesize-research",
+          "ported-product-management:write-spec"
+        ],
+        "write_spec_resolves": true
+      }
+    },
+    {
+      "step": "6 rollback to pre-install backup",
+      "manifest_equals_pre_install": false,
+      "diff_paths": [
+        "backups/config/config.yaml.good.20261111-080641",
+        "backups/config/config.yaml.good.20261111-080748",
+        "backups/config/config.yaml.good.20261111-080809"
+      ],
+      "diff_only_hermes_owned_backups": true,
+      "resolution_after": {
+        "skills": [],
+        "write_spec_resolves": false
+      }
+    },
+    {
+      "step": "7 reinstall then remove",
+      "install": "APPLIED",
+      "remove": "APPLIED",
+      "plugin_dir_gone": true,
+      "diff_vs_pre_install": [
+        "backups/config/config.yaml.good.20261111-080533",
+        "backups/config/config.yaml.good.20261111-080748",
+        "backups/config/config.yaml.good.20261111-080809",
+        "backups/config/config.yaml.good.20261111-080816",
+        "backups/config/config.yaml.good.20261111-080831",
+        "backups/config/config.yaml.good.20261111-080844"
+      ]
+    },
+    {
+      "step": "8 unrelated plugin, defaults and settings unchanged",
+      "unrelated_plugin_same": true,
+      "defaults_same": true,
+      "config_same_after_remove": true
+    }
+  ],
+  "bootstrap": 0,
+  "s0_files": 10889,
+  "log": [
+    {
+      "op": "install",
+      "result": "APPLIED"
+    },
+    {
+      "op": "update",
+      "result": "REFUSED_BEFORE_SWAP",
+      "why": "skills/write-spec/SKILL.md"
+    },
+    {
+      "op": "update",
+      "result": "REFUSED_BEFORE_SWAP",
+      "why": "es_env \u2014 all entries UPPER_SNAKE\n\u2713 oauth \u2014 not declared\n\u2713 loadable \u2014 entry: __init__.py\n\u2713 python dependencies \u2014 none declared\n\u2717 capability probe \u2014 register() raised: Staged skill unavailable\n\u2713 built-in tool collisions \u2014 no tools to check\n\u2713 security scan \u2014 safe\n\u2713 no core override \u2014 no runtime rebinds of Hermes core\n\u25c6 Isolation \u2014 runs in the plugin host (plugins.isolation: host)\n\nValidation failed.\n"
+    },
+    {
+      "op": "update",
+      "result": "ROLLED_BACK",
+      "why": "post-install check failed: {\"skills\": [], \"write_spec_resolves\": false}",
+      "restored": false
+    },
+    {
+      "op": "rollback",
+      "result": "RESTORED",
+      "backup": "D:\\Hermes-Lab\\uvp-p612-rollback-home\\.uvp-backups\\ported-product-management-1794351996646422900"
+    },
+    {
+      "op": "install",
+      "result": "APPLIED"
+    },
+    {
+      "op": "remove",
+      "result": "APPLIED"
+    }
+  ]
+}
