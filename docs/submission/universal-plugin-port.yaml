@@ -3,14 +3,14 @@
 # Schema: plugin-catalog/README.md "Entry schema" (blob b0169a34…, identical on main 95fc3e66… and local b200f5b).
 #
 # Blockers before this can be filed (see docs/final-review/FINAL_REVIEW_LEDGER.md):
-#   L11 / D1  The repo must be PUBLIC; it is currently private.
+#   L11 / D1  RESOLVED: clean public repo hermes-universal-plugin-port (the private dev repo stays private).
 #   L08 / D2  RESOLVED in 3bd461d: validate PASS (scan: caution).
 #   L10       RESOLVED in 3bd461d: plugin.yaml declares requires_hermes ">=0.22.7".
 # Pin `sha` ONLY to the commit that satisfies all three, and re-run `hermes plugins validate --install-deps`
 # against a fresh public clone at that commit.
 name: universal-plugin-port
-repo: https://github.com/friendly-neighborhood-coding-man/hermes-universal-port
-sha: 0000000000000000000000000000000000000000   # PLACEHOLDER; replace with the validated 40-hex commit
+repo: https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port
+sha: 2bfc222c10bdf7b9257cb5ba1cec665806e6c8b4   # public release verified 2026-11-11 (anonymous clone, CI, validate)
 description: >-
   Inspect plugins from other agent ecosystems (Claude Code/Cowork, Codex, OpenClaw), report
   what cannot be ported, and stage a Hermes-native package without installing it. Original
@@ -28,7 +28,7 @@ maintainer: friendly-neighborhood-coding-man
 tier: community
 category: tools
 requires_hermes: ">=0.22.7"
-docs_url: https://github.com/friendly-neighborhood-coding-man/hermes-universal-port#readme
+docs_url: https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port#readme
 version: "0.6.0"
 readme: true
 platforms: []

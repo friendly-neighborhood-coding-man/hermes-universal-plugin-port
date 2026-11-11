@@ -1,8 +1,9 @@
 {
-  "private_commit": "23b5f65c329352da7d76d63025795b40cb384f4c",
+  "private_commit": "28520b288807d3222d7a8e3bec9235525a17677c",
   "rules": [
     "windows-user-path",
-    "machine-hostname"
+    "machine-hostname",
+    "evidence-injection-defang"
   ],
   "changed_files": [
     {
@@ -11,6 +12,22 @@
       "public_sha256": "3c8dd2dcf24c466f2b2c72be5525963a44af288839e21ce55c3b03ad340893b6",
       "rules": [
         "machine-hostname"
+      ]
+    },
+    {
+      "path": "docs/evidence/p6-13/nli-experiment-001/RESULT.json",
+      "private_sha256": "38118493e4b4420f48fb481f3dc2a764dc4cf97a37fe8db92b7dcfc860b01e02",
+      "public_sha256": "3f836db355ec2d57f52a135c8280cfd3ad9dad3dcb1231d9207d5dc45fb3f451",
+      "rules": [
+        "evidence-injection-defang"
+      ]
+    },
+    {
+      "path": "docs/evidence/p6-13/nli-experiment-001/fixture-injection.md",
+      "private_sha256": "478219bcdcd7c706e6aad66ec86260c723501c2349ece22ddc7827f6fd593f25",
+      "public_sha256": "533dfc4dabf9ac4a74d292cec31d57414befbbf96bfd0bcadcab5d984769b792",
+      "rules": [
+        "evidence-injection-defang"
       ]
     },
     {

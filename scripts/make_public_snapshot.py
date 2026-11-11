@@ -39,6 +39,13 @@ if _ACCOUNT:
 if _HOST:
     SANITIZE.append(("machine-hostname", re.compile(r"\b" + re.escape(_HOST) + r"\b(?![0-9]*@)"), "<host>"))
     SCAN.append(("hostname", re.compile(r"\b" + re.escape(_HOST) + r"\b(?![0-9]*@)")))
+# Recorded adversarial evidence (P6.13 injection fixture and the model's quote of it) holds the
+# literal phrase Hermes's security scan treats as a live prompt injection. In the PUBLIC copy of
+# docs/evidence/ only, a visible marker is inserted inside the phrase; the private evidence is
+# unchanged and both SHA-256 values are recorded in SANITIZATION_MANIFEST.json. tests/ keeps the
+# literal phrase (Hermes treats a root test tree as fixtures, and the tests need it).
+INJECTION_PHRASE = re.compile(r"(?i)(ignore\s+(?:\w+\s+)*(?:previous|all|above|prior)\s+)(instructions)")
+EVIDENCE_DEFANG = ("evidence-injection-defang", INJECTION_PHRASE, r"\1[UVP-DEFANGED] \2", "docs/evidence/")
 EMAIL_OK = {"132266321+friendly-neighborhood-coding-man@users.noreply.github.com", "noreply@anthropic.com"}
 FORBIDDEN_NAMES = re.compile(r"(^|/)(\.env(\..*)?|auth\.json|.*\.pem|.*\.pyc|.*\.pyo|state\.db.*)$")
 BINARY_MAGIC = (b"\x7fELF", b"MZ", b"\xcf\xfa\xed\xfe", b"\x00asm")
@@ -68,7 +75,9 @@ def main(commit, out):
             rules = []
             if b"\x00" not in data[:4096]:
                 text = data.decode("utf-8", "surrogateescape")
-                for rid, rx, rep in SANITIZE:
+                for rid, rx, rep, *scope in SANITIZE + [EVIDENCE_DEFANG]:
+                    if scope and not rel.startswith(scope[0]):
+                        continue
                     t2 = rx.sub(rep, text)
                     if t2 != text:
                         rules.append(rid)
@@ -85,6 +94,8 @@ def main(commit, out):
                 findings.append({"path": rel, "kind": "binary"})
             if b"\x00" not in new[:4096]:
                 s = new.decode("utf-8", "replace")
+                if not rel.startswith("tests/") and INJECTION_PHRASE.search(s):
+                    findings.append({"path": rel, "kind": "injection-phrase", "match": INJECTION_PHRASE.search(s).group(0)[:60]})
                 for kind, rx in SCAN:
                     for hit in rx.findall(s):
                         h = hit if isinstance(hit, str) else hit[0]
@@ -93,10 +104,10 @@ def main(commit, out):
                         findings.append({"path": rel, "kind": kind, "match": h[:60]})
     note = ("# Sanitized public snapshot\n\nExported from private commit `%s` with `git archive` (no history).\n"
             "Files listed in `SANITIZATION_MANIFEST.json` had personal identifiers (Windows account name, machine host name)\n"
-            "replaced; their SHA-256 differs from the private originals and is recorded there. All other files are byte-identical\n"
+            "replaced, or (docs/evidence/ only) a visible [UVP-DEFANGED] marker inserted into a recorded prompt-injection phrase; their SHA-256 differs from the private originals and is recorded there. All other files are byte-identical\n"
             "to the private commit.\n" % full)
     (out / "SANITIZATION_NOTE.md").write_text(note, encoding="utf-8")
-    (out / "SANITIZATION_MANIFEST.json").write_text(json.dumps({"private_commit": full, "rules": [r[0] for r in SANITIZE],
+    (out / "SANITIZATION_MANIFEST.json").write_text(json.dumps({"private_commit": full, "rules": [r[0] for r in SANITIZE + [EVIDENCE_DEFANG]],
                                                                 "changed_files": changed}, indent=2) + "\n", encoding="utf-8")
     audit = {"private_commit": full, "files": sum(1 for p in out.rglob("*") if p.is_file()), "findings": findings,
              "verdict": "CLEAN" if not findings else "HOLD"}

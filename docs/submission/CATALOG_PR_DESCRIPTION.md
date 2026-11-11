@@ -4,7 +4,7 @@
 
 ---
 
-Adds `plugin-catalog/universal-plugin-port.yaml`, pinned to `<40-hex SHA>` of https://github.com/friendly-neighborhood-coding-man/hermes-universal-port. I am the repository owner (rule 5).
+Adds `plugin-catalog/universal-plugin-port.yaml`, pinned to `2bfc222c10bdf7b9257cb5ba1cec665806e6c8b4` of https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port. I am the repository owner (rule 5).
 
 ## What it does
 
