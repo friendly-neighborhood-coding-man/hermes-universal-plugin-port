@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.7.0 — 2026-11-12
+
+- **Migration Doctor and approved repair for officially imported Skills:** new `uvp_repair.py` with the steps `doctor`, `plan`, `candidate`, `apply` (digest-bound, typed operator confirmation), `verify` and `rollback`. It is built on `migration_repair.py` (P6.16): separate install, runtime, functional and repair gates; RES-LOCAL-1; a journaled Apply with backup, one-time ledger and rollback.
+- **Official importer integration (P6.15):** `official_import_assurance.py` and `scripts/p615_preview_official_import.py` / `p615_apply_official_import.py` run the pinned Hermes `agent-importers` with a digest-bound preflight receipt, a test Apply on a disposable home, a postflight and a scoped rollback.
+- **Rule engine (P6.17):** `repair_rules.py` with INPUT-VARS-1, RES-CLOSURE-1 and SKILL-REF-1, and their tests.
+- `scripts/uvp_repair_smoke.sh` reproduces Official Import → Doctor → Plan → Candidate → Apply → Verify → Rollback on a disposable home.
+- Unchanged: the v0.6.0 guided flow (`uvp_guided.py`). Not included: the P6.18 dependency-closure work and third-party port packages.
+
 ## 0.4.3-BYTECODE-GATE (candidate) — 2026-11-08
 
 Built from `Hermes-Universal-Port-v0.4.2-OPERATOR-APPROVAL.zip` (SHA-256 `b3eefeed…0748`, unchanged). This release addresses the P0 in the independent review of v0.4.2, which was run on a v0.4.1 tree patched with the v0.4.2 diff. The full diff against v0.4.2 is in `V0.4.3_DIFF.patch`.

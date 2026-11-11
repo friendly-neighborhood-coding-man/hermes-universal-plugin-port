@@ -1,0 +1,25 @@
+{
+  "plan_sha256": "391d8fe2e167286e3c6da4cc41e8eca2ee5ce04ab6a1f5c3d160fff80b2d4fcc",
+  "proposals": [
+    {
+      "finding_id": "F-RES-synthesize-research-9ea9e514",
+      "classification": "DETERMINISTIC_REPAIR_AVAILABLE",
+      "rule_id": "RES-LOCAL-1",
+      "root_cause": "relative link leaves the Skill folder; Hermes skill_view refuses '..' traversal",
+      "expected_after": "skill_view('synthesize-research', file_path='CONNECTORS.md') succeeds and the file states connectors are NOT connected",
+      "unresolved": [
+        "connectors remain unavailable: no MCP/OAuth is configured or emulated"
+      ]
+    },
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "classification": "INSUFFICIENT_EVIDENCE",
+      "root_cause": "Claude `$ARGUMENTS` token in a usage example; R-C001 applies to namespaced plugin commands only",
+      "expected_after": "unchanged: the imported user Skill resolves as /<name>; no failure was reproduced",
+      "unresolved": [
+        "R-C001 precondition (namespaced plugin slash key) not met; no automatic patch"
+      ]
+    }
+  ],
+  "next": "uvp_repair.py candidate --work D:\\Hermes-Lab\\rel-smoke-003\\repair --finding <ID with DETERMINISTIC_REPAIR_AVAILABLE>"
+}

@@ -1,0 +1,22 @@
+{
+  "skills": [
+    "synthesize-research"
+  ],
+  "runtime": "PASS",
+  "final_gate": "HOLD",
+  "findings": [
+    {
+      "finding_id": "F-RES-synthesize-research-9ea9e514",
+      "kind": "BROKEN_RELATIVE_RESOURCE",
+      "skill": "synthesize-research",
+      "link": "../../CONNECTORS.md",
+      "hermes_error": "Path traversal ('..') is not allowed."
+    },
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "kind": "HOST_ARGUMENT_TOKEN",
+      "skill": "synthesize-research"
+    }
+  ],
+  "next": "uvp_repair.py plan --work D:\\Hermes-Lab\\rel-smoke-003\\repair"
+}

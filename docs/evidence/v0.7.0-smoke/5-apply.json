@@ -1,0 +1,7 @@
+{
+  "approval_kind": "TEST_DRIVER (not operator consent)",
+  "state": "COMMITTED",
+  "installed_digest": "d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d",
+  "backup": "D:\\Hermes-Lab\\rel-smoke-003\\repair\\backup-F-RES-synthesize-research-9ea9e514\\synthesize-research",
+  "next": "uvp_repair.py verify --work D:\\Hermes-Lab\\rel-smoke-003\\repair"
+}

@@ -1,7 +1,7 @@
 name: universal-plugin-port
-version: 0.6.0
+version: 0.7.0
 requires_hermes: ">=0.22.7"
-description: Experimental UVP v0.6.0. Preserves v0.5 bounded arXiv and preview tools, and adds P6 inert foreign-skill staging CLI, exact-delta AI candidate review, local per-domain default preferences, installed-Skill preflight and a no-execution three-skill recipe. No automatic foreign execution or installation.
+description: Experimental UVP v0.7.0. Adds the Migration Doctor and approved deterministic repair for Skills imported by the official Hermes agent-importers (uvp_repair.py doctor/plan/candidate/apply/verify/rollback), and keeps the v0.6.0 guided Inspect/Adapt/Approve/Install/Verify/Undo flow. Disposable Hermes homes only. No automatic foreign execution, no model calls.
 provides_tools:
   - port_probe
   - port_fetch

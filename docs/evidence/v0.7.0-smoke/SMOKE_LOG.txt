@@ -1,0 +1,127 @@
+== 1. official import: preview receipt
+== 1b. official import: execute (official AgentImporter) + postflight
+import final gate: HOLD {'INSTALL_INTEGRITY': 'PASS', 'RUNTIME_VERIFICATION': 'PASS', 'FUNCTIONAL_COMPATIBILITY': 'FAIL', 'REPAIR_VERIFICATION': 'NOT_APPLICABLE'}
+== 2. doctor
+{
+  "skills": [
+    "synthesize-research"
+  ],
+  "runtime": "PASS",
+  "final_gate": "HOLD",
+  "findings": [
+    {
+      "finding_id": "F-RES-synthesize-research-9ea9e514",
+      "kind": "BROKEN_RELATIVE_RESOURCE",
+      "skill": "synthesize-research",
+      "link": "../../CONNECTORS.md",
+      "hermes_error": "Path traversal ('..') is not allowed."
+    },
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "kind": "HOST_ARGUMENT_TOKEN",
+      "skill": "synthesize-research"
+    }
+  ],
+  "next": "uvp_repair.py plan --work D:\\Hermes-Lab\\rel-smoke-003\\repair"
+}
+== 3. plan
+{
+  "plan_sha256": "391d8fe2e167286e3c6da4cc41e8eca2ee5ce04ab6a1f5c3d160fff80b2d4fcc",
+  "proposals": [
+    {
+      "finding_id": "F-RES-synthesize-research-9ea9e514",
+      "classification": "DETERMINISTIC_REPAIR_AVAILABLE",
+      "rule_id": "RES-LOCAL-1",
+      "root_cause": "relative link leaves the Skill folder; Hermes skill_view refuses '..' traversal",
+      "expected_after": "skill_view('synthesize-research', file_path='CONNECTORS.md') succeeds and the file states connectors are NOT connected",
+      "unresolved": [
+        "connectors remain unavailable: no MCP/OAuth is configured or emulated"
+      ]
+    },
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "classification": "INSUFFICIENT_EVIDENCE",
+      "root_cause": "Claude `$ARGUMENTS` token in a usage example; R-C001 applies to namespaced plugin commands only",
+      "expected_after": "unchanged: the imported user Skill resolves as /<name>; no failure was reproduced",
+      "unresolved": [
+        "R-C001 precondition (namespaced plugin slash key) not met; no automatic patch"
+      ]
+    }
+  ],
+  "next": "uvp_repair.py candidate --work D:\\Hermes-Lab\\rel-smoke-003\\repair --finding <ID with DETERMINISTIC_REPAIR_AVAILABLE>"
+}
+== 4. candidate F-RES-synthesize-research-9ea9e514
+{
+  "finding_id": "F-RES-synthesize-research-9ea9e514",
+  "rule": "RES-LOCAL-1 v1",
+  "skill": "synthesize-research",
+  "candidate_digest": "d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d",
+  "installed_digest": "3cfe2821c2f5e6a201b9b67589ac7502419cb8ae1f84fc0249135c4a8c3daca2",
+  "changed_files": [
+    "CONNECTORS.md",
+    "SKILL.md"
+  ],
+  "diff": [
+    "--- installed/SKILL.md",
+    "+++ candidate/SKILL.md",
+    "@@ -9 +9 @@",
+    "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+    "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md)."
+  ],
+  "installed_skill_untouched": true,
+  "next": "review the diff, then: uvp_repair.py apply --work D:\\Hermes-Lab\\rel-smoke-003\\repair --finding F-RES-synthesize-research-9ea9e514 --approve-digest d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d"
+}
+== 4b. wrong digest must HOLD
+UVP REPAIR HOLD: --approve-digest does not match this candidate; nothing changed
+== 4c. non-TTY operator apply must HOLD
+UVP REPAIR HOLD: apply needs an interactive terminal (operator confirmation); refused
+== 5. apply (TEST DRIVER)
+{
+  "approval_kind": "TEST_DRIVER (not operator consent)",
+  "state": "COMMITTED",
+  "installed_digest": "d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d",
+  "backup": "D:\\Hermes-Lab\\rel-smoke-003\\repair\\backup-F-RES-synthesize-research-9ea9e514\\synthesize-research",
+  "next": "uvp_repair.py verify --work D:\\Hermes-Lab\\rel-smoke-003\\repair"
+}
+== 5b. replay must HOLD
+UVP REPAIR HOLD: HOLD: this approval was already consumed by a completed Apply (replay refused)
+== 6. verify
+{
+  "runtime": "PASS",
+  "gates": {
+    "INSTALL_INTEGRITY": "PASS",
+    "RUNTIME_VERIFICATION": "PASS",
+    "FUNCTIONAL_COMPATIBILITY": "PASS",
+    "REPAIR_VERIFICATION": "PASS"
+  },
+  "final_gate": "PASS",
+  "repaired_skills": [
+    "synthesize-research"
+  ],
+  "functional_by_skill": {
+    "synthesize-research": {
+      "status": "PASS",
+      "why": "resolves; every linked resource opens; no declared dependency"
+    }
+  },
+  "remaining_findings": [
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "kind": "HOST_ARGUMENT_TOKEN",
+      "skill": "synthesize-research"
+    }
+  ],
+  "links_resolve": {
+    "synthesize-research": {
+      "CONNECTORS.md": true
+    }
+  }
+}
+== 7. rollback
+{
+  "classification": "ROLLED_BACK",
+  "restored_digest": "3cfe2821c2f5e6a201b9b67589ac7502419cb8ae1f84fc0249135c4a8c3daca2",
+  "backup_digest": "3cfe2821c2f5e6a201b9b67589ac7502419cb8ae1f84fc0249135c4a8c3daca2"
+}
+== 8. official import rollback
+SMOKE_DONE

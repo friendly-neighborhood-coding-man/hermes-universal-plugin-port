@@ -124,4 +124,18 @@ These are engineering targets, not evidence of delivered behavior.
 - Signed or otherwise trusted evidence provenance and independent witness.
 - No silent write/network/execute/credential-sending permissions.
 
+
+## Future proposal — UVP-optimized CLI components (not implemented)
+
+After submission and stabilization, evaluate selectively adapting permissively licensed upstream CLI building blocks for UVP's specific workflow. **This is a roadmap proposal only**, not a claim of current functionality or permission to copy unreviewed code.
+
+- **Rich** (terminal presentation): adapt only if necessary for compact compatibility reports, source/changed-file provenance, full-digest review and clear install/undo receipts.
+- **Questionary** (interactive prompts): tailor for explicit source-fetch consent, `SKILLS_ONLY_PARTIAL` acknowledgement, candidate-bound approval and installation confirmation. Fail closed on EOF, non-TTY, cancellation or UI error.
+- **filelock** (workspace concurrency): tailor for per-workspace mutual exclusion, interrupted-run recovery and atomic state transitions. A UI lock is not an authorization or OS sandbox.
+- **Optional Agent Skills reference validation**: compare supported Skill syntax against the public format, with a non-authoritative reference check; do not replace UVP's provenance or execution-security gates.
+
+**Implementation preference:** first try upstream libraries as optional, version-bounded dependencies. Fork or vendor only a small, independently reviewable component when a measured Hermes compatibility, dependency-size or performance issue justifies the ongoing maintenance. Preserve the upstream copyright notices, applicable license text, attribution and modification notices; review the actual file licenses and transitive inclusions at pinned versions. Maintain a `THIRD_PARTY_NOTICES.md` and source/patch provenance when copying. Do not confuse an MIT license with a blanket waiver of its conditions.
+
+**Acceptance before activation:** unchanged noninteractive CLI and approval semantics; full source/candidate digest checks; Windows and Linux regression; Hermes catalog Doctor/Validate; dependency and license audit; no new model calls, foreign-code execution or permission bypasses. Keep experimental optimizations out of the catalog-pinned release until independently reviewed and approved.
+
 Private DIAPORIA Change Journal / Failure Intelligence are not shipped here.

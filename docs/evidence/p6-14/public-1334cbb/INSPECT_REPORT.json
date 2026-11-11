@@ -1,0 +1,74 @@
+{
+  "filesystem_and_execution_effects": [
+    "Writes only inside the workspace (source, stage, candidate, reports) and the workspace's disposable Hermes home.",
+    "install copies the approved candidate to <home>/plugins/ported-<source> and runs `hermes plugins enable` for it.",
+    "No foreign code is executed: Skills are Markdown instructions; the generated __init__.py only calls ctx.register_skill.",
+    "No connector, hook, agent or command from the source is installed or enabled.",
+    "No model is called by any step."
+  ],
+  "limitations": [
+    "SKILLS_ONLY_PARTIAL: MCP/OAuth connectors and commands are not ported.",
+    "SEMANTIC_EQUIVALENCE_NOT_ESTABLISHED: Hermes following a ported Skill is not proof of Claude-equivalent behaviour.",
+    "A disposable HERMES_HOME is not an OS sandbox."
+  ],
+  "model_calls": 0,
+  "required_adaptation_rules": "computed by `stage` (compat report) and applied by `adapt`",
+  "schema": "universal-port.inspect/1",
+  "source": {
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "repo_url": "https://github.com/anthropics/knowledge-work-plugins/tree/e605d8ddbfb688da57dfaaceebd93f12a64ef1d3/product-management"
+  },
+  "source_file_sha256": {
+    ".claude-plugin/plugin.json": "69742e798d5052d41188b877c1ab39c7184bdf03ae946bbaeb794fd20c8e5f85",
+    ".mcp.json": "cf1e1d5e2b5a51eecdb2cf15463527b976c41db20997e6a864dd746834a0ce1b",
+    "CONNECTORS.md": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+    "LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+    "README.md": "44c21947033cdff521f01adc77f1cf38ea71abe0027cf1d625090ac949a13b9f",
+    "commands/brainstorm.md": "fb0ce47a71ac9b7d952cfaafaf40ad361b53d5e9627e93f409bd1ccc80cc0522",
+    "skills/competitive-brief/SKILL.md": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+    "skills/metrics-review/SKILL.md": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+    "skills/product-brainstorming/SKILL.md": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+    "skills/roadmap-update/SKILL.md": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+    "skills/sprint-planning/SKILL.md": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+    "skills/stakeholder-update/SKILL.md": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+    "skills/synthesize-research/SKILL.md": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+    "skills/write-spec/SKILL.md": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc"
+  },
+  "supported": {
+    "skills": [
+      "competitive-brief",
+      "metrics-review",
+      "product-brainstorming",
+      "roadmap-update",
+      "sprint-planning",
+      "stakeholder-update",
+      "synthesize-research",
+      "write-spec"
+    ]
+  },
+  "unsupported": {
+    "agents": false,
+    "commands": [
+      "brainstorm.md"
+    ],
+    "connectors": [
+      "amplitude",
+      "amplitude-eu",
+      "asana",
+      "atlassian",
+      "clickup",
+      "figma",
+      "fireflies",
+      "gmail",
+      "google calendar",
+      "intercom",
+      "linear",
+      "monday",
+      "notion",
+      "pendo",
+      "similarweb",
+      "slack"
+    ],
+    "hooks": false
+  }
+}

@@ -17,6 +17,37 @@ The pinned target is Anthropic's Apache-2.0 `knowledge-work-plugins/product-mana
 
 This holds for all three pilot Skills. Both failures are real Hermes behaviour, not simulated. Each adaptation is recorded with before and after SHA-256 in `ADAPTATION_MANIFEST.json`, and `original/` stays byte-identical.
 
+## New in v0.7.0: Official Import → Migration Doctor → Repair Plan → Approved Repair → Hermes Verification
+
+Hermes's official `agent-importers` plugin can report a Skill as imported while it is still broken in Hermes. The main case is a help link that points outside the Skill folder, such as `../../CONNECTORS.md`. Hermes refuses it with `Path traversal ('..') is not allowed.` UVP v0.7.0 diagnoses what the importer left behind and repairs only what a deterministic rule covers. You approve the exact repaired bytes, and a fresh Hermes process checks the result.
+
+You need a disposable Hermes home (one carrying a `.uvp-disposable` file) into which the official importer has written. `scripts/p615_preview_official_import.py` and `scripts/p615_apply_official_import.py` drive the pinned official importer with a digest-bound preflight and postflight. Then run:
+
+```bash
+python uvp_repair.py doctor    --home <home> --work ./repair-1 --origin synthesize-research=<source clone>::product-management/skills/synthesize-research
+python uvp_repair.py plan      --work ./repair-1
+python uvp_repair.py candidate --work ./repair-1 --finding <ID marked DETERMINISTIC_REPAIR_AVAILABLE>
+python uvp_repair.py apply     --work ./repair-1 --finding <ID> --approve-digest <candidate_digest>
+#   then type APPLY <last 12 characters>
+python uvp_repair.py verify    --work ./repair-1
+python uvp_repair.py rollback  --work ./repair-1 --finding <ID>
+```
+
+- **doctor:** a fresh Hermes process runs `skill_view` on every imported Skill and every link inside it, and a static scan runs alongside. Each problem gets a finding ID: `BROKEN_RELATIVE_RESOURCE`, `DECLARED_DEPENDENCIES_UNVERIFIED` or `HOST_ARGUMENT_TOKEN`.
+- **plan:** applies deterministic rules only. `RES-LOCAL-1` copies the missing file from the pinned original source next to `SKILL.md`, adds a change notice and rewrites the link. Dependencies and anything uncertain are reported as `DEPENDENCY_ACTION_REQUIRED`, `INSUFFICIENT_EVIDENCE` or `UNSUPPORTED`, never guessed.
+- **candidate:** builds the repaired Skill in the work directory and prints the diff and digest. The installed Skill is not touched.
+- **apply:** refuses a wrong or stale digest, a changed plan, a changed target Skill, a replayed approval and a non-interactive terminal. The backup, journal and one-time ledger stay outside the home.
+- **verify:** reports the gates separately: `INSTALL_INTEGRITY`, `RUNTIME_VERIFICATION`, `FUNCTIONAL_COMPATIBILITY` and `REPAIR_VERIFICATION`. Any `FAIL` or `NOT_VERIFIED` in a required gate makes the final gate `HOLD`.
+- **rollback:** restores the Skill's bytes from the journal's backup.
+
+`repair_rules.py` also ships the rule engine `INPUT-VARS-1` (Copilot `${input:…}` placeholders), `RES-CLOSURE-1` and `SKILL-REF-1`, covered by `tests/test_p617_rules.py`. The Doctor CLI applies `RES-LOCAL-1` in this release.
+
+Reproduce the whole chain on a disposable home: `bash scripts/uvp_repair_smoke.sh <home> <official agent-importers dir> <anthropics/knowledge-work-plugins clone @e605d8dd> <new work dir>`. It uses a test-driver approval for the apply step, and the output labels it so.
+
+Recorded run on Hermes v0.22.7 in a fresh disposable home ([`docs/evidence/v0.7.0-smoke/`](docs/evidence/v0.7.0-smoke/)): after the official import, INSTALL_INTEGRITY was PASS but FUNCTIONAL_COMPATIBILITY was FAIL. The Doctor found `../../CONNECTORS.md` refused as path traversal. RES-LOCAL-1 produced a one-line diff plus the local file. A wrong digest, a non-interactive terminal and a replay were all refused. After the apply, all four gates were PASS. The rollback restored the exact pre-repair digest.
+
+Limits: disposable homes only, Skills only, and connectors are not connected. No model task was run, so the repaired Skill's behaviour is not verified. One deterministic rule is wired into the Doctor CLI.
+
 ## Quickstart (guided, disposable): Inspect → Adapt → Approve → Install → Verify → Undo
 
 Requires Python 3.12+ (tested on 3.12 and 3.14) and the Hermes CLI on `PATH` (or `HERMES_EXE`). Each step is one command. Every step that downloads, stages, approves or installs needs its own explicit input. Each step prints the exact next command.
@@ -71,7 +102,7 @@ Hermes's `agent-importers` plugin documents that it copies Skills into `~/.herme
 - rewrites only what a deterministic, evidence-pinned rule covers;
 - installs as a namespaced plugin with rollback.
 
-This comparison is **documentation-based**: the official importer was **not executed**, so whether its copy hits the same two failures is NOT_RUN ([`importer_comparison.py`](importer_comparison.py)).
+In v0.6.0 this comparison was documentation-based. In v0.7.0 UVP drives the pinned official importer itself (`scripts/p615_*_official_import.py`) and runs the Migration Doctor on what it installed (section above).
 
 ## Honest limits
 

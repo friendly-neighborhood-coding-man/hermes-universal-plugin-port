@@ -10,7 +10,7 @@
 # against a fresh public clone at that commit.
 name: universal-plugin-port
 repo: https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port
-sha: 86b4e6d3097b4f96e26529e53daa09b9c314fef0   # public release verified 2026-11-11 (anonymous clone, CI, validate)
+sha: 1334cbbda8bd37f1a06178b72a533fde59686c06   # P6.14 public release, all gates passed 2026-11-11
 description: >-
   Inspect plugins from other agent ecosystems (Claude Code/Cowork, Codex, OpenClaw), report
   what cannot be ported, and stage a Hermes-native package without installing it. Original

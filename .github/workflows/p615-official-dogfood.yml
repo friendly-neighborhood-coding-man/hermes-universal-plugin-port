@@ -1,0 +1,89 @@
+name: P6.15 pinned upstream importer dogfood
+on:
+  push:
+    branches: [feat/p615-official-import-assurance]
+    paths:
+      - "official_import_assurance.py"
+      - "scripts/p615_*.py"
+      - "tests/test_p615_dogfood_contract.py"
+      - "tests/test_official_import_assurance.py"
+      - "tests/test_p615_official_cli.py"
+      - ".github/workflows/p615-official-dogfood.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: uvp-p615-dogfood-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  official-preview:
+    name: official preview / ${{ matrix.os }}
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 12
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    env:
+      PYTHONDONTWRITEBYTECODE: "1"
+      PINNED_OFFICIAL_SHA: 8b5b6296bbb900f90e296b4729d2c9a5d1139825
+    steps:
+      - name: Checkout UVP review branch
+        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683
+        with:
+          persist-credentials: false
+      - name: Python version and existing isolated tests
+        shell: bash
+        run: |
+          python --version
+          python -m unittest discover -s tests -p "test_official_import_assurance.py" -v
+          python -m unittest discover -s tests -p "test_p615_official_cli.py" -v
+          python -m unittest discover -s tests -p "test_p615_dogfood_contract.py" -v
+      - name: Fetch exact reviewed official source (never installer)
+        shell: bash
+        run: |
+          git clone --quiet https://github.com/NousResearch/hermes-official-plugins.git upstream-official
+          git -C upstream-official checkout --quiet "$PINNED_OFFICIAL_SHA"
+          test "$(git -C upstream-official rev-parse HEAD)" = "$PINNED_OFFICIAL_SHA"
+          git -C upstream-official status --porcelain
+      - name: Actual official importer code / 3 agents x 3 scenarios
+        shell: bash
+        run: |
+          python scripts/p615_dogfood_matrix.py \
+            --official-package upstream-official/agent-importers \
+            --expected-upstream-sha "$PINNED_OFFICIAL_SHA" \
+            --report p615-dogfood-report.json
+          python -c "import json; r=json.load(open('p615-dogfood-report.json')); print(json.dumps([{'agent':x['agent'],'case':x['scenario'],'pass':x['pass'],'gate':x['actual_gate'],'assertions':x['assertions'],'stderr':x['stderr_excerpt']} for x in r['cases']],indent=2)); assert r['pass']==r['total']"
+      - name: Fetch pinned Anthropic and OpenAI Skill packs
+        shell: bash
+        run: |
+          git clone --quiet --filter=blob:none --no-checkout https://github.com/anthropics/knowledge-work-plugins.git skill-anthropic
+          git -C skill-anthropic sparse-checkout set product-management/skills/synthesize-research
+          git -C skill-anthropic checkout --quiet e605d8ddbfb688da57dfaaceebd93f12a64ef1d3
+          test "$(git -C skill-anthropic rev-parse HEAD)" = "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3"
+          git clone --quiet --filter=blob:none --no-checkout https://github.com/openai/skills.git skill-openai
+          git -C skill-openai sparse-checkout set skills/.curated/pdf
+          git -C skill-openai checkout --quiet 49f948faa9258a0c61caceaf225e179651397431
+          test "$(git -C skill-openai rev-parse HEAD)" = "49f948faa9258a0c61caceaf225e179651397431"
+      - name: Real Skill pack structural preview (no actual Skill execution)
+        shell: bash
+        run: |
+          python scripts/p615_external_skill_probe.py \
+            --official-package upstream-official/agent-importers \
+            --skill-pack skill-anthropic/product-management/skills/synthesize-research \
+            --skill-pack skill-openai/skills/.curated/pdf \
+            --report p615-real-skill-packs.json
+          python -c "import json; r=json.load(open('p615-real-skill-packs.json')); print(json.dumps(r['results'],indent=2)); assert r['passed']==r['total']"
+      - name: Upload redacted synthetic dogfood evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: p615-dogfood-${{ matrix.os }}
+          path: |
+            p615-dogfood-report.json
+            p615-real-skill-packs.json
+          if-no-files-found: ignore
+          retention-days: 5

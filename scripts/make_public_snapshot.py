@@ -99,7 +99,7 @@ def main(commit, out):
                 for kind, rx in SCAN:
                     for hit in rx.findall(s):
                         h = hit if isinstance(hit, str) else hit[0]
-                        if kind == "email" and (h in EMAIL_OK or h.endswith("@example.com") or h.endswith(".invalid")):
+                        if kind == "email" and (h in EMAIL_OK or h.endswith(("@example.com", "@example.org", "@example.net")) or h.endswith(".invalid")):
                             continue
                         findings.append({"path": rel, "kind": kind, "match": h[:60]})
     note = ("# Sanitized public snapshot\n\nExported from private commit `%s` with `git archive` (no history).\n"

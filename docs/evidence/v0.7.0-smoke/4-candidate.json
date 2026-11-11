@@ -1,0 +1,20 @@
+{
+  "finding_id": "F-RES-synthesize-research-9ea9e514",
+  "rule": "RES-LOCAL-1 v1",
+  "skill": "synthesize-research",
+  "candidate_digest": "d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d",
+  "installed_digest": "3cfe2821c2f5e6a201b9b67589ac7502419cb8ae1f84fc0249135c4a8c3daca2",
+  "changed_files": [
+    "CONNECTORS.md",
+    "SKILL.md"
+  ],
+  "diff": [
+    "--- installed/SKILL.md",
+    "+++ candidate/SKILL.md",
+    "@@ -9 +9 @@",
+    "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+    "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md)."
+  ],
+  "installed_skill_untouched": true,
+  "next": "review the diff, then: uvp_repair.py apply --work D:\\Hermes-Lab\\rel-smoke-003\\repair --finding F-RES-synthesize-research-9ea9e514 --approve-digest d719b6f135ec54fa434a59ca945be5a451cc751d13a801193b65fc4bc591303d"
+}

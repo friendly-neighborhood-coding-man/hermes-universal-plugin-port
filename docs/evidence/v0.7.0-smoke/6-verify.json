@@ -1,0 +1,31 @@
+{
+  "runtime": "PASS",
+  "gates": {
+    "INSTALL_INTEGRITY": "PASS",
+    "RUNTIME_VERIFICATION": "PASS",
+    "FUNCTIONAL_COMPATIBILITY": "PASS",
+    "REPAIR_VERIFICATION": "PASS"
+  },
+  "final_gate": "PASS",
+  "repaired_skills": [
+    "synthesize-research"
+  ],
+  "functional_by_skill": {
+    "synthesize-research": {
+      "status": "PASS",
+      "why": "resolves; every linked resource opens; no declared dependency"
+    }
+  },
+  "remaining_findings": [
+    {
+      "finding_id": "F-ARG-synthesize-research",
+      "kind": "HOST_ARGUMENT_TOKEN",
+      "skill": "synthesize-research"
+    }
+  ],
+  "links_resolve": {
+    "synthesize-research": {
+      "CONNECTORS.md": true
+    }
+  }
+}
