@@ -1,0 +1,482 @@
+{
+  "adaptation_manifest_sha256": "ec487b88fab21262ab07ebc28172c4a5ac207ded00d52d755abddd33d5f822b0",
+  "candidate_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+  "candidate_files": 35,
+  "candidate_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\candidate\\ported-product-management",
+  "files_changed_by_uvp": [
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/competitive-brief/CONNECTORS.md",
+        "+++ candidate/skills/competitive-brief/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/competitive-brief/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "c7f673ac5a9a08440bec1977b4105f05835233ec109ab33bcfaf821e167fbed2",
+      "before_sha256": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+      "changed_spans": [
+        "--- stage/skills/competitive-brief/SKILL.md",
+        "+++ candidate/skills/competitive-brief/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/competitive-brief/SKILL.md (sha256 720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/competitive-brief $ARGUMENTS",
+        "+/ported-product-management:competitive-brief <competitor or feature area>"
+      ],
+      "path": "skills/competitive-brief/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/metrics-review/CONNECTORS.md",
+        "+++ candidate/skills/metrics-review/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/metrics-review/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "82811c0d005edd4348c1977b33ff09d2369bd7651056c9653b4bd40dd1a2f954",
+      "before_sha256": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+      "changed_spans": [
+        "--- stage/skills/metrics-review/SKILL.md",
+        "+++ candidate/skills/metrics-review/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/metrics-review/SKILL.md (sha256 e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/metrics-review $ARGUMENTS",
+        "+/ported-product-management:metrics-review <time period or metric focus>"
+      ],
+      "path": "skills/metrics-review/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/roadmap-update/CONNECTORS.md",
+        "+++ candidate/skills/roadmap-update/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/roadmap-update/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "9cea578b1ab5b9a1e793975e5591dd6561e771e5845d19c3b9b77512159659fa",
+      "before_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+      "changed_spans": [
+        "--- stage/skills/roadmap-update/SKILL.md",
+        "+++ candidate/skills/roadmap-update/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/roadmap-update/SKILL.md (sha256 bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/roadmap-update $ARGUMENTS",
+        "+/ported-product-management:roadmap-update <update description>"
+      ],
+      "path": "skills/roadmap-update/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/sprint-planning/CONNECTORS.md",
+        "+++ candidate/skills/sprint-planning/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/sprint-planning/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "285cf50dbc69a286b8e7ba86cf69077a6468ff13dba94276e2f0c44d7281cc44",
+      "before_sha256": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+      "changed_spans": [
+        "--- stage/skills/sprint-planning/SKILL.md",
+        "+++ candidate/skills/sprint-planning/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/sprint-planning/SKILL.md (sha256 c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/sprint-planning $ARGUMENTS",
+        "+/ported-product-management:sprint-planning [sprint name or date range]"
+      ],
+      "path": "skills/sprint-planning/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/stakeholder-update/CONNECTORS.md",
+        "+++ candidate/skills/stakeholder-update/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/stakeholder-update/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "67bb529204466eca50ba14df342610f4991ee8bd81e303c266abcb88892e3cb1",
+      "before_sha256": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+      "changed_spans": [
+        "--- stage/skills/stakeholder-update/SKILL.md",
+        "+++ candidate/skills/stakeholder-update/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/stakeholder-update/SKILL.md (sha256 bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/stakeholder-update $ARGUMENTS",
+        "+/ported-product-management:stakeholder-update <update type and audience>"
+      ],
+      "path": "skills/stakeholder-update/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/synthesize-research/CONNECTORS.md",
+        "+++ candidate/skills/synthesize-research/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/synthesize-research/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "eb1778925668ea6a10d6b5bab60ac6a2c78db58fdf7ca05ae9f25198f5fd608f",
+      "before_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+      "changed_spans": [
+        "--- stage/skills/synthesize-research/SKILL.md",
+        "+++ candidate/skills/synthesize-research/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/synthesize-research/SKILL.md (sha256 ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/synthesize-research $ARGUMENTS",
+        "+/ported-product-management:synthesize-research <research topic or question>"
+      ],
+      "path": "skills/synthesize-research/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    },
+    {
+      "added": true,
+      "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+      "before_sha256": null,
+      "changed_spans": [
+        "--- stage/skills/write-spec/CONNECTORS.md",
+        "+++ candidate/skills/write-spec/CONNECTORS.md",
+        "@@ -0,0 +1,25 @@",
+        "+<!-- Modified by Universal Plugin Port (RES-LOCAL-1): copied next to the Skill so Hermes skill_view can serve it. Original: original/CONNECTORS.md (sha256 f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e). Apache-2.0 section 4(b) change notice. -->",
+        "+> **UVP note:** In this Hermes port the connectors described below are NOT connected (SKILLS_ONLY_PARTIAL). Treat every `~~category` as unavailable unless a Hermes tool for it is actually present.",
+        "+",
+        "+# Connectors",
+        "+",
+        "+## How tool references work",
+        "+",
+        "+Plugin files use `~~category` as a placeholder for whatever tool the user connects in that category. For example, `~~project tracker` might mean Linear, Asana, Jira, or any other tracker with an MCP server.",
+        "+",
+        "+Plugins are **tool-agnostic** \u2014 they describe workflows in terms of categories (project tracker, design, product analytics, etc.) rather than specific products. The `.mcp.json` pre-configures specific MCP servers, but any MCP server in that category works.",
+        "+",
+        "+## Connectors for this plugin",
+        "+",
+        "+| Category | Placeholder | Included servers | Other options |",
+        "+|----------|-------------|-----------------|---------------|",
+        "+| Calendar | `~~calendar` | Google Calendar | Microsoft 365 |",
+        "+| Chat | `~~chat` | Slack | Microsoft Teams |",
+        "+| Competitive intelligence | `~~competitive intelligence` | Similarweb | Crayon, Klue |",
+        "+| Design | `~~design` | Figma | Sketch, Adobe XD |",
+        "+| Email | `~~email` | Gmail | Microsoft 365 |",
+        "+| Knowledge base | `~~knowledge base` | Notion | Confluence, Guru, Coda |",
+        "+| Meeting transcription | `~~meeting transcription` | Fireflies | Gong, Dovetail, Otter.ai |",
+        "+| Product analytics | `~~product analytics` | Amplitude, Pendo | Mixpanel, Heap, FullStory |",
+        "+| Project tracker | `~~project tracker` | Linear, Asana, monday.com, ClickUp, Atlassian (Jira/Confluence) | Shortcut, Basecamp |",
+        "+| User feedback | `~~user feedback` | Intercom | Productboard, Canny, UserVoice |"
+      ],
+      "path": "skills/write-spec/CONNECTORS.md",
+      "rules": [
+        "RES-LOCAL-1"
+      ],
+      "source": "original/CONNECTORS.md"
+    },
+    {
+      "added": false,
+      "after_sha256": "8106cc2acc8f8689ccc7aefa0587f1ea30a033e9cb977481ba96d2fdfb921d2a",
+      "before_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+      "changed_spans": [
+        "--- stage/skills/write-spec/SKILL.md",
+        "+++ candidate/skills/write-spec/SKILL.md",
+        "@@ -5,0 +6 @@",
+        "+<!-- Modified by Universal Plugin Port (R-C001,RES-LOCAL-1): host-semantic adaptation. Original: original/skills/write-spec/SKILL.md (sha256 ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc). Apache-2.0 section 4(b) change notice. -->",
+        "@@ -9 +10 @@",
+        "-> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](../../CONNECTORS.md).",
+        "+> If you see unfamiliar placeholders or need to check which tools are connected, see [CONNECTORS.md](CONNECTORS.md).",
+        "@@ -16 +17 @@",
+        "-/write-spec $ARGUMENTS",
+        "+/ported-product-management:write-spec <feature or problem statement>"
+      ],
+      "path": "skills/write-spec/SKILL.md",
+      "rules": [
+        "R-C001",
+        "RES-LOCAL-1"
+      ],
+      "source": null
+    }
+  ],
+  "files_unchanged_from_stage": [
+    "PORTING_REPORT.json",
+    "REVIEW_REQUIRED.md",
+    "SOURCE_HASHES.json",
+    "__init__.py",
+    "plugin.yaml",
+    "skills/product-brainstorming/SKILL.md"
+  ],
+  "model_calls": 0,
+  "originals_preserved": {
+    "count": 14,
+    "identical_to_stage": true
+  },
+  "rules_applied": [
+    "R-C001",
+    "RES-LOCAL-1"
+  ],
+  "schema": "universal-port.candidate-review/1",
+  "source": {
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "repo_url": "https://github.com/anthropics/knowledge-work-plugins/tree/e605d8ddbfb688da57dfaaceebd93f12a64ef1d3/product-management"
+  },
+  "stage_digest": "53d898f9349206a1f3e54927f3519aecc7e169b83a5194ddd0298df450663681",
+  "unsupported_not_installed": {
+    "connectors": {},
+    "status": "SKILLS_ONLY_PARTIAL"
+  },
+  "will_install": "35 files to <home>/plugins/ported-product-management, then `hermes plugins enable ported-product-management`",
+  "will_not_install_or_enable": [
+    "MCP/OAuth connectors",
+    "source commands/hooks/agents",
+    "any other plugin"
+  ]
+}

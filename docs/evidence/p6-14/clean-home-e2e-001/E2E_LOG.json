@@ -1,0 +1,533 @@
+{
+  "schema": "universal-port.p614-e2e/1",
+  "workspace": "D:\\Hermes-Lab\\uvp-p614-e2e-001",
+  "python": "3.14.6",
+  "os": "Windows-11-10.0.26300-SP0",
+  "hermes_version": "Hermes Agent v0.22.7 (2026.9.24) \u00b7 stable \u00b7 local b200f5bc60e3",
+  "model_calls": 0,
+  "approval_kind": "SIMULATED_BY_TEST_DRIVER (digest read from CANDIDATE_REVIEW.json)",
+  "manual_filesystem_operations": 0,
+  "steps": [
+    {
+      "command": "uvp_guided.py init",
+      "rc": 0,
+      "seconds": 146.5,
+      "output": {
+        "ok": true,
+        "step": "init",
+        "operator_inputs": [
+          "--workspace"
+        ],
+        "automatic": [
+          "disposable Hermes home",
+          "Hermes first-run bootstrap"
+        ],
+        "result": {
+          "home": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home",
+          "bootstrap_seconds": 140,
+          "bootstrap_rc": 0,
+          "hermes": "Hermes Agent v0.22.7 (2026.9.24) \u00b7 stable \u00b7 local b200f5bc60e3"
+        }
+      }
+    },
+    {
+      "command": "uvp_guided.py select",
+      "rc": 0,
+      "seconds": 0.3,
+      "output": {
+        "ok": true,
+        "step": "select",
+        "operator_inputs": [],
+        "automatic": [
+          "pinned commit from the UVP source catalog"
+        ],
+        "result": {
+          "title": "Anthropic knowledge-work-plugins / product-management (Apache-2.0)",
+          "url": "https://github.com/anthropics/knowledge-work-plugins/tree/e605d8ddbfb688da57dfaaceebd93f12a64ef1d3/product-management",
+          "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+          "demo_skills": [
+            "synthesize-research",
+            "write-spec",
+            "roadmap-update"
+          ]
+        },
+        "next": "python uvp_guided.py inspect --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\" --i-approve-fetch"
+      }
+    },
+    {
+      "command": "uvp_guided.py inspect --i-approve-fetch",
+      "rc": 0,
+      "seconds": 9.8,
+      "output": {
+        "ok": true,
+        "step": "inspect",
+        "operator_inputs": [
+          "--i-approve-fetch"
+        ],
+        "automatic": [
+          "download at the pinned commit",
+          "commit check",
+          "capability inventory"
+        ],
+        "result": {
+          "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+          "source_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\source\\source-anthropics-knowledge-work-plugins-e",
+          "inventory": {
+            "skills": [
+              "competitive-brief",
+              "metrics-review",
+              "product-brainstorming",
+              "roadmap-update",
+              "sprint-planning",
+              "stakeholder-update",
+              "synthesize-research",
+              "write-spec"
+            ],
+            "connectors": [
+              "amplitude",
+              "amplitude-eu",
+              "asana",
+              "atlassian",
+              "clickup",
+              "figma",
+              "fireflies",
+              "gmail",
+              "google calendar",
+              "intercom",
+              "linear",
+              "monday",
+              "notion",
+              "pendo",
+              "similarweb",
+              "slack"
+            ],
+            "commands": [
+              "brainstorm.md"
+            ],
+            "hooks": false,
+            "agents": false
+          },
+          "files": 14,
+          "report": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\INSPECT_REPORT.json"
+        },
+        "next": "python uvp_guided.py stage --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\" --i-accept-skills-only-partial"
+      }
+    },
+    {
+      "command": "uvp_guided.py stage --i-accept-skills-only-partial",
+      "rc": 0,
+      "seconds": 0.7,
+      "output": {
+        "ok": true,
+        "step": "stage",
+        "operator_inputs": [
+          "--i-accept-skills-only-partial"
+        ],
+        "automatic": [
+          "inert Hermes package (originals byte-preserved)",
+          "deterministic compatibility report"
+        ],
+        "result": {
+          "status": "SKILLS_ONLY_PARTIAL",
+          "staged_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\stage\\ported-product-management",
+          "unported_connectors": 16,
+          "compat_counts": {
+            "skills": 8,
+            "direct_exact_regions": 35,
+            "composed_mappings_applied": 7,
+            "composed_already_mapped": 0,
+            "provisional_verifications": 8,
+            "unresolved_residuals": 7,
+            "ai_eligible_residuals": 0,
+            "unsupported_items": 16,
+            "files_changed": 7,
+            "holds": 0
+          },
+          "model_calls": 0,
+          "rules_applicable": [
+            [
+              "R-C001",
+              1
+            ],
+            [
+              "R-D001",
+              1
+            ]
+          ],
+          "report": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\compat-report\\COMPAT_REPORT.md"
+        },
+        "next": "python uvp_guided.py adapt --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\""
+      }
+    },
+    {
+      "command": "uvp_guided.py adapt",
+      "rc": 0,
+      "seconds": 1.1,
+      "output": {
+        "ok": true,
+        "step": "adapt",
+        "operator_inputs": [],
+        "automatic": [
+          "deterministic adaptation into a separate candidate (stage untouched)",
+          "candidate self-verification",
+          "candidate digest + human-readable review"
+        ],
+        "result": {
+          "candidate_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+          "files_changed_by_uvp": 14,
+          "rules_applied": [
+            "R-C001",
+            "RES-LOCAL-1"
+          ],
+          "review": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\CANDIDATE_REVIEW.md",
+          "model_calls": 0
+        },
+        "next": "python uvp_guided.py approve --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\" --candidate-digest 02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3   (after reading CANDIDATE_REVIEW.md)"
+      }
+    },
+    {
+      "command": "uvp_guided.py approve --candidate-digest 02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+      "rc": 0,
+      "seconds": 0.3,
+      "output": {
+        "ok": true,
+        "step": "approve",
+        "operator_inputs": [
+          "--candidate-digest"
+        ],
+        "automatic": [
+          "digest recomputed and compared"
+        ],
+        "result": {
+          "approved_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3"
+        },
+        "next": "python uvp_guided.py install --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\" --i-approve-install"
+      }
+    },
+    {
+      "command": "uvp_guided.py install --i-approve-install",
+      "rc": 0,
+      "seconds": 74.2,
+      "output": {
+        "ok": true,
+        "step": "install",
+        "operator_inputs": [
+          "--i-approve-install"
+        ],
+        "automatic": [
+          "re-verify approval, digest, manifest, source hashes, path",
+          "validate before swap",
+          "copy the approved candidate",
+          "hermes plugins enable",
+          "installed-digest + runtime check",
+          "automatic rollback on failure"
+        ],
+        "result": {
+          "approved_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+          "installed_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+          "installed_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home\\plugins\\ported-product-management",
+          "match": true,
+          "result": "APPLIED",
+          "backup": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home\\.uvp-backups\\ported-product-management-1794367877671111900",
+          "installed_files": {
+            "__init__.py": "0ddcce8090bb7710b06a7d37a165af24c7365d1a3c8cdbf2b36cc808445568e2",
+            "ADAPTATION_MANIFEST.json": "ec487b88fab21262ab07ebc28172c4a5ac207ded00d52d755abddd33d5f822b0",
+            "original/.claude-plugin/plugin.json": "69742e798d5052d41188b877c1ab39c7184bdf03ae946bbaeb794fd20c8e5f85",
+            "original/.mcp.json": "cf1e1d5e2b5a51eecdb2cf15463527b976c41db20997e6a864dd746834a0ce1b",
+            "original/commands/brainstorm.md": "fb0ce47a71ac9b7d952cfaafaf40ad361b53d5e9627e93f409bd1ccc80cc0522",
+            "original/CONNECTORS.md": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+            "original/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+            "original/README.md": "44c21947033cdff521f01adc77f1cf38ea71abe0027cf1d625090ac949a13b9f",
+            "original/skills/competitive-brief/SKILL.md": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+            "original/skills/metrics-review/SKILL.md": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+            "original/skills/product-brainstorming/SKILL.md": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+            "original/skills/roadmap-update/SKILL.md": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+            "original/skills/sprint-planning/SKILL.md": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+            "original/skills/stakeholder-update/SKILL.md": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+            "original/skills/synthesize-research/SKILL.md": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+            "original/skills/write-spec/SKILL.md": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+            "plugin.yaml": "32097a6ae345c1896deb449e0e470df09b56caaf024d9e5ae712aebe75d4654f",
+            "PORTING_REPORT.json": "234be9594c11f9bc158ee768c379c73d071b40501c555c93ae740bd15b417db7",
+            "REVIEW_REQUIRED.md": "6d4baebfcf66c8a021517218e63eebb3d982da29121cb0e3ab5d807e55ba6360",
+            "skills/competitive-brief/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/competitive-brief/SKILL.md": "c7f673ac5a9a08440bec1977b4105f05835233ec109ab33bcfaf821e167fbed2",
+            "skills/metrics-review/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/metrics-review/SKILL.md": "82811c0d005edd4348c1977b33ff09d2369bd7651056c9653b4bd40dd1a2f954",
+            "skills/product-brainstorming/SKILL.md": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+            "skills/roadmap-update/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/roadmap-update/SKILL.md": "9cea578b1ab5b9a1e793975e5591dd6561e771e5845d19c3b9b77512159659fa",
+            "skills/sprint-planning/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/sprint-planning/SKILL.md": "285cf50dbc69a286b8e7ba86cf69077a6468ff13dba94276e2f0c44d7281cc44",
+            "skills/stakeholder-update/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/stakeholder-update/SKILL.md": "67bb529204466eca50ba14df342610f4991ee8bd81e303c266abcb88892e3cb1",
+            "skills/synthesize-research/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/synthesize-research/SKILL.md": "eb1778925668ea6a10d6b5bab60ac6a2c78db58fdf7ca05ae9f25198f5fd608f",
+            "skills/write-spec/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+            "skills/write-spec/SKILL.md": "8106cc2acc8f8689ccc7aefa0587f1ea30a033e9cb977481ba96d2fdfb921d2a",
+            "SOURCE_HASHES.json": "cecf6ca8265ed2f162a73a822981806f23a69f23cc0072f61505e33f97882c84"
+          }
+        },
+        "next": "python uvp_guided.py verify --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\""
+      }
+    },
+    {
+      "command": "uvp_guided.py verify",
+      "rc": 0,
+      "seconds": 6.5,
+      "output": {
+        "ok": true,
+        "step": "verify",
+        "operator_inputs": [],
+        "automatic": [
+          "resolve Hermes runtime",
+          "plugin discovery",
+          "skill_view",
+          "slash argument delivery"
+        ],
+        "result": {
+          "ok": true,
+          "registered": [
+            "ported-product-management:competitive-brief",
+            "ported-product-management:metrics-review",
+            "ported-product-management:product-brainstorming",
+            "ported-product-management:roadmap-update",
+            "ported-product-management:sprint-planning",
+            "ported-product-management:stakeholder-update",
+            "ported-product-management:synthesize-research",
+            "ported-product-management:write-spec"
+          ],
+          "skill_view": {
+            "ported-product-management:synthesize-research": true,
+            "ported-product-management:write-spec": true,
+            "ported-product-management:roadmap-update": true
+          },
+          "slash_argument_delivered": {
+            "ported-product-management:synthesize-research": true,
+            "ported-product-management:write-spec": true,
+            "ported-product-management:roadmap-update": true
+          },
+          "documented_usage": {
+            "ported-product-management:synthesize-research": {
+              "line": "/ported-product-management:synthesize-research <research topic or question>",
+              "resolves": true,
+              "argument_delivered": true
+            },
+            "ported-product-management:write-spec": {
+              "line": "/ported-product-management:write-spec <feature or problem statement>",
+              "resolves": true,
+              "argument_delivered": true
+            },
+            "ported-product-management:roadmap-update": {
+              "line": "/ported-product-management:roadmap-update <update description>",
+              "resolves": true,
+              "argument_delivered": true
+            }
+          },
+          "resource": {
+            "ported-product-management:synthesize-research": {
+              "link": "CONNECTORS.md",
+              "skill_view_success": true,
+              "error": null,
+              "states_connectors_not_connected": true
+            },
+            "ported-product-management:write-spec": {
+              "link": "CONNECTORS.md",
+              "skill_view_success": true,
+              "error": null,
+              "states_connectors_not_connected": true
+            },
+            "ported-product-management:roadmap-update": {
+              "link": "CONNECTORS.md",
+              "skill_view_success": true,
+              "error": null,
+              "states_connectors_not_connected": true
+            }
+          },
+          "installed_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+          "installed_digest_matches_approval": true
+        },
+        "next": "python uvp_guided.py demo --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\""
+      }
+    },
+    {
+      "command": "uvp_guided.py demo",
+      "rc": 0,
+      "seconds": 0.3,
+      "output": {
+        "ok": true,
+        "step": "demo",
+        "operator_inputs": [],
+        "automatic": [
+          "fixture copy",
+          "prompt from the installed Skill names"
+        ],
+        "result": {
+          "prompt": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\\prompt.txt",
+          "model_calls": 0,
+          "to_run_with_a_model": "set HERMES_HOME=D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home && set HERMES_WRITE_SAFE_ROOT=D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run && hermes chat --query-file \"D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\\prompt.txt\" --oneshot --format stream-json --in \"D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\" -t skills,file --max-turns 40",
+          "note": "Running it makes paid model calls; UVP does not run it for you. HERMES_WRITE_SAFE_ROOT bounds file writes only when set in the environment of the process that executes tools."
+        },
+        "next": "python uvp_guided.py undo --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\"   (when you are done)"
+      }
+    },
+    {
+      "command": "uvp_guided.py undo",
+      "rc": 0,
+      "seconds": 8.5,
+      "output": {
+        "ok": true,
+        "step": "undo",
+        "operator_inputs": [],
+        "automatic": [
+          "restore plugin dir and config.yaml from the pre-install backup",
+          "exact inventory diff against the pre-install snapshot"
+        ],
+        "result": {
+          "plugin_removed": true,
+          "summary": {
+            "EXISTING_DATA_PRESERVED": 27409,
+            "EXPECTED_AUDIT_BACKUP": 3,
+            "HERMES_CREATED_BACKUP": 1,
+            "HERMES_RUNTIME_STATE": 2,
+            "UNATTRIBUTED": 2,
+            "UVP_CREATED_AND_REMOVED": 35
+          },
+          "receipt": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\UNDO_RECEIPT.json"
+        },
+        "next": "python uvp_guided.py status --workspace \"D:\\Hermes-Lab\\uvp-p614-e2e-001\""
+      }
+    },
+    {
+      "command": "uvp_guided.py status",
+      "rc": 0,
+      "seconds": 0.3,
+      "output": {
+        "ok": true,
+        "step": "status",
+        "steps": [
+          {
+            "step": "init",
+            "done": true,
+            "operator_inputs": [
+              "--workspace"
+            ],
+            "automatic": [
+              "disposable Hermes home",
+              "Hermes first-run bootstrap"
+            ]
+          },
+          {
+            "step": "select",
+            "done": true,
+            "operator_inputs": [],
+            "automatic": [
+              "pinned commit from the UVP source catalog"
+            ]
+          },
+          {
+            "step": "inspect",
+            "done": true,
+            "operator_inputs": [
+              "--i-approve-fetch"
+            ],
+            "automatic": [
+              "download at the pinned commit",
+              "commit check",
+              "capability inventory"
+            ]
+          },
+          {
+            "step": "stage",
+            "done": true,
+            "operator_inputs": [
+              "--i-accept-skills-only-partial"
+            ],
+            "automatic": [
+              "inert Hermes package (originals byte-preserved)",
+              "deterministic compatibility report"
+            ]
+          },
+          {
+            "step": "adapt",
+            "done": true,
+            "operator_inputs": [],
+            "automatic": [
+              "deterministic adaptation into a separate candidate (stage untouched)",
+              "candidate self-verification",
+              "candidate digest + human-readable review"
+            ]
+          },
+          {
+            "step": "approve",
+            "done": true,
+            "operator_inputs": [
+              "--candidate-digest"
+            ],
+            "automatic": [
+              "digest recomputed and compared"
+            ]
+          },
+          {
+            "step": "install",
+            "done": true,
+            "operator_inputs": [
+              "--i-approve-install"
+            ],
+            "automatic": [
+              "re-verify approval, digest, manifest, source hashes, path",
+              "validate before swap",
+              "copy the approved candidate",
+              "hermes plugins enable",
+              "installed-digest + runtime check",
+              "automatic rollback on failure"
+            ]
+          },
+          {
+            "step": "verify",
+            "done": true,
+            "operator_inputs": [],
+            "automatic": [
+              "resolve Hermes runtime",
+              "plugin discovery",
+              "skill_view",
+              "slash argument delivery"
+            ]
+          },
+          {
+            "step": "demo",
+            "done": true,
+            "operator_inputs": [],
+            "automatic": [
+              "fixture copy",
+              "prompt from the installed Skill names"
+            ]
+          },
+          {
+            "step": "undo",
+            "done": true,
+            "operator_inputs": [],
+            "automatic": [
+              "restore plugin dir and config.yaml from the pre-install backup",
+              "exact inventory diff against the pre-install snapshot"
+            ]
+          }
+        ],
+        "operator_input_count": 5,
+        "automatic_count": 26
+      }
+    }
+  ],
+  "summary": {
+    "commands": 11,
+    "passed": 11,
+    "human_decisions": [
+      "--workspace",
+      "--i-approve-fetch",
+      "--i-accept-skills-only-partial",
+      "--candidate-digest (approve the exact candidate)",
+      "--i-approve-install"
+    ],
+    "seconds_total": 248.5,
+    "setup_seconds_init": 146.5
+  }
+}

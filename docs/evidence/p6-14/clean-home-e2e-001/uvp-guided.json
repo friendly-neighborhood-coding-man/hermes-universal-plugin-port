@@ -1,0 +1,330 @@
+{
+  "approval": {
+    "approved_utc": 1794367816.3961627,
+    "candidate_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+    "candidate_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\candidate\\ported-product-management",
+    "kind": "OPERATOR_CLI_FLAG",
+    "note": "operator typed the digest on the command line"
+  },
+  "candidate": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\candidate\\ported-product-management",
+  "candidate_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+  "home": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home",
+  "install_backup": null,
+  "schema": "universal-port.guided/1",
+  "source": "product-management",
+  "source_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\source\\source-anthropics-knowledge-work-plugins-e",
+  "stage": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\stage\\ported-product-management",
+  "steps": {
+    "adapt": {
+      "automatic": [
+        "deterministic adaptation into a separate candidate (stage untouched)",
+        "candidate self-verification",
+        "candidate digest + human-readable review"
+      ],
+      "operator_inputs": [],
+      "result": {
+        "candidate_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+        "files_changed_by_uvp": 14,
+        "model_calls": 0,
+        "review": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\CANDIDATE_REVIEW.md",
+        "rules_applied": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ]
+      }
+    },
+    "approve": {
+      "automatic": [
+        "digest recomputed and compared"
+      ],
+      "operator_inputs": [
+        "--candidate-digest"
+      ],
+      "result": {
+        "approved_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3"
+      }
+    },
+    "demo": {
+      "automatic": [
+        "fixture copy",
+        "prompt from the installed Skill names"
+      ],
+      "operator_inputs": [],
+      "result": {
+        "model_calls": 0,
+        "note": "Running it makes paid model calls; UVP does not run it for you. HERMES_WRITE_SAFE_ROOT bounds file writes only when set in the environment of the process that executes tools.",
+        "prompt": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\\prompt.txt",
+        "to_run_with_a_model": "set HERMES_HOME=D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home && set HERMES_WRITE_SAFE_ROOT=D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run && hermes chat --query-file \"D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\\prompt.txt\" --oneshot --format stream-json --in \"D:\\Hermes-Lab\\uvp-p614-e2e-001\\demo-run\" -t skills,file --max-turns 40"
+      }
+    },
+    "init": {
+      "automatic": [
+        "disposable Hermes home",
+        "Hermes first-run bootstrap"
+      ],
+      "operator_inputs": [
+        "--workspace"
+      ],
+      "result": {
+        "bootstrap_rc": 0,
+        "bootstrap_seconds": 140,
+        "hermes": "Hermes Agent v0.22.7 (2026.9.24) \u00b7 stable \u00b7 local b200f5bc60e3",
+        "home": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home"
+      }
+    },
+    "inspect": {
+      "automatic": [
+        "download at the pinned commit",
+        "commit check",
+        "capability inventory"
+      ],
+      "operator_inputs": [
+        "--i-approve-fetch"
+      ],
+      "result": {
+        "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+        "files": 14,
+        "inventory": {
+          "agents": false,
+          "commands": [
+            "brainstorm.md"
+          ],
+          "connectors": [
+            "amplitude",
+            "amplitude-eu",
+            "asana",
+            "atlassian",
+            "clickup",
+            "figma",
+            "fireflies",
+            "gmail",
+            "google calendar",
+            "intercom",
+            "linear",
+            "monday",
+            "notion",
+            "pendo",
+            "similarweb",
+            "slack"
+          ],
+          "hooks": false,
+          "skills": [
+            "competitive-brief",
+            "metrics-review",
+            "product-brainstorming",
+            "roadmap-update",
+            "sprint-planning",
+            "stakeholder-update",
+            "synthesize-research",
+            "write-spec"
+          ]
+        },
+        "report": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\INSPECT_REPORT.json",
+        "source_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\source\\source-anthropics-knowledge-work-plugins-e"
+      }
+    },
+    "install": {
+      "automatic": [
+        "re-verify approval, digest, manifest, source hashes, path",
+        "validate before swap",
+        "copy the approved candidate",
+        "hermes plugins enable",
+        "installed-digest + runtime check",
+        "automatic rollback on failure"
+      ],
+      "operator_inputs": [
+        "--i-approve-install"
+      ],
+      "result": {
+        "approved_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+        "backup": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home\\.uvp-backups\\ported-product-management-1794367877671111900",
+        "installed_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+        "installed_files": {
+          "ADAPTATION_MANIFEST.json": "ec487b88fab21262ab07ebc28172c4a5ac207ded00d52d755abddd33d5f822b0",
+          "PORTING_REPORT.json": "234be9594c11f9bc158ee768c379c73d071b40501c555c93ae740bd15b417db7",
+          "REVIEW_REQUIRED.md": "6d4baebfcf66c8a021517218e63eebb3d982da29121cb0e3ab5d807e55ba6360",
+          "SOURCE_HASHES.json": "cecf6ca8265ed2f162a73a822981806f23a69f23cc0072f61505e33f97882c84",
+          "__init__.py": "0ddcce8090bb7710b06a7d37a165af24c7365d1a3c8cdbf2b36cc808445568e2",
+          "original/.claude-plugin/plugin.json": "69742e798d5052d41188b877c1ab39c7184bdf03ae946bbaeb794fd20c8e5f85",
+          "original/.mcp.json": "cf1e1d5e2b5a51eecdb2cf15463527b976c41db20997e6a864dd746834a0ce1b",
+          "original/CONNECTORS.md": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+          "original/LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+          "original/README.md": "44c21947033cdff521f01adc77f1cf38ea71abe0027cf1d625090ac949a13b9f",
+          "original/commands/brainstorm.md": "fb0ce47a71ac9b7d952cfaafaf40ad361b53d5e9627e93f409bd1ccc80cc0522",
+          "original/skills/competitive-brief/SKILL.md": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+          "original/skills/metrics-review/SKILL.md": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+          "original/skills/product-brainstorming/SKILL.md": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+          "original/skills/roadmap-update/SKILL.md": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+          "original/skills/sprint-planning/SKILL.md": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+          "original/skills/stakeholder-update/SKILL.md": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+          "original/skills/synthesize-research/SKILL.md": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+          "original/skills/write-spec/SKILL.md": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+          "plugin.yaml": "32097a6ae345c1896deb449e0e470df09b56caaf024d9e5ae712aebe75d4654f",
+          "skills/competitive-brief/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/competitive-brief/SKILL.md": "c7f673ac5a9a08440bec1977b4105f05835233ec109ab33bcfaf821e167fbed2",
+          "skills/metrics-review/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/metrics-review/SKILL.md": "82811c0d005edd4348c1977b33ff09d2369bd7651056c9653b4bd40dd1a2f954",
+          "skills/product-brainstorming/SKILL.md": "53ee71b6863b277aba87002d8a5bb58bd2a4172d7cfeb2e282a0161958edc8e7",
+          "skills/roadmap-update/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/roadmap-update/SKILL.md": "9cea578b1ab5b9a1e793975e5591dd6561e771e5845d19c3b9b77512159659fa",
+          "skills/sprint-planning/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/sprint-planning/SKILL.md": "285cf50dbc69a286b8e7ba86cf69077a6468ff13dba94276e2f0c44d7281cc44",
+          "skills/stakeholder-update/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/stakeholder-update/SKILL.md": "67bb529204466eca50ba14df342610f4991ee8bd81e303c266abcb88892e3cb1",
+          "skills/synthesize-research/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/synthesize-research/SKILL.md": "eb1778925668ea6a10d6b5bab60ac6a2c78db58fdf7ca05ae9f25198f5fd608f",
+          "skills/write-spec/CONNECTORS.md": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754",
+          "skills/write-spec/SKILL.md": "8106cc2acc8f8689ccc7aefa0587f1ea30a033e9cb977481ba96d2fdfb921d2a"
+        },
+        "installed_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\hermes-home\\plugins\\ported-product-management",
+        "match": true,
+        "result": "APPLIED"
+      }
+    },
+    "select": {
+      "automatic": [
+        "pinned commit from the UVP source catalog"
+      ],
+      "operator_inputs": [],
+      "result": {
+        "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+        "demo_skills": [
+          "synthesize-research",
+          "write-spec",
+          "roadmap-update"
+        ],
+        "title": "Anthropic knowledge-work-plugins / product-management (Apache-2.0)",
+        "url": "https://github.com/anthropics/knowledge-work-plugins/tree/e605d8ddbfb688da57dfaaceebd93f12a64ef1d3/product-management"
+      }
+    },
+    "stage": {
+      "automatic": [
+        "inert Hermes package (originals byte-preserved)",
+        "deterministic compatibility report"
+      ],
+      "operator_inputs": [
+        "--i-accept-skills-only-partial"
+      ],
+      "result": {
+        "compat_counts": {
+          "ai_eligible_residuals": 0,
+          "composed_already_mapped": 0,
+          "composed_mappings_applied": 7,
+          "direct_exact_regions": 35,
+          "files_changed": 7,
+          "holds": 0,
+          "provisional_verifications": 8,
+          "skills": 8,
+          "unresolved_residuals": 7,
+          "unsupported_items": 16
+        },
+        "model_calls": 0,
+        "report": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\compat-report\\COMPAT_REPORT.md",
+        "rules_applicable": [
+          [
+            "R-C001",
+            1
+          ],
+          [
+            "R-D001",
+            1
+          ]
+        ],
+        "staged_path": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\stage\\ported-product-management",
+        "status": "SKILLS_ONLY_PARTIAL",
+        "unported_connectors": 16
+      }
+    },
+    "undo": {
+      "automatic": [
+        "restore plugin dir and config.yaml from the pre-install backup",
+        "exact inventory diff against the pre-install snapshot"
+      ],
+      "operator_inputs": [],
+      "result": {
+        "plugin_removed": true,
+        "receipt": "D:\\Hermes-Lab\\uvp-p614-e2e-001\\UNDO_RECEIPT.json",
+        "summary": {
+          "EXISTING_DATA_PRESERVED": 27409,
+          "EXPECTED_AUDIT_BACKUP": 3,
+          "HERMES_CREATED_BACKUP": 1,
+          "HERMES_RUNTIME_STATE": 2,
+          "UNATTRIBUTED": 2,
+          "UVP_CREATED_AND_REMOVED": 35
+        }
+      }
+    },
+    "verify": {
+      "automatic": [
+        "resolve Hermes runtime",
+        "plugin discovery",
+        "skill_view",
+        "slash argument delivery"
+      ],
+      "operator_inputs": [],
+      "result": {
+        "documented_usage": {
+          "ported-product-management:roadmap-update": {
+            "argument_delivered": true,
+            "line": "/ported-product-management:roadmap-update <update description>",
+            "resolves": true
+          },
+          "ported-product-management:synthesize-research": {
+            "argument_delivered": true,
+            "line": "/ported-product-management:synthesize-research <research topic or question>",
+            "resolves": true
+          },
+          "ported-product-management:write-spec": {
+            "argument_delivered": true,
+            "line": "/ported-product-management:write-spec <feature or problem statement>",
+            "resolves": true
+          }
+        },
+        "installed_digest": "02679eb22798a0d1c7231ddcbfe0a80acdaeb4b44350843da1a7763bf01396d3",
+        "installed_digest_matches_approval": true,
+        "ok": true,
+        "registered": [
+          "ported-product-management:competitive-brief",
+          "ported-product-management:metrics-review",
+          "ported-product-management:product-brainstorming",
+          "ported-product-management:roadmap-update",
+          "ported-product-management:sprint-planning",
+          "ported-product-management:stakeholder-update",
+          "ported-product-management:synthesize-research",
+          "ported-product-management:write-spec"
+        ],
+        "resource": {
+          "ported-product-management:roadmap-update": {
+            "error": null,
+            "link": "CONNECTORS.md",
+            "skill_view_success": true,
+            "states_connectors_not_connected": true
+          },
+          "ported-product-management:synthesize-research": {
+            "error": null,
+            "link": "CONNECTORS.md",
+            "skill_view_success": true,
+            "states_connectors_not_connected": true
+          },
+          "ported-product-management:write-spec": {
+            "error": null,
+            "link": "CONNECTORS.md",
+            "skill_view_success": true,
+            "states_connectors_not_connected": true
+          }
+        },
+        "skill_view": {
+          "ported-product-management:roadmap-update": true,
+          "ported-product-management:synthesize-research": true,
+          "ported-product-management:write-spec": true
+        },
+        "slash_argument_delivered": {
+          "ported-product-management:roadmap-update": true,
+          "ported-product-management:synthesize-research": true,
+          "ported-product-management:write-spec": true
+        }
+      }
+    }
+  },
+  "workspace": "D:\\Hermes-Lab\\uvp-p614-e2e-001"
+}

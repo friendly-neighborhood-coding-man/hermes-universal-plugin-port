@@ -42,6 +42,47 @@ def manifest(home: Path) -> dict:
     return out
 
 
+COPY_IGNORE = ("__pycache__", "P6_REVIEW_CANDIDATES")
+
+
+def is_redirect(p: Path) -> bool:
+    """Symlink, or (Windows) a junction / other reparse point."""
+    p = Path(p)
+    if p.is_symlink():
+        return True
+    is_junction = getattr(p, "is_junction", None)
+    if is_junction is not None and is_junction():
+        return True
+    try:
+        attrs = getattr(os.lstat(p), "st_file_attributes", 0)
+    except OSError:
+        return False
+    return bool(attrs & 0x400)  # FILE_ATTRIBUTE_REPARSE_POINT
+
+
+def package_files(pkg: Path) -> dict:
+    """relpath -> SHA-256 of every file Installer copies. Refuses any redirect inside the package."""
+    pkg = Path(pkg)
+    if is_redirect(pkg):
+        raise PortError("Package root is a symlink or junction")
+    out = {}
+    for p in sorted(pkg.rglob("*")):
+        rel = p.relative_to(pkg)
+        if any(part in COPY_IGNORE for part in rel.parts):
+            continue
+        if is_redirect(p):
+            raise PortError("Package contains a symlink or junction: " + rel.as_posix())
+        if p.is_file():
+            out[rel.as_posix()] = hashlib.sha256(p.read_bytes()).hexdigest()
+    return out
+
+
+def package_digest(pkg: Path) -> str:
+    """One SHA-256 over the sorted (path, file SHA-256) list: the identity a user approves."""
+    lines = "".join("%s\0%s\n" % kv for kv in sorted(package_files(pkg).items()))
+    return hashlib.sha256(lines.encode("utf-8")).hexdigest()
+
+
 def _guard(home: Path) -> Path:
     home = Path(home).resolve()
     if not (home / MARKER).is_file():
@@ -164,7 +205,7 @@ class Installer:
                     self.disable(self.name)
                 shutil.rmtree(self.target)
             if pkg is not None:
-                shutil.copytree(pkg, self.target, ignore=shutil.ignore_patterns("__pycache__", "P6_REVIEW_CANDIDATES"))
+                shutil.copytree(pkg, self.target, ignore=shutil.ignore_patterns(*COPY_IGNORE))
                 if self.enable:
                     self.enable(self.name)
                 if self.check is not None:
@@ -202,3 +243,88 @@ class Installer:
         self._restore(Path(backup))  # plugin dir + config.yaml byte-for-byte from the backup
         self.log.append({"op": "rollback", "result": "RESTORED", "backup": str(backup)})
         return {"ok": True, "result": "RESTORED"}
+
+
+# --- P6.14 WP3: exact home inventory and residual classification ------------------------------
+
+# Hermes's own runtime environment (a full Python venv) is inventoried by size + mtime only.
+_UNHASHED_PREFIXES = ("installs/",)
+# Hermes-created runtime state, by path prefix (listed in docs/P6_14_INTEGRATION_REPORT.md).
+_HERMES_RUNTIME = ("installs/", "logs/", "cache/", "sessions/", "state/", "telemetry/", "audio_cache/", "image_cache/",
+                   "kanban", "state.db", ".skills_prompt_snapshot.json", ".usage.json", "gateway", "auth.lock",
+                   "install_id", ".install_id.lock", ".hermes_history", "channel_directory.json",
+                   ".hermes-update-in-progress.lock", "skills/.usage.json")
+
+
+def full_inventory(home: Path) -> dict:
+    """Every path under home: type, size, mtime_ns, SHA-256 (regular files outside installs/), link target."""
+    home = Path(home)
+    out = {}
+    for root, dirs, files in os.walk(home, followlinks=False):
+        for name in list(dirs) + files:
+            p = Path(root) / name
+            rel = p.relative_to(home).as_posix()
+            try:
+                st = os.lstat(p)
+            except OSError:
+                continue
+            if is_redirect(p):
+                try:
+                    tgt = os.readlink(p)
+                except OSError:
+                    tgt = "unreadable"
+                out[rel] = {"type": "link", "target": str(tgt)}
+                if name in dirs:
+                    dirs.remove(name)
+            elif p.is_dir():
+                out[rel] = {"type": "dir"}
+            else:
+                row = {"type": "file", "size": st.st_size, "mtime_ns": st.st_mtime_ns}
+                if not rel.startswith(_UNHASHED_PREFIXES):
+                    try:
+                        row["sha256"] = hashlib.sha256(p.read_bytes()).hexdigest()
+                    except OSError:
+                        row["sha256"] = None
+                out[rel] = row
+    return out
+
+
+def _same(a: dict, b: dict) -> bool:
+    if a.get("type") != b.get("type"):
+        return False
+    if a["type"] == "file":
+        if "sha256" in a and "sha256" in b:
+            return a["sha256"] == b["sha256"]
+        return a.get("size") == b.get("size") and a.get("mtime_ns") == b.get("mtime_ns")
+    return a.get("target") == b.get("target")
+
+
+def classify_residuals(before: dict, after: dict, *, plugin: str) -> dict:
+    """Exact diff of two full_inventory() snapshots; every difference gets one class."""
+    rows = []
+    for rel in sorted(set(before) | set(after)):
+        b, a = before.get(rel), after.get(rel)
+        if b is not None and a is not None and _same(b, a):
+            continue
+        change = "added" if b is None else "removed" if a is None else "modified"
+        if rel == "plugins/" + plugin or rel.startswith("plugins/%s/" % plugin):
+            cls = "UNEXPECTED_RESIDUAL" if a is not None else "UVP_CREATED_AND_REMOVED"
+        elif rel == ".uvp-backups" or rel.startswith(".uvp-backups/"):
+            cls = "EXPECTED_AUDIT_BACKUP"
+        elif rel == "backups" or rel.startswith("backups/"):
+            cls = "HERMES_CREATED_BACKUP"
+        elif rel in ("config.yaml", "plugins") or rel.startswith("plugins/"):
+            cls = "UNEXPECTED_RESIDUAL"
+        elif change == "removed":
+            cls = "UNEXPECTED_RESIDUAL"          # something that existed before is gone
+        elif rel.startswith(_HERMES_RUNTIME) or "__pycache__" in rel.split("/"):
+            cls = "HERMES_RUNTIME_STATE"
+        else:
+            cls = "UNATTRIBUTED"
+        rows.append({"path": rel, "change": change, "class": cls})
+    preserved = sum(1 for rel in before if rel in after and _same(before[rel], after[rel]))
+    summary = {"EXISTING_DATA_PRESERVED": preserved}
+    for r in rows:
+        summary[r["class"]] = summary.get(r["class"], 0) + 1
+    return {"summary": summary, "differences": rows, "full_home_byte_identical": not rows,
+            "config_yaml_identical": "config.yaml" not in {r["path"] for r in rows}}

@@ -4,7 +4,7 @@
 
 ---
 
-Adds `plugin-catalog/universal-plugin-port.yaml`, pinned to `2bfc222c10bdf7b9257cb5ba1cec665806e6c8b4` of https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port. I am the repository owner (rule 5).
+Adds `plugin-catalog/universal-plugin-port.yaml`, pinned to `86b4e6d3097b4f96e26529e53daa09b9c314fef0` of https://github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port. I am the repository owner (rule 5).
 
 ## What it does
 
@@ -53,7 +53,7 @@ It is demonstrated on Anthropic's Apache-2.0 `knowledge-work-plugins/product-man
 
 ## Validation
 
-`hermes plugins validate --install-deps` on a fresh clone at the pinned SHA: `<paste output>`. Local results before pinning are in `docs/final-review/FINAL_REVIEW_LEDGER.md`.
+`hermes plugins validate` on a fresh anonymous clone at the pinned SHA (Hermes v0.22.7, 2026-11-11): `Validation passed.` (security scan: caution, `sudoers_mod` in a documentation line naming a Hermes denylist entry). Local results before pinning are in `docs/final-review/FINAL_REVIEW_LEDGER.md`.
 
 Offline tests: 360 OK on Windows and Ubuntu.
 

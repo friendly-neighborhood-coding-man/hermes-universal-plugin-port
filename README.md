@@ -8,24 +8,26 @@ Hermes Universal Port (UVP) is an experimental, standalone open-source tool for 
 
 ## What it shows in one minute
 
-The pinned target is Anthropic's Apache-2.0 `knowledge-work-plugins/product-management`. The check uses three of its Skills, the real Hermes v0.22.7 resolver and `skill_view`, and **no model calls** ([evidence](docs/evidence/p6-13/before-after-001.json)):
+The pinned target is Anthropic's Apache-2.0 `knowledge-work-plugins/product-management`. The check uses three of its Skills, the real Hermes v0.22.7 resolver and `skill_view`, and **no model calls** (evidence: [before, fresh home](docs/evidence/p6-14/before-verbatim-fresh-home-001.json), [after, the installed candidate](docs/evidence/p6-14/)):
 
-| What the installed Skill text tells the user or model to do | Verbatim copy in Hermes | After UVP adaptation |
+| What the installed Skill text tells the user or model to do | Verbatim copy in Hermes | The adapted candidate UVP installs |
 |---|---|---|
 | Run its documented Usage command (`/write-spec ...`) | **Fails**: the token does not resolve in Hermes | Resolves as `/ported-product-management:write-spec`; the argument is delivered |
 | Open its referenced resource `../../CONNECTORS.md` | **Fails**: `Path traversal ('..') is not allowed.` | Opens; the file states the connectors are **NOT connected** |
 
 This holds for all three pilot Skills. Both failures are real Hermes behaviour, not simulated. Each adaptation is recorded with before and after SHA-256 in `ADAPTATION_MANIFEST.json`, and `original/` stays byte-identical.
 
-## Quickstart (guided, disposable)
+## Quickstart (guided, disposable): Inspect → Adapt → Approve → Install → Verify → Undo
 
-Requires Python 3.12+ (tested on 3.12 and 3.14) and the Hermes CLI on `PATH` (or `HERMES_EXE`). Every step that downloads, stages or installs needs its own explicit flag.
+Requires Python 3.12+ (tested on 3.12 and 3.14) and the Hermes CLI on `PATH` (or `HERMES_EXE`). Each step is one command. Every step that downloads, stages, approves or installs needs its own explicit input. Each step prints the exact next command.
 
 ```bash
 python uvp_guided.py init    --workspace ./uvp-demo
 python uvp_guided.py select  --workspace ./uvp-demo
 python uvp_guided.py inspect --workspace ./uvp-demo --i-approve-fetch
 python uvp_guided.py stage   --workspace ./uvp-demo --i-accept-skills-only-partial
+python uvp_guided.py adapt   --workspace ./uvp-demo
+python uvp_guided.py approve --workspace ./uvp-demo --candidate-digest <digest from CANDIDATE_REVIEW.md>
 python uvp_guided.py install --workspace ./uvp-demo --i-approve-install
 python uvp_guided.py verify  --workspace ./uvp-demo
 python uvp_guided.py demo    --workspace ./uvp-demo
@@ -33,12 +35,32 @@ python uvp_guided.py undo    --workspace ./uvp-demo
 python uvp_guided.py status  --workspace ./uvp-demo
 ```
 
-A clean first-time run took 9 commands, with **4 operator inputs** (the workspace and three approvals) and **19 automatic steps**. It made no model calls ([log](docs/evidence/p6-13/guided-e2e-002.log)).
-- `init` bootstraps the new Hermes home once, which took about 6 minutes in that run.
-- `install` validates the package before swapping it in and rolls back automatically on failure.
-- `demo` prepares a three-Skill research to PRD to roadmap prompt and prints the command. Running that command calls a paid model, so UVP never runs it for you.
+What each step does:
+- `inspect` writes `INSPECT_REPORT.json`. It records the source commit, a SHA-256 for every source file, what is supported and unsupported, the filesystem effects, and the limits.
+- `stage` builds the verbatim, inert Hermes package and the compatibility report.
+- `adapt` applies only the verified deterministic rules (R-C001 usage lines, RES-LOCAL-1 resource localization) into a **separate candidate**. It leaves the stage untouched and writes `CANDIDATE_REVIEW.md`. The review shows the candidate digest, every changed span, what will and will not be installed, and the 16 connectors that stay inactive.
+- `approve` binds your approval to that exact digest.
+- `install` re-checks the following, and refuses on any mismatch:
+  - the approval and the digest;
+  - the manifest and source hashes;
+  - that `plugin.yaml` and `__init__.py` are unchanged from the stage;
+  - the target path;
+  - links and junctions;
+  - that nothing would be overwritten.
 
-The guided `install` uses the verbatim stage. The adapted package (`adapt_package.py`) is exercised by `scripts/p6_before_after.py` and the tests.
+  It then copies the candidate and enables it. If the installed digest differs from the approved one, it rolls back.
+- `verify` runs real Hermes resolution of the installed plugin.
+- `demo` only **prepares** a three-Skill prompt and prints the command; running that command is a separate, paid step that UVP never takes for you.
+- `undo` restores the plugin directory and `config.yaml`, and writes an exact, classified diff of the whole home (`UNDO_RECEIPT.json`).
+
+**Clean-home run** (fresh disposable home, Hermes v0.22.7, [evidence](docs/evidence/p6-14/), [report](docs/P6_14_CLEAN_HOME_E2E.md)):
+- 11 of 11 commands passed, with 5 human decisions, 0 model calls and 0 manual file operations. It took about 4 minutes, 2.5 of them in Hermes's first-run bootstrap.
+- The installed digest equals the approved candidate digest.
+- The documented usage line resolves and receives its argument.
+- `CONNECTORS.md` opens and says the connectors are NOT connected.
+- After `undo`, the plugin's 35 files are gone and `config.yaml` is byte-identical. The home is **not** byte-identical: UVP and Hermes backups, Hermes update receipts and Hermes's skill-usage ledger remain, each attributed in the report.
+
+In the recorded run, a test driver typed the approval digest from the review file, and the evidence labels it that way.
 
 ## How it compares with Hermes's own importer
 

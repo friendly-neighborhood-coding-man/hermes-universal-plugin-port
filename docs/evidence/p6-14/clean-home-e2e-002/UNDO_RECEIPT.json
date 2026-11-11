@@ -1,0 +1,55 @@
+{
+  "plugin_removed": true,
+  "summary": {
+    "EXISTING_DATA_PRESERVED": 27409,
+    "EXPECTED_AUDIT_BACKUP": 3,
+    "HERMES_CREATED_BACKUP": 1,
+    "HERMES_RUNTIME_STATE": 4,
+    "UVP_CREATED_AND_REMOVED": 35
+  },
+  "differences": [
+    {
+      "path": ".uvp-backups",
+      "change": "added",
+      "class": "EXPECTED_AUDIT_BACKUP"
+    },
+    {
+      "path": ".uvp-backups/ported-product-management-1794368246358593300",
+      "change": "added",
+      "class": "EXPECTED_AUDIT_BACKUP"
+    },
+    {
+      "path": ".uvp-backups/ported-product-management-1794368246358593300/config.yaml",
+      "change": "added",
+      "class": "EXPECTED_AUDIT_BACKUP"
+    },
+    {
+      "path": "backups/config/config.yaml.good.20261111-123732",
+      "change": "added",
+      "class": "HERMES_CREATED_BACKUP"
+    },
+    {
+      "path": "logs/update_receipts/latest.json",
+      "change": "modified",
+      "class": "HERMES_RUNTIME_STATE"
+    },
+    {
+      "path": "logs/update_receipts/pm_20261111T033732Z-sync-5544-f998b9e26a6d4a1aa86f254875985ac3.json",
+      "change": "added",
+      "class": "HERMES_RUNTIME_STATE"
+    },
+    {
+      "path": "skills/.usage.json",
+      "change": "added",
+      "class": "HERMES_RUNTIME_STATE"
+    },
+    {
+      "path": "skills/.usage.json.lock",
+      "change": "added",
+      "class": "HERMES_RUNTIME_STATE"
+    }
+  ],
+  "full_home_byte_identical": false,
+  "config_yaml_identical": true,
+  "uvp_installed_files": 35
+}

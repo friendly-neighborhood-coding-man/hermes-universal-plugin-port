@@ -73,3 +73,18 @@ Every scene is **zero model calls**. The capture source is `docs/evidence/p6-13/
 | 1:15–1:30 | Honest boundary | `P6_13_NLI_EXPERIMENT_REPORT.md` table, plus `SEMANTIC_EQUIVALENCE = NOT_ESTABLISHED` | "We even had a model audit the result. It was useful, not proof, so UVP sent its disagreements to a human." (21) |
 
 Claims to avoid also include "fixes every plugin" and "the model verified the port".
+
+## Storyboard v4 (P6.14, recommended): Port → Preserve → Adapt → Approve → Install → Verify → Undo, at most 90 s
+
+The footage is the recorded clean-home run (`docs/evidence/p6-14/`), with no model calls, plus the fresh BEFORE home on the same Hermes v0.22.7. These are **two separate runs**, labelled on screen. Show the release URL `github.com/friendly-neighborhood-coding-man/hermes-universal-plugin-port`.
+
+| Time | Scene | On screen | Voice-over (approx. words) |
+|---|---|---|---|
+| 0:00–0:12 | The problem | Run "BEFORE (fresh home, verbatim copy)": `BA1_token_resolves: false`; `"Path traversal ('..') is not allowed."` | "A real Anthropic plugin, copied straight into Hermes. Its own instructions break: the command doesn't exist, and the help file it links is refused." (25) |
+| 0:12–0:30 | Inspect | `INSPECT_REPORT.json`: commit `e605d8dd…`, 14 source hashes, 8 Skills supported, 16 connectors plus 1 command unsupported | "UVP pins the source, hashes every file, and says up front what it cannot port." (15) |
+| 0:30–0:48 | Adapt | `CANDIDATE_REVIEW.md`: the `write-spec` diff (`/write-spec $ARGUMENTS` → `/ported-product-management:write-spec <feature…>`, `../../CONNECTORS.md` → `CONNECTORS.md`), rules R-C001 and RES-LOCAL-1, originals identical | "Two verified rules, applied to a separate candidate. The original is untouched, and every change is shown." (18) |
+| 0:48–1:06 | Approve and install | `approve --candidate-digest 02679eb2…`, then `INSTALL_RECEIPT.json`: approved digest = installed digest | "You approve this exact package by its digest. UVP installs those bytes, or nothing." (15) |
+| 1:06–1:20 | Verify | `verify`: documented usage resolves, argument delivered, `CONNECTORS.md` opens and says "NOT connected" | "Same Hermes, same checks. They passed where the copy failed." (10) |
+| 1:20–1:30 | Undo and limits | `UNDO_RECEIPT.json`: 35 plugin files removed, `config.yaml` identical, remaining Hermes runtime files attributed; then "SKILLS_ONLY_PARTIAL · semantic equivalence not established" | "Undo removes what UVP installed and accounts for every leftover file. Skills only, no connectors, and no claim it behaves exactly like Claude." (25) |
+
+Do not call the approval in the recording an operator decision: a test driver typed the digest. Redact local paths before recording.

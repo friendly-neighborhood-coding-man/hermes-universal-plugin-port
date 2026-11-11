@@ -23,8 +23,8 @@ sys.path.insert(0, str(REPO))
 import adapt_package as AP  # noqa: E402
 import install_ops as IO  # noqa: E402
 
-HOME = Path(r"D:\Hermes-Lab\uvp-before-after-home")
-WORK = Path(r"D:\Hermes-Lab\uvp-before-after-work")
+HOME = Path(os.environ.get("UVP_BA_HOME", r"D:\Hermes-Lab\uvp-before-after-home"))
+WORK = Path(os.environ.get("UVP_BA_WORK", r"D:\Hermes-Lab\uvp-before-after-work"))
 STAGE = Path(r"D:\Hermes-Lab\p6-staged\ported-product-management")
 NAME = "ported-product-management"
 PILOT = ["synthesize-research", "write-spec", "roadmap-update"]
