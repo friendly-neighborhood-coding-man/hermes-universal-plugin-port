@@ -26,6 +26,7 @@
 | S7 | Semantic equivalence of ported Skills is not established. | Correctness, not security | Reported as `SKILLS_ONLY_PARTIAL` and `NOT_ESTABLISHED`. |
 | S8 | P6.9 Safebox is tool-dispatch policy inside Hermes; slash invocation and `-s` preload bypass it. | Informational | Classified POLICY_ONLY / NOT_ISOLATED; not registered in this release. |
 | S9 | P6.10 isolation runner needs root in a disposable WSL distro; WSL2 shares a kernel VM with the host. | Informational | Used only for UVP-owned harmless workloads; never point it at a non-disposable distro. |
+| S10 | Host finding (Hermes v0.22.7): `ctx.llm` drops a plugin's `max_tokens` on the native `anthropic` provider (`agent/auxiliary_client._forwards_max_tokens`), so the Anthropic adapter sends the model's 128,000-token output ceiling. A plugin cannot bound its own output cost through `ctx.llm` on that route. | Medium (cost control) | Found by the P6.13 spending firewall in a mock run, at $0. The P6.13 experiment used a single non-retrying request with `max_tokens=600` instead. To be reported to Hermes maintainers; not patched here. |
 
 ## Not claimed
 

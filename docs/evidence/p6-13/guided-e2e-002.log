@@ -1,0 +1,296 @@
+== init rc=0 371s
+{
+  "ok": true,
+  "step": "init",
+  "operator_inputs": [
+    "--workspace"
+  ],
+  "automatic": [
+    "disposable Hermes home",
+    "Hermes first-run bootstrap"
+  ],
+  "result": {
+    "home": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\hermes-home",
+    "bootstrap_seconds": 362,
+    "bootstrap_rc": 0,
+    "hermes": "Hermes Agent v0.22.7 (2026.9.24) \u00b7 stable \u00b7 local b200f5bc60e3"
+  }
+}
+== select rc=0 1s
+{
+  "ok": true,
+  "step": "select",
+  "operator_inputs": [],
+  "automatic": [
+    "pinned commit from the UVP source catalog"
+  ],
+  "result": {
+    "title": "Anthropic knowledge-work-plugins / product-management (Apache-2.0)",
+    "url": "https://github.com/anthropics/knowledge-work-plugins/tree/e605d8ddbfb688da57dfaaceebd93f12a64ef1d3/product-management",
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "demo_skills": [
+      "synthesize-research",
+      "write-spec",
+      "roadmap-update"
+    ]
+  }
+}
+== inspect --i-approve-fetch rc=0 14s
+{
+  "ok": true,
+  "step": "inspect",
+  "operator_inputs": [
+    "--i-approve-fetch"
+  ],
+  "automatic": [
+    "download at the pinned commit",
+    "commit check",
+    "capability inventory"
+  ],
+  "result": {
+    "commit": "e605d8ddbfb688da57dfaaceebd93f12a64ef1d3",
+    "source_path": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\source\\source-anthropics-knowledge-work-plugins-e",
+    "inventory": {
+      "skills": [
+        "competitive-brief",
+        "metrics-review",
+        "product-brainstorming",
+        "roadmap-update",
+        "sprint-planning",
+        "stakeholder-update",
+        "synthesize-research",
+        "write-spec"
+      ],
+      "connectors": [
+        "amplitude",
+        "amplitude-eu",
+        "asana",
+        "atlassian",
+        "clickup",
+        "figma",
+        "fireflies",
+        "gmail",
+        "google calendar",
+        "intercom",
+        "linear",
+        "monday",
+        "notion",
+        "pendo",
+        "similarweb",
+        "slack"
+      ],
+      "commands": [
+        "brainstorm.md"
+      ],
+      "hooks": false,
+      "agents": false
+    },
+    "files": 14
+  }
+}
+== stage --i-accept-skills-only-partial rc=0 2s
+{
+  "ok": true,
+  "step": "stage",
+  "operator_inputs": [
+    "--i-accept-skills-only-partial"
+  ],
+  "automatic": [
+    "inert Hermes package (originals byte-preserved)",
+    "deterministic compatibility report"
+  ],
+  "result": {
+    "status": "SKILLS_ONLY_PARTIAL",
+    "staged_path": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\stage\\ported-product-management",
+    "unported_connectors": 16,
+    "compat_counts": {
+      "skills": 8,
+      "direct_exact_regions": 35,
+      "composed_mappings_applied": 7,
+      "composed_already_mapped": 0,
+      "provisional_verifications": 8,
+      "unresolved_residuals": 7,
+      "ai_eligible_residuals": 0,
+      "unsupported_items": 16,
+      "files_changed": 7,
+      "holds": 0
+    },
+    "model_calls": 0,
+    "report": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\compat-report\\COMPAT_REPORT.md"
+  }
+}
+== install --i-approve-install rc=0 218s
+{
+  "ok": true,
+  "step": "install",
+  "operator_inputs": [
+    "--i-approve-install"
+  ],
+  "automatic": [
+    "validate before swap (hashes + hermes plugins validate)",
+    "hermes plugins enable",
+    "post-install resolution check",
+    "automatic rollback on failure"
+  ],
+  "result": {
+    "ok": true,
+    "result": "APPLIED",
+    "backup": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\hermes-home\\.uvp-backups\\ported-product-management-1794357422727426900"
+  }
+}
+== verify rc=0 16s
+{
+  "ok": true,
+  "step": "verify",
+  "operator_inputs": [],
+  "automatic": [
+    "resolve Hermes runtime",
+    "plugin discovery",
+    "skill_view",
+    "slash argument delivery"
+  ],
+  "result": {
+    "ok": true,
+    "registered": [
+      "ported-product-management:competitive-brief",
+      "ported-product-management:metrics-review",
+      "ported-product-management:product-brainstorming",
+      "ported-product-management:roadmap-update",
+      "ported-product-management:sprint-planning",
+      "ported-product-management:stakeholder-update",
+      "ported-product-management:synthesize-research",
+      "ported-product-management:write-spec"
+    ],
+    "skill_view": {
+      "ported-product-management:synthesize-research": true,
+      "ported-product-management:write-spec": true,
+      "ported-product-management:roadmap-update": true
+    },
+    "slash_argument_delivered": {
+      "ported-product-management:synthesize-research": true,
+      "ported-product-management:write-spec": true,
+      "ported-product-management:roadmap-update": true
+    }
+  }
+}
+== demo rc=0 1s
+{
+  "ok": true,
+  "step": "demo",
+  "operator_inputs": [],
+  "automatic": [
+    "fixture copy",
+    "prompt from the installed Skill names"
+  ],
+  "result": {
+    "prompt": "D:\\Hermes-Lab\\uvp-guided-e2e-002\\demo-run\\prompt.txt",
+    "model_calls": 0,
+    "to_run_with_a_model": "set HERMES_HOME=D:\\Hermes-Lab\\uvp-guided-e2e-002\\hermes-home && set HERMES_WRITE_SAFE_ROOT=D:\\Hermes-Lab\\uvp-guided-e2e-002\\demo-run && hermes chat --query-file \"D:\\Hermes-Lab\\uvp-guided-e2e-002\\demo-run\\prompt.txt\" --oneshot --format stream-json --in \"D:\\Hermes-Lab\\uvp-guided-e2e-002\\demo-run\" -t skills,file --max-turns 40",
+    "note": "Running it makes paid model calls; UVP does not run it for you. HERMES_WRITE_SAFE_ROOT bounds file writes only when set in the environment of the process that executes tools."
+  }
+}
+== undo rc=0 58s
+{
+  "ok": true,
+  "step": "undo",
+  "operator_inputs": [],
+  "automatic": [
+    "restore plugin dir and config.yaml from the pre-install backup"
+  ],
+  "result": {
+    "plugin_removed": true,
+    "files_changed": 29
+  }
+}
+== status rc=0 2s
+{
+  "ok": true,
+  "step": "status",
+  "steps": [
+    {
+      "step": "init",
+      "done": true,
+      "operator_inputs": [
+        "--workspace"
+      ],
+      "automatic": [
+        "disposable Hermes home",
+        "Hermes first-run bootstrap"
+      ]
+    },
+    {
+      "step": "select",
+      "done": true,
+      "operator_inputs": [],
+      "automatic": [
+        "pinned commit from the UVP source catalog"
+      ]
+    },
+    {
+      "step": "inspect",
+      "done": true,
+      "operator_inputs": [
+        "--i-approve-fetch"
+      ],
+      "automatic": [
+        "download at the pinned commit",
+        "commit check",
+        "capability inventory"
+      ]
+    },
+    {
+      "step": "stage",
+      "done": true,
+      "operator_inputs": [
+        "--i-accept-skills-only-partial"
+      ],
+      "automatic": [
+        "inert Hermes package (originals byte-preserved)",
+        "deterministic compatibility report"
+      ]
+    },
+    {
+      "step": "install",
+      "done": true,
+      "operator_inputs": [
+        "--i-approve-install"
+      ],
+      "automatic": [
+        "validate before swap (hashes + hermes plugins validate)",
+        "hermes plugins enable",
+        "post-install resolution check",
+        "automatic rollback on failure"
+      ]
+    },
+    {
+      "step": "verify",
+      "done": true,
+      "operator_inputs": [],
+      "automatic": [
+        "resolve Hermes runtime",
+        "plugin discovery",
+        "skill_view",
+        "slash argument delivery"
+      ]
+    },
+    {
+      "step": "demo",
+      "done": true,
+      "operator_inputs": [],
+      "automatic": [
+        "fixture copy",
+        "prompt from the installed Skill names"
+      ]
+    },
+    {
+      "step": "undo",
+      "done": true,
+      "operator_inputs": [],
+      "automatic": [
+        "restore plugin dir and config.yaml from the pre-install backup"
+      ]
+    }
+  ],
+  "operator_input_count": 4,
+  "automatic_count": 19
+}

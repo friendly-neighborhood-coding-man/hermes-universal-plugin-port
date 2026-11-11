@@ -58,3 +58,18 @@ Two **separate** execution paths are shown, and each is labelled on screen. They
 | 1:15–1:30 | Verify | Continuity corpus: 0 false authorizations. Rollback exercise restores `config.yaml`. `SEMANTIC_EQUIVALENCE = NOT_ESTABLISHED` |
 
 Redaction before recording: use the **public snapshot** files, in which the host and account name are sanitized. Show no terminal with the user profile path, and nothing from `auth.json` or `.env`.
+
+## Storyboard v3 (P6.13, recommended): Break → Repair → Prove → Undo, at most 90 s
+
+Every scene is **zero model calls**. The capture source is `docs/evidence/p6-13/`.
+
+| Time | Scene | On screen | Voice-over (approx. words) |
+|---|---|---|---|
+| 0:00–0:10 | The problem | Upstream `product-management/` at `e605d8dd…` | "A real Claude/Cowork plugin from Anthropic. Copy its Skills into Hermes and two things break." (17) |
+| 0:10–0:30 | Break (real Hermes) | `before-after-001.json` → `before`: `BA1_token_resolves: false`, and `BA2_error: "Path traversal ('..') is not allowed."` for all three Skills | "The Skill tells you to run `/write-spec`. Hermes has no such command. It links `../../CONNECTORS.md`, and Hermes refuses the path. These are Hermes's own resolver and `skill_view`, not a mock." (35) |
+| 0:30–0:45 | Repair, deterministically | `ADAPTATION_MANIFEST.json`: R-C001 + RES-LOCAL-1, before/after SHA-256; `original/` unchanged | "UVP applies only rules it can verify: the namespaced command and a local copy of the resource that says the connectors are not connected. Every change is hashed." (30) |
+| 0:45–1:00 | Prove | `after`: resolves, argument delivered, `skill_view` success, "NOT connected" shown | "Same checks, same Hermes, now passing." (6) |
+| 1:00–1:15 | Guided and reversible | `guided-e2e-002.log`: 9 steps, 4 operator inputs, 19 automatic; `undo` removes the plugin | "A first-time user gets nine guided steps. Only four need a human decision, and undo puts the home back." (20) |
+| 1:15–1:30 | Honest boundary | `P6_13_NLI_EXPERIMENT_REPORT.md` table, plus `SEMANTIC_EQUIVALENCE = NOT_ESTABLISHED` | "We even had a model audit the result. It was useful, not proof, so UVP sent its disagreements to a human." (21) |
+
+Claims to avoid also include "fixes every plugin" and "the model verified the port".

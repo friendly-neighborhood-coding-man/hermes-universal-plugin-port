@@ -1,0 +1,205 @@
+{
+  "model_calls": 0,
+  "stage": "D:\\Hermes-Lab\\p6-staged\\ported-product-management",
+  "bootstrap_rc": 0,
+  "install_verbatim": "APPLIED",
+  "before": {
+    "synthesize-research": {
+      "BA1_documented_usage_line": "/synthesize-research $ARGUMENTS",
+      "BA1_token_resolves": false,
+      "BA1_argument_delivered": false,
+      "BA2_link": "../../CONNECTORS.md",
+      "BA2_skill_view_success": false,
+      "BA2_error": "Path traversal ('..') is not allowed.",
+      "BA2_states_connectors_unavailable": false
+    },
+    "write-spec": {
+      "BA1_documented_usage_line": "/write-spec $ARGUMENTS",
+      "BA1_token_resolves": false,
+      "BA1_argument_delivered": false,
+      "BA2_link": "../../CONNECTORS.md",
+      "BA2_skill_view_success": false,
+      "BA2_error": "Path traversal ('..') is not allowed.",
+      "BA2_states_connectors_unavailable": false
+    },
+    "roadmap-update": {
+      "BA1_documented_usage_line": "/roadmap-update $ARGUMENTS",
+      "BA1_token_resolves": false,
+      "BA1_argument_delivered": false,
+      "BA2_link": "../../CONNECTORS.md",
+      "BA2_skill_view_success": false,
+      "BA2_error": "Path traversal ('..') is not allowed.",
+      "BA2_states_connectors_unavailable": false
+    }
+  },
+  "adaptation": {
+    "schema": "universal-port.adaptation/1",
+    "from_stage": "D:\\Hermes-Lab\\p6-staged\\ported-product-management",
+    "stage_fingerprint": "56a2cac583cba7a28962d7cc02d5a9bc2e4e6dbb59781fe57e05bbb91fe3d83b",
+    "registry_sha256": "5128904bb27843827817c5ef071504f66b92101dfe104ea25f1e1be10bac6ce8",
+    "identity": {
+      "source": "claude-code-command-args/2026-11-07",
+      "target": "hermes-agent@b200f5bc60e31588ba2cb60e288029c4a54ba5fa"
+    },
+    "changes": [
+      {
+        "path": "skills/competitive-brief/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/competitive-brief/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2",
+        "after_sha256": "c7f673ac5a9a08440bec1977b4105f05835233ec109ab33bcfaf821e167fbed2",
+        "original_sha256": "720916695f99a70e723be02d0123908c9c968ce56e1ffdeeb423014587017cd2"
+      },
+      {
+        "path": "skills/metrics-review/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/metrics-review/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278",
+        "after_sha256": "82811c0d005edd4348c1977b33ff09d2369bd7651056c9653b4bd40dd1a2f954",
+        "original_sha256": "e92f364b668074c72b36fd0f69a6adef2ead66640b2c17dc824c043fb613d278"
+      },
+      {
+        "path": "skills/roadmap-update/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/roadmap-update/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e",
+        "after_sha256": "9cea578b1ab5b9a1e793975e5591dd6561e771e5845d19c3b9b77512159659fa",
+        "original_sha256": "bdb121e290b590d60b94bca84d1700a8803c78db9f68f2a28fd04ccfe8aceb9e"
+      },
+      {
+        "path": "skills/sprint-planning/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/sprint-planning/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd",
+        "after_sha256": "285cf50dbc69a286b8e7ba86cf69077a6468ff13dba94276e2f0c44d7281cc44",
+        "original_sha256": "c078d3f838c783e9ab53ca1a4b4c04dcd7930a55a995731b8c020cd656cb1edd"
+      },
+      {
+        "path": "skills/stakeholder-update/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/stakeholder-update/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79",
+        "after_sha256": "67bb529204466eca50ba14df342610f4991ee8bd81e303c266abcb88892e3cb1",
+        "original_sha256": "bcdb8ee95dc34d025dcc3d98e7435c4dca45930581b3b7a8707f8770dd364e79"
+      },
+      {
+        "path": "skills/synthesize-research/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/synthesize-research/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c",
+        "after_sha256": "eb1778925668ea6a10d6b5bab60ac6a2c78db58fdf7ca05ae9f25198f5fd608f",
+        "original_sha256": "ae98c11102545c911a1ea5d8527be0e08a3db8e53327f2865f0db19bbb2d7e9c"
+      },
+      {
+        "path": "skills/write-spec/CONNECTORS.md",
+        "rule": "RES-LOCAL-1",
+        "added": true,
+        "source": "original/CONNECTORS.md",
+        "source_sha256": "f52733eb0cd1b46f96cbf15bd9d8dd5215c9341d9323f42da076bcddccda2f5e",
+        "after_sha256": "18c94ab10b54fccf364bee6b62100550f90cffa7f9132e4537c15e1038c0c754"
+      },
+      {
+        "path": "skills/write-spec/SKILL.md",
+        "rules": [
+          "R-C001",
+          "RES-LOCAL-1"
+        ],
+        "before_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc",
+        "after_sha256": "8106cc2acc8f8689ccc7aefa0587f1ea30a033e9cb977481ba96d2fdfb921d2a",
+        "original_sha256": "ca6670913878b4ac4582727562bfced5271492a5a800d934f68c9e7bc1cd4dcc"
+      }
+    ],
+    "model_calls": 0
+  },
+  "update_to_adapted": "APPLIED",
+  "after": {
+    "synthesize-research": {
+      "BA1_documented_usage_line": "/ported-product-management:synthesize-research <research topic or question>",
+      "BA1_token_resolves": true,
+      "BA1_argument_delivered": true,
+      "BA2_link": "CONNECTORS.md",
+      "BA2_skill_view_success": true,
+      "BA2_error": null,
+      "BA2_states_connectors_unavailable": true
+    },
+    "write-spec": {
+      "BA1_documented_usage_line": "/ported-product-management:write-spec <feature or problem statement>",
+      "BA1_token_resolves": true,
+      "BA1_argument_delivered": true,
+      "BA2_link": "CONNECTORS.md",
+      "BA2_skill_view_success": true,
+      "BA2_error": null,
+      "BA2_states_connectors_unavailable": true
+    },
+    "roadmap-update": {
+      "BA1_documented_usage_line": "/ported-product-management:roadmap-update <update description>",
+      "BA1_token_resolves": true,
+      "BA1_argument_delivered": true,
+      "BA2_link": "CONNECTORS.md",
+      "BA2_skill_view_success": true,
+      "BA2_error": null,
+      "BA2_states_connectors_unavailable": true
+    }
+  },
+  "rollback_diff_only_hermes_backups": false
+}

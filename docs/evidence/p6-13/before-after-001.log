@@ -1,0 +1,58 @@
+before {
+ "synthesize-research": {
+  "BA1_documented_usage_line": "/synthesize-research $ARGUMENTS",
+  "BA1_token_resolves": false,
+  "BA1_argument_delivered": false,
+  "BA2_link": "../../CONNECTORS.md",
+  "BA2_skill_view_success": false,
+  "BA2_error": "Path traversal ('..') is not allowed.",
+  "BA2_states_connectors_unavailable": false
+ },
+ "write-spec": {
+  "BA1_documented_usage_line": "/write-spec $ARGUMENTS",
+  "BA1_token_resolves": false,
+  "BA1_argument_delivered": false,
+  "BA2_link": "../../CONNECTORS.md",
+  "BA2_skill_view_success": false,
+  "BA2_error": "Path traversal ('..') is not allowed.",
+  "BA2_states_connectors_unavailable": false
+ },
+ "roadmap-update": {
+  "BA1_documented_usage_line": "/roadmap-update $ARGUMENTS",
+  "BA1_token_resolves": false,
+  "BA1_argument_delivered": false,
+  "BA2_link": "../../CONNECTORS.md",
+  "BA2_skill_view_success": false,
+  "BA2_error": "Path traversal ('..') is not allowed.",
+  "BA2_states_connectors_unavailable": false
+ }
+}
+after {
+ "synthesize-research": {
+  "BA1_documented_usage_line": "/ported-product-management:synthesize-research <research topic or question>",
+  "BA1_token_resolves": true,
+  "BA1_argument_delivered": true,
+  "BA2_link": "CONNECTORS.md",
+  "BA2_skill_view_success": true,
+  "BA2_error": null,
+  "BA2_states_connectors_unavailable": true
+ },
+ "write-spec": {
+  "BA1_documented_usage_line": "/ported-product-management:write-spec <feature or problem statement>",
+  "BA1_token_resolves": true,
+  "BA1_argument_delivered": true,
+  "BA2_link": "CONNECTORS.md",
+  "BA2_skill_view_success": true,
+  "BA2_error": null,
+  "BA2_states_connectors_unavailable": true
+ },
+ "roadmap-update": {
+  "BA1_documented_usage_line": "/ported-product-management:roadmap-update <update description>",
+  "BA1_token_resolves": true,
+  "BA1_argument_delivered": true,
+  "BA2_link": "CONNECTORS.md",
+  "BA2_skill_view_success": true,
+  "BA2_error": null,
+  "BA2_states_connectors_unavailable": true
+ }
+}

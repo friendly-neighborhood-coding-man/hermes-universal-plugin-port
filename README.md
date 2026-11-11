@@ -1,12 +1,62 @@
 # Hermes Universal Port
 
-**Evidence-driven compatibility inspection and repair for Hermes Agent.**
+**Bring a Claude/Cowork Skill package into Hermes Agent, and see exactly what works, what breaks, and why.**
 
-Hermes Universal Port (UVP) is an experimental, Hermes-first, standalone open-source project. It inspects capabilities from other agent ecosystems, identifies semantic loss, and generates narrowly scoped repair adapters when possible.
+Hermes Universal Port (UVP) is an experimental, standalone open-source tool for Hermes Agent. It stages a pinned foreign package without running it, and reports every capability Hermes cannot honour. It then applies only deterministic, hash-recorded adaptations and checks the result in a real, disposable Hermes home. It can roll the whole thing back.
 
-> **Status — pre-release.** The operator verified **v0.5.2: 269 Windows tests OK (3 skipped), Hermes Plugin Doctor PASS (4 tools), and an approved standalone bounded arXiv GET succeeded with an evidence receipt.** Earlier P2/P3 Hermes slash-command E2Es passed with a real 38-Skill catalog. **P5 v0.5.4 Hermes default-deny E2E passed (no network), and v0.5.5 exposed the actual generic-local gateway surface. v0.5.6 now checks Hermes-provided local SessionSource and session ID/key before permitting a separately opted-in, freshly approved bounded request. v0.5.6 full Windows regression: 301 tests OK (3 skipped), Hermes Plugin Doctor PASS (4 tools, 0 hooks); Hermes host-binding diagnostic E2E PASS (HOST_BOUND_LOCAL, session ID/key present) **and** default-denied /uvp --arxiv-execute E2E PASS (DISABLED_BY_DEFAULT, no execution); an approved in-Hermes arXiv network request and actual ask_choice approval E2E are still NOT RUN.** Do not install into a production Hermes profile.
->
-> **Development branch.** The default branch may not contain P5. Hosted CI runner provisioning was unreliable; run Windows regression and Doctor before updating the disposable test profile.
+> Independent community project; not an official Hermes / Nous Research or Anthropic component. Use a disposable Hermes home only; a disposable `HERMES_HOME` is **not** an OS sandbox.
+
+## What it shows in one minute
+
+The pinned target is Anthropic's Apache-2.0 `knowledge-work-plugins/product-management`. The check uses three of its Skills, the real Hermes v0.22.7 resolver and `skill_view`, and **no model calls** ([evidence](docs/evidence/p6-13/before-after-001.json)):
+
+| What the installed Skill text tells the user or model to do | Verbatim copy in Hermes | After UVP adaptation |
+|---|---|---|
+| Run its documented Usage command (`/write-spec ...`) | **Fails**: the token does not resolve in Hermes | Resolves as `/ported-product-management:write-spec`; the argument is delivered |
+| Open its referenced resource `../../CONNECTORS.md` | **Fails**: `Path traversal ('..') is not allowed.` | Opens; the file states the connectors are **NOT connected** |
+
+This holds for all three pilot Skills. Both failures are real Hermes behaviour, not simulated. Each adaptation is recorded with before and after SHA-256 in `ADAPTATION_MANIFEST.json`, and `original/` stays byte-identical.
+
+## Quickstart (guided, disposable)
+
+Requires Python 3.12+ (tested on 3.12 and 3.14) and the Hermes CLI on `PATH` (or `HERMES_EXE`). Every step that downloads, stages or installs needs its own explicit flag.
+
+```bash
+python uvp_guided.py init    --workspace ./uvp-demo
+python uvp_guided.py select  --workspace ./uvp-demo
+python uvp_guided.py inspect --workspace ./uvp-demo --i-approve-fetch
+python uvp_guided.py stage   --workspace ./uvp-demo --i-accept-skills-only-partial
+python uvp_guided.py install --workspace ./uvp-demo --i-approve-install
+python uvp_guided.py verify  --workspace ./uvp-demo
+python uvp_guided.py demo    --workspace ./uvp-demo
+python uvp_guided.py undo    --workspace ./uvp-demo
+python uvp_guided.py status  --workspace ./uvp-demo
+```
+
+A clean first-time run took 9 commands, with **4 operator inputs** (the workspace and three approvals) and **19 automatic steps**. It made no model calls ([log](docs/evidence/p6-13/guided-e2e-002.log)).
+- `init` bootstraps the new Hermes home once, which took about 6 minutes in that run.
+- `install` validates the package before swapping it in and rolls back automatically on failure.
+- `demo` prepares a three-Skill research to PRD to roadmap prompt and prints the command. Running that command calls a paid model, so UVP never runs it for you.
+
+The guided `install` uses the verbatim stage. The adapted package (`adapt_package.py`) is exercised by `scripts/p6_before_after.py` and the tests.
+
+## How it compares with Hermes's own importer
+
+Hermes's `agent-importers` plugin documents that it copies Skills into `~/.hermes/skills/claude-code-imports/` and skips commands. UVP instead:
+- pins the source commit and verifies it;
+- keeps the originals byte-identical;
+- reports unsupported capabilities by name (`SKILLS_ONLY_PARTIAL`);
+- rewrites only what a deterministic, evidence-pinned rule covers;
+- installs as a namespaced plugin with rollback.
+
+This comparison is **documentation-based**: the official importer was **not executed**, so whether its copy hits the same two failures is NOT_RUN ([`importer_comparison.py`](importer_comparison.py)).
+
+## Honest limits
+
+- **Semantic equivalence between Claude and Hermes is NOT ESTABLISHED.** A model followed the ported Skills once (run-001). That is functional evidence, not equivalence.
+- **Bounded LLM-NLI check:** one operator-approved run, 5 calls, $0.08 at list price. The result is diagnostic only: 1 of 6 verdicts was accepted, and every other one was routed to human review or discarded ([report](docs/P6_13_NLI_EXPERIMENT_REPORT.md)). That run also found that Hermes v0.22.7's `ctx.llm` ignores a plugin's `max_tokens` on the native Anthropic provider.
+- **What is not ported:** connectors (MCP/OAuth), hooks, agents and commands.
+- **Safebox is policy, not a sandbox.** It has 3 confirmed bypasses.
 
 ## P6 v0.6.0 hackathon prototype — EXPERIMENTAL
 
@@ -27,8 +77,8 @@ The pinned foreign target is Anthropic's Claude/Cowork product-management packag
 
 | Status | Features |
 |---|---|
-| **IMPLEMENTED** (tested; on by default where applicable) | Inert pinned staging with byte-preserved originals; unsupported-capability reporting (`SKILLS_ONLY_PARTIAL`); deterministic compatibility engine (`compat_engine.py`) with registry evidence pins; candidate promotion gate + rejected-candidate ledger; P6.10 namespace isolation runner for **UVP-owned workloads** in a disposable WSL distro; P6.12 install / update / rollback / removal for disposable homes (`install_ops.py`, exercised with the real Hermes CLI) |
-| **EXPERIMENTAL** (tested as library, callbacks or a TEST-ONLY harness; not registered by `register()`) | P6.7 semantic review loop (deterministic evaluator; LLM NLI evaluator mock-tested only, `LLM_RUNTIME_NOT_TESTED`); P6.8/P6.12 authenticated Skill-continuity handoff (`skill_continuity.py`); P6.9 Safebox (`safebox.py`, **POLICY_ONLY / NOT_ISOLATED**, 3 confirmed bypasses); P6.12 Safebox-gated isolated task (`isolated_task.py`, **LIMITED_WORKLOAD_ISOLATION**); P6.11 routing + digest-validated lazy loading (`lazy_routing.py`) |
+| **IMPLEMENTED** (tested; on by default where applicable) | Inert pinned staging with byte-preserved originals; unsupported-capability reporting (`SKILLS_ONLY_PARTIAL`); deterministic compatibility engine (`compat_engine.py`) with registry evidence pins; candidate promotion gate + rejected-candidate ledger; P6.10 namespace isolation runner for **UVP-owned workloads** in a disposable WSL distro; P6.12 install / update / rollback / removal for disposable homes (`install_ops.py`, exercised with the real Hermes CLI); P6.13 guided CLI (`uvp_guided.py`) and deterministic package adaptation (`adapt_package.py`: R-C001 usage lines, RES-LOCAL-1 resource localization) |
+| **EXPERIMENTAL** (tested as library, callbacks or a TEST-ONLY harness; not registered by `register()`) | P6.7 semantic review loop (deterministic evaluator; LLM NLI evaluator: one bounded paid run, diagnostic only); P6.8/P6.12 authenticated Skill-continuity handoff (`skill_continuity.py`); P6.9 Safebox (`safebox.py`, **POLICY_ONLY / NOT_ISOLATED**, 3 confirmed bypasses); P6.12 Safebox-gated isolated task (`isolated_task.py`, **LIMITED_WORKLOAD_ISOLATION**); P6.11 routing + digest-validated lazy loading (`lazy_routing.py`) |
 | **NOT_VERIFIED** | Cross-host semantic equivalence; a live delegated child under continuity or Safebox; OS isolation of the LLM, Hermes or Skill instruction delivery; billed-token cost savings (no offline tokenizer); GitHub-hosted CI on Python 3.13 |
 | **ROADMAP** | Connector/OAuth porting; hooks/agents/commands porting; interactive E2E and a Claude-side baseline; automatic multi-Skill orchestration; general cross-agent migration |
 
@@ -46,7 +96,7 @@ Components on branch `feat/uvp-p6-foreign-multiskill`:
 - `scripts/probe_hermes_target.py` / `scripts/p6_runtime_verify.py`: offline Hermes target probe and in-process runtime resolution checks (no model calls).
 
 **Still incomplete:**
-- an installer UX for the foreign package (install is a documented manual copy plus `hermes plugins enable`);
+- the guided installer (`uvp_guided.py`) covers the one pinned package only;
 - an interactive E2E and a Claude-side baseline for semantic comparison;
 - a sandboxed write boundary for E2E runs (`HERMES_WRITE_SAFE_ROOT` was not set in run 001).
 

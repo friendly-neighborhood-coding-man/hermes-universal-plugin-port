@@ -268,6 +268,10 @@ NLI_SCHEMA = {
 }
 
 
+INJECTION = re.compile(r"(?i)(ignore (all |any )?(previous|prior|above) (instructions|rules)|you are (the|a) (judge|evaluator)|"
+                       r"(return|output|answer)\s+(the )?verdict|verdict\s*[:=]\s*(entailed|contradicted)|system prompt|disregard)")
+
+
 # Which hash-pinned evidence an obligation is judged on. Trace- and runtime-record checks
 # are not sent to the NLI judge: stream.jsonl tool results are truncated (~5000 chars) by Hermes.
 EVIDENCE_BY_KIND = {
@@ -295,10 +299,11 @@ class LLMNLIEvaluator:
     """
     WINDOW = 12000
 
-    def __init__(self, ctx, *, approved: bool = False, max_calls: int = 0):
+    def __init__(self, ctx, *, approved: bool = False, max_calls: int = 0, baseline="deterministic"):
         if approved is not True or not isinstance(max_calls, int) or max_calls < 1:
             raise PortError("LLM NLI evaluation needs explicit operator approval and a positive call budget")
         self.ctx, self.max_calls, self.calls, self.keys = ctx, max_calls, 0, []
+        self.baseline = DeterministicEvaluator() if baseline == "deterministic" else baseline
         self.usage = []
         self.identity = {"evaluator": "llm_nli", "model": None, "usage": self.usage}
 
@@ -332,6 +337,17 @@ class LLMNLIEvaluator:
         quotes = value.get("evidence_quotes") or []
         if not quotes or any(not isinstance(q, str) or q not in blob for q in quotes):
             return _finding(ob, "INSUFFICIENT_EVIDENCE", "UNKNOWN", "NLI cited evidence not found verbatim; verdict discarded", [])
+        # A judge that quotes instruction-like evidence may have followed an injection.
+        if any(INJECTION.search(q) for q in quotes):
+            return _finding(ob, "INSUFFICIENT_EVIDENCE", "UNKNOWN",
+                            "Cited evidence contains instruction-like text addressed to the judge; verdict discarded", [])
+        # Where the deterministic check has a definite answer, a disagreeing model verdict is not accepted.
+        if self.baseline is not None:
+            base = self.baseline.evaluate(ob, ev)
+            if base["verdict"] in ("ENTAILED", "CONTRADICTED", "NOT_APPLICABLE") and base["verdict"] != value["verdict"]:
+                return _finding(ob, "INSUFFICIENT_EVIDENCE", "UNKNOWN",
+                                "LLM verdict %s disagrees with deterministic %s; needs human review" % (value["verdict"], base["verdict"]),
+                                [{"llm_verdict": value["verdict"], "deterministic_verdict": base["verdict"]}])
         return _finding(ob, value["verdict"], value["root_cause"], value.get("rationale", "")[:600],
                         [{"quote": q[:300]} for q in quotes], evaluator="llm_nli")
 

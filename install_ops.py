@@ -59,10 +59,27 @@ def verify_package(pkg: Path) -> dict:
         return {"ok": False, "why": "manifest unreadable: " + type(exc).__name__}
     bad = [k for k, v in hashes.items()
            if not (pkg / "original" / k).is_file() or hashlib.sha256((pkg / "original" / k).read_bytes()).hexdigest() != v]
+    # An adapted package declares every changed/added file with its expected SHA-256.
+    adapted = {}
+    if (pkg / "ADAPTATION_MANIFEST.json").is_file():
+        try:
+            man = json.loads((pkg / "ADAPTATION_MANIFEST.json").read_text(encoding="utf-8"))
+            adapted = {c["path"]: c for c in man.get("changes", [])}
+        except (OSError, ValueError, KeyError, TypeError):
+            return {"ok": False, "why": "ADAPTATION_MANIFEST unreadable"}
+        for path, c in adapted.items():
+            f = pkg / path
+            if not f.is_file() or hashlib.sha256(f.read_bytes()).hexdigest() != c.get("after_sha256"):
+                bad.append(path + " (adaptation hash)")
     for row in report.get("skill_reviews", []):
-        a = pkg / "skills" / row["skill"] / "SKILL.md"
+        rel = "skills/%s/SKILL.md" % row["skill"]
+        a = pkg / rel
+        if rel in adapted:
+            if adapted[rel].get("original_sha256") != row["original_sha256"]:
+                bad.append(rel + " (adaptation bound to a different original)")
+            continue
         if not a.is_file() or hashlib.sha256(a.read_bytes()).hexdigest() != row["original_sha256"]:
-            bad.append("skills/%s/SKILL.md" % row["skill"])
+            bad.append(rel)
     for f in ("plugin.yaml", "__init__.py"):
         if not (pkg / f).is_file():
             bad.append(f)
